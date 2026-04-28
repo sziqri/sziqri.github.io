@@ -394,5 +394,22 @@
         </div>
         <div class="font-mono text-xs uppercase tracking-widest text-slate-500">© 2024 SHAIFOL ZIQRI. ALL RIGHTS RESERVED.</div>
     </footer>
+
+    <script>
+        const gallery = document.getElementById('galleryContainer');
+        const slideLeft = document.getElementById('slideLeft');
+        const slideRight = document.getElementById('slideRight');
+
+        // Scroll left by 500 pixels (the width of one image)
+        slideLeft.addEventListener('click', () => {
+            gallery.scrollBy({ left: -500, behavior: 'smooth' });
+        });
+
+        // Scroll right by 500 pixels
+        slideRight.addEventListener('click', () => {
+            gallery.scrollBy({ left: 500, behavior: 'smooth' });
+        });
+    </script>
+    
 </body>
 </html>
