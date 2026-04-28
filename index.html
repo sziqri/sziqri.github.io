@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Shaifol Ziqri - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&family=Newsreader:opsz,wght@6..72,400;6..72,700&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#6fd8cc",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "surface-container-low": "#271717",
+                        "inverse-surface": "#f9dcda",
+                        "tertiary-fixed-dim": "#6fd8cc",
+                        "secondary-fixed": "#e5e2e1",
+                        "text-primary": "#F2F2F2",
+                        "primary": "#ffb3b1",
+                        "on-primary-fixed-variant": "#92001c",
+                        "on-tertiary-fixed": "#00201d",
+                        "on-secondary-container": "#b7b5b4",
+                        "on-error-container": "#ffdad6",
+                        "surface-bright": "#473534",
+                        "on-primary-container": "#5b000e",
+                        "secondary": "#c8c6c5",
+                        "outline-variant": "#5b403f",
+                        "surface-container": "#2c1b1b",
+                        "accent": "#E63946",
+                        "text-muted": "#808080",
+                        "on-surface": "#f9dcda",
+                        "inverse-on-surface": "#3e2c2b",
+                        "border": "#333333",
+                        "background": "#0D0D0D",
+                        "on-primary-fixed": "#410007",
+                        "surface-container-high": "#372625",
+                        "on-background": "#f9dcda",
+                        "surface-variant": "#433030",
+                        "primary-container": "#ff535b",
+                        "on-tertiary": "#003733",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed": "#8cf4e8",
+                        "primary-fixed-dim": "#ffb3b1",
+                        "secondary-container": "#474746",
+                        "on-surface-variant": "#e4bebc",
+                        "on-tertiary-fixed-variant": "#00504a",
+                        "tertiary-container": "#2fa096",
+                        "error-container": "#93000a",
+                        "primary-fixed": "#ffdad8",
+                        "on-primary": "#680011",
+                        "inverse-primary": "#bb152c",
+                        "surface-hover": "#262626",
+                        "on-tertiary-container": "#00302c",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "outline": "#ab8987",
+                        "on-error": "#690005",
+                        "on-secondary-fixed-variant": "#474746",
+                        "surface-tint": "#ffb3b1",
+                        "surface": "#1A1A1A",
+                        "surface-dim": "#1e0f0f",
+                        "on-secondary": "#313030",
+                        "surface-container-lowest": "#180a0a",
+                        "surface-container-highest": "#433030"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {
+                        "lg": "48px",
+                        "xs": "4px",
+                        "sm": "12px",
+                        "md": "24px",
+                        "base": "8px",
+                        "gutter": "16px",
+                        "xl": "80px"
+                    },
+                    "fontFamily": {
+                        "h1": ["Newsreader", "serif"],
+                        "mono-label": ["JetBrains Mono", "monospace"],
+                        "body-md": ["Space Grotesk", "sans-serif"],
+                        "h3": ["Newsreader", "serif"],
+                        "h2": ["Newsreader", "serif"],
+                        "button": ["Space Grotesk", "sans-serif"],
+                        "body-lg": ["Space Grotesk", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "h1": ["96px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "mono-label": ["13px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "h3": ["40px", { "lineHeight": "1.2", "fontWeight": "400" }],
+                        "h2": ["64px", { "lineHeight": "1.2", "fontWeight": "400" }],
+                        "button": ["14px", { "lineHeight": "1", "letterSpacing": "1px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0D0D0D;
+            color: #F2F2F2;
+            position: relative;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-background text-text-primary font-body-md overflow-x-hidden">
+    <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 py-6 bg-neutral-950 border-b border-neutral-800">
+        <div class="text-2xl font-serif font-black tracking-tight text-neutral-100">SHAIFOL ZIQRI</div>
+        <ul class="hidden md:flex gap-8 items-center">
+            <li><a class="text-red-600 border-b-2 border-red-600 pb-1 font-serif hover:text-red-500 transition-all duration-200" href="#home">Home</a></li>
+            <li><a class="text-neutral-400 font-serif hover:text-red-500 hover:bg-neutral-900 transition-all duration-200 px-2 py-1" href="#tech">Tech</a></li>
+            <li><a class="text-neutral-400 font-serif hover:text-red-500 hover:bg-neutral-900 transition-all duration-200 px-2 py-1" href="#exp">Exp</a></li>
+            <li><a class="text-neutral-400 font-serif hover:text-red-500 hover:bg-neutral-900 transition-all duration-200 px-2 py-1" href="#certs">Certs</a></li>
+        </ul>
+        <button class="font-button text-button uppercase tracking-widest bg-accent text-text-primary px-6 py-3 border border-transparent hover:bg-transparent hover:border-border hover:text-accent transition-colors active:scale-95 duration-100 cursor-pointer">
+            CONTACT
+        </button>
+    </nav>
+
+    <section class="min-h-screen pt-24 grid grid-cols-1 md:grid-cols-12 border-b border-border" id="home">
+        <div class="md:col-span-5 flex flex-col justify-center px-8 md:px-gutter lg:px-xl py-xl border-b md:border-b-0 md:border-r border-border">
+            <h1 class="font-h1 text-h1 text-text-primary mb-md uppercase">Shaifol<br/>Ziqri.</h1>
+            <p class="font-body-lg text-body-lg text-text-muted mb-lg max-w-md">Software Developer & RoboPro President.</p>
+            <div class="flex gap-4 mt-auto">
+                <a class="font-button text-button uppercase tracking-widest bg-accent text-text-primary px-8 py-4 text-center hover:bg-red-700 transition-colors inline-block w-fit" href="#exp">View Work</a>
+            </div>
+        </div>
+        <div class="md:col-span-7 relative h-[512px] md:h-auto bg-surface">
+            <img alt="Portrait of Shaifol Ziqri" class="absolute inset-0 w-full h-full object-cover filter grayscale contrast-125 brightness-75" data-alt="Black and white high-contrast moody portrait of a professional man in a dark tailored suit, architectural background, cinematic lighting" src="assets/profile.jpg"/>
+        </div>
+    </section>
+
+    <section class="py-xl px-4 md:px-gutter lg:px-xl max-w-[1440px] mx-auto border-b border-border" id="tech">
+        <h2 class="font-h2 text-h2 text-text-primary mb-xl">Capabilities</h2>
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+            <div class="md:col-span-8 bg-surface border border-border p-8 hover:bg-surface-hover transition-colors group">
+                <div class="flex justify-between items-start mb-lg">
+                    <h3 class="font-h3 text-h3 text-text-primary">Backend Engineering</h3>
+                    <span class="font-mono-label text-mono-label px-3 py-1 border border-border text-accent">PRIMARY</span>
+                </div>
+                <p class="font-body-md text-body-md text-text-muted mb-8 max-w-2xl">Architecting robust, scalable server-side applications with a focus on performance and maintainability.</p>
+                <div class="flex flex-wrap gap-sm">
+                    <span class="font-mono-label text-mono-label px-4 py-2 border border-border">Python</span>
+                    <span class="font-mono-label text-mono-label px-4 py-2 border border-border">FastAPI</span>
+                    <span class="font-mono-label text-mono-label px-4 py-2 border border-border">Django</span>
+                    <span class="font-mono-label text-mono-label px-4 py-2 border border-border">Node.js</span>
+                    <span class="font-mono-label text-mono-label px-4 py-2 border border-border">PostgreSQL</span>
+                </div>
+            </div>
+            <div class="md:col-span-4 bg-surface border border-border p-8 hover:bg-surface-hover transition-colors">
+                <div class="flex justify-between items-start mb-md">
+                    <h3 class="font-h3 text-3xl text-text-primary">Cloud & DevOps</h3>
+                </div>
+                <div class="flex flex-wrap gap-sm mt-auto">
+                    <span class="font-mono-label text-mono-label px-3 py-1 border border-border">AWS</span>
+                    <span class="font-mono-label text-mono-label px-3 py-1 border border-border">Docker</span>
+                    <span class="font-mono-label text-mono-label px-3 py-1 border border-border">Kubernetes</span>
+                    <span class="font-mono-label text-mono-label px-3 py-1 border border-border">CI/CD</span>
+                </div>
+            </div>
+            <div class="md:col-span-6 bg-surface border border-border p-8 hover:bg-surface-hover transition-colors">
+                <div class="flex justify-between items-start mb-md">
+                    <h3 class="font-h3 text-3xl text-text-primary">Frontend Development</h3>
+                </div>
+                <div class="flex flex-wrap gap-sm mt-auto">
+                    <span class="font-mono-label text-mono-label px-3 py-1 border border-border">React</span>
+                    <span class="font-mono-label text-mono-label px-3 py-1 border border-border">TypeScript</span>
+                    <span class="font-mono-label text-mono-label px-3 py-1 border border-border">Tailwind CSS</span>
+                    <span class="font-mono-label text-mono-label px-3 py-1 border border-border">Next.js</span>
+                </div>
+            </div>
+            <div class="md:col-span-6 bg-surface border border-border p-8 hover:bg-surface-hover transition-colors">
+                <div class="flex justify-between items-start mb-md">
+                    <h3 class="font-h3 text-3xl text-text-primary">Leadership</h3>
+                    <span class="material-symbols-outlined text-accent" data-icon="groups">groups</span>
+                </div>
+                <p class="font-body-md text-body-md text-text-muted">President at RoboPro. Leading teams, managing technical projects, and fostering innovation in robotics.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-xl px-4 md:px-gutter lg:px-xl max-w-[1440px] mx-auto border-b border-border" id="exp">
+        <h2 class="font-h2 text-h2 text-text-primary mb-xl">Experience</h2>
+        <div class="relative max-w-4xl mx-auto">
+            <div class="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-border transform md:-translate-x-1/2"></div>
+            
+            <div class="relative flex flex-col md:flex-row justify-between items-start md:items-center mb-xl group">
+                <div class="absolute left-0 md:left-1/2 w-3 h-3 bg-background border-2 border-accent transform -translate-x-[5px] md:-translate-x-1/2 mt-2 md:mt-0 group-hover:bg-accent transition-colors z-10"></div>
+                <div class="w-full md:w-[45%] pl-8 md:pl-0 md:pr-8 text-left md:text-right mb-4 md:mb-0">
+                    <h3 class="font-h3 text-3xl text-text-primary mb-2">Senior Developer</h3>
+                    <p class="font-body-md text-accent">Tech Solutions Inc.</p>
+                </div>
+                <div class="w-full md:w-[45%] pl-8 md:pl-8">
+                    <span class="font-mono-label text-mono-label text-text-muted block mb-4">2021 - PRESENT</span>
+                    <p class="font-body-md text-text-muted">Lead architect for microservices transition. Managed a team of 5 developers, reducing system latency by 40% and implementing CI/CD pipelines.</p>
+                </div>
+            </div>
+            
+            <div class="relative flex flex-col md:flex-row justify-between items-start md:items-center mb-xl group">
+                <div class="absolute left-0 md:left-1/2 w-3 h-3 bg-background border-2 border-border transform -translate-x-[5px] md:-translate-x-1/2 mt-2 md:mt-0 group-hover:border-accent transition-colors z-10"></div>
+                <div class="w-full md:w-[45%] pl-8 md:pl-0 md:pr-8 text-left md:text-right mb-4 md:mb-0 order-1 md:order-2">
+                    <span class="font-mono-label text-mono-label text-text-muted block mb-4 md:hidden">2018 - 2021</span>
+                    <h3 class="font-h3 text-3xl text-text-primary mb-2">President</h3>
+                    <p class="font-body-md text-accent">RoboPro</p>
+                </div>
+                <div class="w-full md:w-[45%] pl-8 md:pr-8 order-2 md:order-1 text-left md:text-right">
+                    <span class="font-mono-label text-mono-label text-text-muted hidden md:block mb-4">2018 - 2021</span>
+                    <p class="font-body-md text-text-muted">Spearheaded robotics initiatives, organized national hackathons, and secured funding for key research projects.</p>
+                </div>
+            </div>
+
+            <div class="relative flex flex-col md:flex-row justify-between items-start md:items-center group">
+                <div class="absolute left-0 md:left-1/2 w-3 h-3 bg-background border-2 border-border transform -translate-x-[5px] md:-translate-x-1/2 mt-2 md:mt-0 group-hover:border-accent transition-colors z-10"></div>
+                <div class="w-full md:w-[45%] pl-8 md:pl-0 md:pr-8 text-left md:text-right mb-4 md:mb-0">
+                    <h3 class="font-h3 text-3xl text-text-primary mb-2">Backend Developer</h3>
+                    <p class="font-body-md text-accent">Innovate Startup</p>
+                </div>
+                <div class="w-full md:w-[45%] pl-8 md:pl-8">
+                    <span class="font-mono-label text-mono-label text-text-muted block mb-4">2016 - 2018</span>
+                    <p class="font-body-md text-text-muted">Developed RESTful APIs using Django and PostgreSQL. Optimized database queries reducing load times significantly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-xl px-4 md:px-gutter lg:px-xl max-w-[1440px] mx-auto" id="certs">
+        <h2 class="font-h2 text-h2 text-text-primary mb-xl">Credentials</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+            <div class="aspect-[4/3] bg-surface border border-border relative group overflow-hidden">
+                <div class="absolute inset-0 bg-background opacity-50 z-0"></div>
+                <div class="relative z-10 h-full p-8 flex flex-col justify-between">
+                    <div class="flex justify-between items-start">
+                        <span class="material-symbols-outlined text-4xl text-text-muted group-hover:text-accent transition-colors" data-icon="cloud">cloud</span>
+                        <span class="font-mono-label text-mono-label px-2 py-1 border border-border group-hover:border-accent transition-colors">2023</span>
+                    </div>
+                    <div>
+                        <h4 class="font-h3 text-2xl text-text-primary mb-2">AWS Solutions Architect</h4>
+                        <p class="font-body-md text-text-muted text-sm uppercase tracking-widest">Amazon Web Services</p>
+                    </div>
+                </div>
+                <div class="absolute inset-0 border-2 border-transparent group-hover:border-accent transition-colors z-20 pointer-events-none"></div>
+            </div>
+
+            <div class="aspect-[4/3] bg-surface border border-border relative group overflow-hidden">
+                <div class="absolute inset-0 bg-background opacity-50 z-0"></div>
+                <div class="relative z-10 h-full p-8 flex flex-col justify-between">
+                    <div class="flex justify-between items-start">
+                        <span class="material-symbols-outlined text-4xl text-text-muted group-hover:text-accent transition-colors" data-icon="memory">memory</span>
+                        <span class="font-mono-label text-mono-label px-2 py-1 border border-border group-hover:border-accent transition-colors">2022</span>
+                    </div>
+                    <div>
+                        <h4 class="font-h3 text-2xl text-text-primary mb-2">Certified Kubernetes Administrator</h4>
+                        <p class="font-body-md text-text-muted text-sm uppercase tracking-widest">CNCF</p>
+                    </div>
+                </div>
+                <div class="absolute inset-0 border-2 border-transparent group-hover:border-accent transition-colors z-20 pointer-events-none"></div>
+            </div>
+
+            <div class="aspect-[4/3] bg-surface border border-border relative group overflow-hidden">
+                <div class="absolute inset-0 bg-background opacity-50 z-0"></div>
+                <div class="relative z-10 h-full p-8 flex flex-col justify-between">
+                    <div class="flex justify-between items-start">
+                        <span class="material-symbols-outlined text-4xl text-text-muted group-hover:text-accent transition-colors" data-icon="terminal">terminal</span>
+                        <span class="font-mono-label text-mono-label px-2 py-1 border border-border group-hover:border-accent transition-colors">2021</span>
+                    </div>
+                    <div>
+                        <h4 class="font-h3 text-2xl text-text-primary mb-2">GCP Professional Cloud Developer</h4>
+                        <p class="font-body-md text-text-muted text-sm uppercase tracking-widest">Google Cloud</p>
+                    </div>
+                </div>
+                <div class="absolute inset-0 border-2 border-transparent group-hover:border-accent transition-colors z-20 pointer-events-none"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="w-full px-8 py-12 flex flex-col md:flex-row justify-between items-center gap-4 mt-20 bg-neutral-950 border-t border-neutral-800">
+        <div class="font-mono text-[10px] uppercase tracking-widest text-neutral-500">© 2024 SHAIFOL ZIQRI. ALL RIGHTS RESERVED.</div>
+        <ul class="flex gap-6">
+            <li><a class="font-mono text-[10px] uppercase tracking-widest text-neutral-600 hover:text-red-600 transition-colors cursor-crosshair" href="#">COLOPHON</a></li>
+            <li><a class="font-mono text-[10px] uppercase tracking-widest text-neutral-600 hover:text-red-600 transition-colors cursor-crosshair" href="#">SOURCE</a></li>
+            <li><a class="font-mono text-[10px] uppercase tracking-widest text-neutral-600 hover:text-red-600 transition-colors cursor-crosshair" href="#">ARCHIVE</a></li>
+        </ul>
+    </footer>
+</body>
+</html>
