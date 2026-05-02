@@ -52,7 +52,6 @@
         }
         html { scroll-behavior: smooth; }
         
-        /* Hide scrollbar for the gallery but keep it scrollable */
         .hide-scroll-bar {
             -ms-overflow-style: none;
             scrollbar-width: none;
@@ -427,12 +426,10 @@
         const slideLeft = document.getElementById('slideLeft');
         const slideRight = document.getElementById('slideRight');
 
-        // Scroll left by 500 pixels (the width of one image)
         slideLeft.addEventListener('click', () => {
             gallery.scrollBy({ left: -500, behavior: 'smooth' });
         });
 
-        // Scroll right by 500 pixels
         slideRight.addEventListener('click', () => {
             gallery.scrollBy({ left: 500, behavior: 'smooth' });
         });
