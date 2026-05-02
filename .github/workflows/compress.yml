@@ -1,0 +1,31 @@
+name: Compress Images
+
+# Tell the robot to wake up whenever you push to the 'main' branch
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**.jpg'
+      - '**.jpeg'
+      - '**.png'
+      - '**.webp'
+
+jobs:
+  build:
+    name: Auto-Compress
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Step 1: Download your code to the robot's server
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Step 2: Run the compression tool
+      - name: Compress Images
+        uses: calibreapp/image-actions@main
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          jpegQuality: "80" # Compresses JPGs to 80% quality
+          pngQuality: "80"  # Compresses PNGs to 80% quality
+          ignorePaths: "node_modules/**"
