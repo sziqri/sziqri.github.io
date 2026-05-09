@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Contact - Shaifol Ziqri</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Newsreader:opsz,wght@6..72,400;6..72,700;6..72,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    
+    <script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { 50: '#eff6ff', 100: '#dbeafe', 600: '#2563eb', 700: '#1d4ed8', 900: '#1e3a8a' },
+                        surface: '#ffffff', 'surface-alt': '#f8fafc', border: '#e2e8f0',
+                    },
+                    fontFamily: { serif: ["Newsreader", "serif"], sans: ["Space Grotesk", "sans-serif"], mono: ["JetBrains Mono", "monospace"] }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body class="font-sans overflow-x-hidden bg-white">
+
+    <!-- Universal Navigation -->
+    <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-12 py-5 bg-white/90 backdrop-blur-md border-b border-border shadow-sm">
+        <a href="index.html" class="text-xl md:text-2xl font-serif font-black tracking-tight text-slate-900 uppercase">SHAIFOL ZIQRI</a>
+        <ul class="hidden xl:flex gap-6 items-center">
+            <li><a class="text-slate-600 font-medium font-sans hover:text-brand-600 hover:bg-slate-50 transition-all duration-200 px-3 py-2 rounded" href="index.html#home">Home</a></li>
+            <li><a class="text-slate-600 font-medium font-sans hover:text-brand-600 hover:bg-slate-50 transition-all duration-200 px-3 py-2 rounded" href="index.html#skills">Skills</a></li>
+            <li><a class="text-slate-600 font-medium font-sans hover:text-brand-600 hover:bg-slate-50 transition-all duration-200 px-3 py-2 rounded" href="index.html#projects">Projects</a></li>
+            <li><a class="text-slate-600 font-medium font-sans hover:text-brand-600 hover:bg-slate-50 transition-all duration-200 px-3 py-2 rounded" href="blog.html">Blog</a></li>
+            <li><a class="text-brand-700 font-bold border-b-2 border-brand-600 pb-1 font-sans transition-all duration-200 px-3 py-2" href="contact.html">Contact</a></li>
+        </ul>
+        <a href="CV_SHAIFOL.pdf" download class="font-sans text-sm font-bold uppercase tracking-widest bg-slate-900 text-white px-5 py-3 rounded hover:bg-brand-600 transition-colors active:scale-95 duration-100 flex items-center gap-2">
+            <span class="material-symbols-outlined text-[18px]">download</span> Resume
+        </a>
+    </nav>
+
+    <!-- Contact Section -->
+    <section class="pt-32 pb-24 px-6 md:px-16 lg:px-24 max-w-5xl mx-auto min-h-[80vh] flex flex-col md:flex-row gap-16">
+        
+        <!-- Info Side -->
+        <div class="w-full md:w-1/2 flex flex-col justify-center">
+            <h1 class="font-serif text-5xl md:text-6xl font-bold text-slate-900 mb-6 tracking-tight">Let's Connect.</h1>
+            <p class="font-sans text-lg text-slate-600 mb-10 leading-relaxed">
+                Currently looking for a 6-month internship in cybersecurity, network defense, or digital forensics starting September 2026. Feel free to reach out via the form or through my direct contacts.
+            </p>
+            
+            <div class="space-y-6">
+                <div class="flex items-center gap-4 text-slate-700">
+                    <span class="material-symbols-outlined text-brand-600 text-3xl">mail</span>
+                    <a href="mailto:sziqri10@gmail.com" class="font-mono text-sm hover:text-brand-600 transition-colors">sziqri10@gmail.com</a>
+                </div>
+                <div class="flex items-center gap-4 text-slate-700">
+                    <span class="material-symbols-outlined text-brand-600 text-3xl">call</span>
+                    <a href="https://wa.me/60176334491" target="_blank" class="font-mono text-sm hover:text-brand-600 transition-colors">+60 17-633 4491</a>
+                </div>
+                <div class="flex items-center gap-4 text-slate-700">
+                    <span class="material-symbols-outlined text-brand-600 text-3xl">location_on</span>
+                    <span class="font-mono text-sm">Banting, Selangor, Malaysia</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Side -->
+        <div class="w-full md:w-1/2 bg-surface-alt border border-border p-8 rounded-sm shadow-sm">
+            <form action="#" method="POST" class="space-y-6">
+                <div>
+                    <label for="name" class="block font-sans text-sm font-bold text-slate-900 mb-2">Name</label>
+                    <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-border rounded bg-white focus:ring-2 focus:ring-brand-600 focus:border-brand-600 font-sans text-slate-800 outline-none transition-all">
+                </div>
+                
+                <div>
+                    <label for="email" class="block font-sans text-sm font-bold text-slate-900 mb-2">Email Address</label>
+                    <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-border rounded bg-white focus:ring-2 focus:ring-brand-600 focus:border-brand-600 font-sans text-slate-800 outline-none transition-all">
+                </div>
+                
+                <div>
+                    <label for="message" class="block font-sans text-sm font-bold text-slate-900 mb-2">Message</label>
+                    <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 border border-border rounded bg-white focus:ring-2 focus:ring-brand-600 focus:border-brand-600 font-sans text-slate-800 outline-none transition-all resize-none"></textarea>
+                </div>
+                
+                <button type="submit" class="w-full font-sans text-sm font-bold uppercase tracking-widest bg-brand-600 text-white px-8 py-4 rounded hover:bg-brand-700 transition-colors shadow-md flex items-center justify-center gap-2">
+                    Send Message
+                    <span class="material-symbols-outlined text-[18px]">send</span>
+                </button>
+            </form>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="w-full px-8 py-16 flex flex-col justify-center items-center gap-6 bg-slate-900 border-t border-slate-800">
+        <h2 class="font-serif text-2xl font-bold text-white tracking-widest uppercase">Shaifol Ziqri</h2>
+        <div class="font-mono text-xs uppercase tracking-widest text-slate-500">© 2026 SHAIFOL ZIQRI. ALL RIGHTS RESERVED.</div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
