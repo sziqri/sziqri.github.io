@@ -9,6 +9,8 @@
     <link href="https://fonts.googleapis.com" rel="preconnect"/>
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Newsreader:opsz,wght@6..72,400;6..72,700;6..72,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    
+    <!-- Tailwind CSS Configuration -->
     <script id="tailwind-config">
         tailwind.config = {
             theme: {
@@ -34,32 +36,9 @@
             }
         }
     </script>
-    <style>
-        body {
-            background-color: #ffffff;
-            color: #0f172a;
-            -webkit-font-smoothing: antialiased;
-        }
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
-            background-size: 24px 24px;
-            opacity: 0.3;
-            pointer-events: none;
-            z-index: -1;
-        }
-        html { scroll-behavior: smooth; }
-        
-        .hide-scroll-bar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-        .hide-scroll-bar::-webkit-scrollbar {
-            display: none;
-        }
-    </style>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body class="font-sans overflow-x-hidden">
 
@@ -382,8 +361,7 @@
                     <span class="material-symbols-outlined">arrow_forward_ios</span>
                 </button>
 
-
-                </div>
+            </div>
         </div>
     </section>
 
@@ -423,19 +401,8 @@
         <div class="font-mono text-xs uppercase tracking-widest text-slate-500">© 2026 SHAIFOL ZIQRI. ALL RIGHTS RESERVED.</div>
     </footer>
 
-    <script>
-        const gallery = document.getElementById('galleryContainer');
-        const slideLeft = document.getElementById('slideLeft');
-        const slideRight = document.getElementById('slideRight');
-
-        slideLeft.addEventListener('click', () => {
-            gallery.scrollBy({ left: -500, behavior: 'smooth' });
-        });
-
-        slideRight.addEventListener('click', () => {
-            gallery.scrollBy({ left: 500, behavior: 'smooth' });
-        });
-    </script>
+    <!-- Scripts -->
+    <script src="script.js"></script>
     
 </body>
 </html>
