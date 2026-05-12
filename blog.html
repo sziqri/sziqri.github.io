@@ -10,22 +10,6 @@
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Newsreader:opsz,wght@6..72,400;6..72,700;6..72,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
     
-    <div id="articleModal" class="fixed inset-0 z-[100] hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 opacity-0 transition-opacity duration-300">
-        <div class="bg-white w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-sm shadow-2xl relative transform scale-95 transition-transform duration-300" id="modalBox">
-        
-            <button id="closeModalBtn" class="absolute top-6 right-6 text-slate-400 hover:text-brand-600 focus:outline-none transition-colors">
-                <span class="material-symbols-outlined text-3xl">close</span>
-            </button>
-            
-            <div class="p-8 md:p-12">
-                <span id="modalDate" class="font-mono text-xs font-bold text-brand-600 mb-4 block uppercase tracking-widest"></span>
-                <h2 id="modalTitle" class="font-serif text-3xl md:text-4xl font-bold text-slate-900 mb-8 leading-tight"></h2>
-                <div id="modalBody" class="font-sans text-base text-slate-600 leading-relaxed space-y-6">
-                </div>
-            </div>
-        </div>
-    </div>
-    
     <script id="tailwind-config">
         tailwind.config = {
             theme: {
@@ -90,20 +74,79 @@
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            <!-- Sample Post 1 -->
+            <!-- Post 1 -->
             <article class="bg-white border border-border p-8 rounded-sm shadow-sm hover:shadow-md transition-all flex flex-col group cursor-pointer">
                 <span class="font-mono text-xs font-bold text-brand-600 mb-4 uppercase tracking-widest post-date">13 May 2026</span>
                 <h2 class="font-serif text-2xl font-bold text-slate-900 mb-4 group-hover:text-brand-600 transition-colors post-title">Analyzing Forensic Features in AI Images</h2>
-                <p class="font-sans text-slate-600 mb-6 flex-grow leading-relaxed">A deep dive into how CNN models utilize Error Level Analysis (ELA) and Fast Fourier Transform (FFT) to distinguish between real and AI-generated media.</p>
+                <p class="font-sans text-slate-600 mb-6 flex-grow leading-relaxed">A deep dive into how CNN models can utilize Error Level Analysis (ELA) and Fast Fourier Transform (FFT) to distinguish between real and AI-generated media.</p>
             
                 <button type="button" class="read-post-btn font-sans font-bold text-sm text-slate-900 uppercase tracking-widest flex items-center gap-1 group-hover:gap-2 transition-all mt-auto self-start outline-none">
                     Read Post <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
                 </button>
 
                 <div class="hidden full-content">
-                    <p>When working with digital forensics, identifying synthetic media requires looking beyond what the human eye can see. Generative models like Midjourney and Stable Diffusion leave unique traces in the frequency domain.</p>
-                    <p><strong>Fast Fourier Transform (FFT)</strong> helps us visualize these high-frequency artifacts. By converting spatial data into frequency data, unnatural pixel patterns become glaringly obvious.</p>
-                    <p>Furthermore, <strong>Error Level Analysis (ELA)</strong> highlights compression differences. Since AI generates images as a single flat layer, applying ELA reveals uniform compression, whereas a manipulated real photo would show stark contrasts at the manipulation points.</p>
+                    <p class="mb-6">
+                        When I was trying to figure out a title for my Final Year Project (FYP), I was totally stuck.
+                        But one day, while scrolling through social media, I realized something pretty scary: <strong>AI-generated images and videos are getting way too realistic</strong>. 
+                        Nowadays, it's so hard to tell what's real and what's fake with just our bare eyes.
+                    </p>
+                
+                    <p class="mb-6">
+                        That got me curious, so I started digging through Google Scholar to see how researchers are actually detecting AI content. 
+                        I found a <a href="https://www.ijtsrd.com/papers/ijtsrd69453.pdf" target="_blank" rel="noopener noreferrer" class="text-brand-600 font-bold border-b border-brand-200 hover:text-brand-800 hover:border-brand-600 transition-colors">really interesting paper</a> that suggested using multiple forensic features at the same time. 
+                        While there are already methods out there using things like Error Level Analysis (ELA) or Photo Response Non-Uniformity (PRNU), a lot of them share the same issue: they struggle with <strong>"cross-generation."</strong> 
+                        Basically, a model might be great at catching Midjourney images but completely fail when tested on Stable Diffusion.
+                    </p>
+                
+                    <p class="mb-6">
+                        To build a more robust system for my FYP, I decided to focus on this gap. 
+                        At first, I wanted to train a system using tons of different generative models. 
+                        But to keep the project realistic for my timeframe, I decided to scale it down. 
+                        I chose to replicate an <a href="https://acspub.id/index.php/ailm/article/view/4" target="_blank" rel="noopener noreferrer" class="text-brand-600 font-bold border-b border-brand-200 hover:text-brand-800 hover:border-brand-600 transition-colors">existing baseline study</a> so I could directly compare my results with theirs.
+                    </p>
+                
+                    <p class="mb-8">
+                        The main difference in my approach is that I built my system using <strong>PyTorch</strong>. 
+                        I chose PyTorch simply because it made it way easier for me to modify the very first layer of the CNN model to accept my custom forensic features.
+                    </p>
+                
+                    <div class="bg-slate-50 border-l-4 border-brand-600 p-6 rounded-r-sm mb-6">
+                        <h3 class="font-serif text-2xl font-bold text-slate-900 mb-4">The Forensic Features Setup</h3>
+                        <p class="mb-4">Speaking of forensic features, here is a quick breakdown of what I actually used to catch the AI:</p>
+                        
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <span class="material-symbols-outlined text-brand-600 mt-1">troubleshoot</span>
+                                <div>
+                                    <strong class="text-slate-900 block mb-1">Fast Fourier Transform (FFT):</strong>
+                                    This helps me see the high-frequency artifacts in an image. 
+                                    By converting normal spatial data into frequency data, the unnatural pixel patterns left behind by AI generators become super obvious.
+                                </div>
+                            </li>
+                            
+                            <li class="flex items-start gap-3">
+                                <span class="material-symbols-outlined text-brand-600 mt-1">compress</span>
+                                <div>
+                                    <strong class="text-slate-900 block mb-1">Error Level Analysis (ELA):</strong>
+                                    This feature highlights compression differences. 
+                                    Since an AI generates an image as one single flat layer, applying ELA will show a very uniform compression. 
+                                    A real photo that has been edited, on the other hand, will show clear differences where the image was manipulated.
+                                </div>
+                            </li>
+                
+                            <li class="flex items-start gap-3">
+                                <span class="material-symbols-outlined text-brand-600 mt-1">blur_on</span>
+                                <div>
+                                    <strong class="text-slate-900 block mb-1">Laplace High-Pass Filtering:</strong>
+                                    I also added this filter to help the model learn the noise residuals. 
+                                    It basically extracts the hidden texture or hidden noise patterns that the AI accidentally leaves behind.
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <p class="mb-6">
+                        You are free to check my project setup in Project section!
+                    </p>
                 </div>
             </article>
 
@@ -147,6 +190,22 @@
 
         <div class="font-mono text-xs uppercase tracking-widest text-slate-500">© 2026 SHAIFOL ZIQRI. ALL RIGHTS RESERVED.</div>
     </footer>
+
+    <div id="articleModal" class="fixed inset-0 z-[100] hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 opacity-0 transition-opacity duration-300">
+        <div class="bg-white w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-sm shadow-2xl relative transform scale-95 transition-transform duration-300" id="modalBox">
+        
+            <button id="closeModalBtn" class="absolute top-6 right-6 text-slate-400 hover:text-brand-600 focus:outline-none transition-colors">
+                <span class="material-symbols-outlined text-3xl">close</span>
+            </button>
+            
+            <div class="p-8 md:p-12">
+                <span id="modalDate" class="font-mono text-xs font-bold text-brand-600 mb-4 block uppercase tracking-widest"></span>
+                <h2 id="modalTitle" class="font-serif text-3xl md:text-4xl font-bold text-slate-900 mb-8 leading-tight"></h2>
+                <div id="modalBody" class="font-sans text-base text-slate-600 leading-relaxed space-y-6">
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
