@@ -10,6 +10,22 @@
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Newsreader:opsz,wght@6..72,400;6..72,700;6..72,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
     
+    <div id="articleModal" class="fixed inset-0 z-[100] hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 opacity-0 transition-opacity duration-300">
+        <div class="bg-white w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-sm shadow-2xl relative transform scale-95 transition-transform duration-300" id="modalBox">
+        
+            <button id="closeModalBtn" class="absolute top-6 right-6 text-slate-400 hover:text-brand-600 focus:outline-none transition-colors">
+                <span class="material-symbols-outlined text-3xl">close</span>
+            </button>
+            
+            <div class="p-8 md:p-12">
+                <span id="modalDate" class="font-mono text-xs font-bold text-brand-600 mb-4 block uppercase tracking-widest"></span>
+                <h2 id="modalTitle" class="font-serif text-3xl md:text-4xl font-bold text-slate-900 mb-8 leading-tight"></h2>
+                <div id="modalBody" class="font-sans text-base text-slate-600 leading-relaxed space-y-6">
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <script id="tailwind-config">
         tailwind.config = {
             theme: {
@@ -76,27 +92,21 @@
             
             <!-- Sample Post 1 -->
             <article class="bg-white border border-border p-8 rounded-sm shadow-sm hover:shadow-md transition-all flex flex-col group cursor-pointer">
-                <span class="font-mono text-xs font-bold text-brand-600 mb-4 uppercase tracking-widest">May 02, 2026</span>
-                <h2 class="font-serif text-2xl font-bold text-slate-900 mb-4 group-hover:text-brand-600 transition-colors">Analyzing Forensic Features in AI Images</h2>
+                <span class="font-mono text-xs font-bold text-brand-600 mb-4 uppercase tracking-widest post-date">13 May 2026</span>
+                <h2 class="font-serif text-2xl font-bold text-slate-900 mb-4 group-hover:text-brand-600 transition-colors post-title">Analyzing Forensic Features in AI Images</h2>
                 <p class="font-sans text-slate-600 mb-6 flex-grow leading-relaxed">A deep dive into how CNN models utilize Error Level Analysis (ELA) and Fast Fourier Transform (FFT) to distinguish between real and AI-generated media.</p>
-                <a href="#" class="font-sans font-bold text-sm text-slate-900 uppercase tracking-widest flex items-center gap-1 group-hover:gap-2 transition-all">Read Post <span class="material-symbols-outlined text-[18px]">arrow_forward</span></a>
+            
+                <button type="button" class="read-post-btn font-sans font-bold text-sm text-slate-900 uppercase tracking-widest flex items-center gap-1 group-hover:gap-2 transition-all mt-auto self-start outline-none">
+                    Read Post <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                </button>
+
+                <div class="hidden full-content">
+                    <p>When working with digital forensics, identifying synthetic media requires looking beyond what the human eye can see. Generative models like Midjourney and Stable Diffusion leave unique traces in the frequency domain.</p>
+                    <p><strong>Fast Fourier Transform (FFT)</strong> helps us visualize these high-frequency artifacts. By converting spatial data into frequency data, unnatural pixel patterns become glaringly obvious.</p>
+                    <p>Furthermore, <strong>Error Level Analysis (ELA)</strong> highlights compression differences. Since AI generates images as a single flat layer, applying ELA reveals uniform compression, whereas a manipulated real photo would show stark contrasts at the manipulation points.</p>
+                </div>
             </article>
 
-            <!-- Sample Post 2 -->
-            <article class="bg-white border border-border p-8 rounded-sm shadow-sm hover:shadow-md transition-all flex flex-col group cursor-pointer">
-                <span class="font-mono text-xs font-bold text-brand-600 mb-4 uppercase tracking-widest">April 15, 2026</span>
-                <h2 class="font-serif text-2xl font-bold text-slate-900 mb-4 group-hover:text-brand-600 transition-colors">Solving Mazes with IR Sensors</h2>
-                <p class="font-sans text-slate-600 mb-6 flex-grow leading-relaxed">A breakdown of the logic implementation for the Mechabot Rush v3. Learn how to optimize an 8-channel IR sensor array for the LSRB algorithm.</p>
-                <a href="#" class="font-sans font-bold text-sm text-slate-900 uppercase tracking-widest flex items-center gap-1 group-hover:gap-2 transition-all">Read Post <span class="material-symbols-outlined text-[18px]">arrow_forward</span></a>
-            </article>
-
-            <!-- Sample Post 3 -->
-            <article class="bg-white border border-border p-8 rounded-sm shadow-sm hover:shadow-md transition-all flex flex-col group cursor-pointer">
-                <span class="font-mono text-xs font-bold text-brand-600 mb-4 uppercase tracking-widest">February 28, 2026</span>
-                <h2 class="font-serif text-2xl font-bold text-slate-900 mb-4 group-hover:text-brand-600 transition-colors">The Importance of Network Analysis in CTFs</h2>
-                <p class="font-sans text-slate-600 mb-6 flex-grow leading-relaxed">Reflecting on my experience at the UniSZA - UMT 2024 CTF. Tips and tricks for using Wireshark to hunt down hidden flags in network traffic.</p>
-                <a href="#" class="font-sans font-bold text-sm text-slate-900 uppercase tracking-widest flex items-center gap-1 group-hover:gap-2 transition-all">Read Post <span class="material-symbols-outlined text-[18px]">arrow_forward</span></a>
-            </article>
 
         </div>
     </section>
