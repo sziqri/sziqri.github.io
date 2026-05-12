@@ -35,9 +35,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         slideRight.addEventListener('click', () => {
             gallery.scrollBy({ left: 500, behavior: 'smooth' });
+        }); // <-- THIS WAS MISSING
+    } // <-- AND THIS WAS MISSING
 
-    // 3. BLOG MODAL (POPUP) LOGIC
-    // ==========================================
+    // --- 3. BLOG MODAL (POPUP) LOGIC ---
     const articleModal = document.getElementById('articleModal');
     const closeModalBtn = document.getElementById('closeModalBtn');
     const modalBox = document.getElementById('modalBox');
