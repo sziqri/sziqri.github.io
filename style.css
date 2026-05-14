@@ -4,15 +4,19 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+
 body::before {
     content: "";
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
-    background-size: 24px 24px;
-    opacity: 0.3;
+    top: -50%; left: -50%; width: 200%; height: 200%;
+    background: radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.05), transparent 50%);
     pointer-events: none;
     z-index: -1;
+}
+
+
+.dark body::before {
+    background: radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.10), transparent 50%);
 }
 
 html { 
