@@ -35,8 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         slideRight.addEventListener('click', () => {
             gallery.scrollBy({ left: 500, behavior: 'smooth' });
-        }); // <-- THIS WAS MISSING
-    } // <-- AND THIS WAS MISSING
+        });
+    }
 
     // --- 3. BLOG MODAL (POPUP) LOGIC ---
     const articleModal = document.getElementById('articleModal');
@@ -108,6 +108,37 @@ document.addEventListener('DOMContentLoaded', () => {
                 closeModal();
             }
             
+        });
+    }
+
+    // ==========================================
+    // 4. DARK MODE TOGGLE LOGIC
+    // ==========================================
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    const htmlElement = document.documentElement;
+
+    if (themeToggleBtn) {
+        // Check local storage OR system preference
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            htmlElement.classList.add('dark');
+            themeIcon.textContent = 'light_mode'; // Change to Sun icon
+        } else {
+            htmlElement.classList.remove('dark');
+            themeIcon.textContent = 'dark_mode'; // Change to Moon icon
+        }
+
+        // Listen for button click
+        themeToggleBtn.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark');
+            
+            if (htmlElement.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+                themeIcon.textContent = 'light_mode'; // Switch to Sun
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeIcon.textContent = 'dark_mode'; // Switch to Moon
+            }
         });
     }
 });
