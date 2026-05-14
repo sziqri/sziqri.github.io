@@ -28,43 +28,43 @@
 </head>
 <body class="font-sans overflow-x-hidden bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-300">
 
-    <!-- Universal Navigation -->
     <nav class="fixed top-0 left-0 w-full z-50 px-6 md:px-12 py-5 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-border dark:border-slate-800 shadow-sm transition-colors duration-300">
         <div class="flex justify-between items-center">
-            <button id="themeToggleBtn" class="text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400 focus:outline-none flex items-center justify-center p-2 transition-colors">
-                    <span class="material-symbols-outlined text-2xl md:text-3xl" id="themeIcon">dark_mode</span>
-                </button>
             
-            <a href="index.html" class="text-xl md:text-2xl font-serif font-black tracking-tight text-slate-900 uppercase">
+            <a href="index.html" class="text-xl md:text-2xl font-serif font-black tracking-tight text-slate-900 dark:text-white uppercase">
                 SHAIFOL ZIQRI
             </a>
 
             <ul class="hidden xl:flex gap-4 items-center">
-                <li><a class="text-slate-600 font-medium font-sans px-4 py-3 rounded transition-all duration-200 hover:text-brand-400 hover:bg-slate-50" href="index.html">Home</a></li>
-                <li><a class="text-slate-600 font-medium font-sans px-4 py-2 rounded transition-all duration-200 hover:text-brand-400 hover:bg-slate-50" href="about.html">About Me</a></li>
-                <li><a class="text-slate-600 font-medium font-sans px-4 py-2 rounded transition-all duration-200 hover:text-brand-400 hover:bg-slate-50" href="projects.html">Projects</a></li>
-                <li><a class="text-brand-700 font-bold font-sans px-4 py-2 rounded bg-brand-50 border-b-2 border-brand-600 transition-all duration-200" href="blog.html">Blog</a></li>
-                <li><a class="text-slate-600 font-medium font-sans px-4 py-2 rounded transition-all duration-200 hover:text-brand-400 hover:bg-slate-50" href="contact.html">Contact</a></li>
+                <li><a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-3 rounded transition-all duration-200 hover:text-brand-400 dark:hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="index.html">Home</a></li>
+                <li><a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-2 rounded transition-all duration-200 hover:text-brand-400 dark:hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="about.html">About Me</a></li>
+                <li><a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-2 rounded transition-all duration-200 hover:text-brand-400 dark:hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="projects.html">Projects</a></li>
+                <li><a class="text-brand-700 dark:text-brand-400 font-bold font-sans px-4 py-2 rounded bg-brand-50 dark:bg-brand-900/30 border-b-2 border-brand-600 transition-all duration-200" href="blog.html">Blog</a></li>
+                <li><a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-2 rounded transition-all duration-200 hover:text-brand-400 dark:hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="contact.html">Contact</a></li>
             </ul>
 
-            <div class="flex items-center gap-4">
-                <a href="CV_SHAIFOL.pdf" download class="hidden sm:flex font-sans text-sm font-bold uppercase tracking-widest bg-slate-900 text-white px-5 py-3 rounded hover:bg-brand-600 transition-colors items-center gap-2">
+            <div class="flex items-center gap-2 md:gap-4">
+                <button id="themeToggleBtn" class="text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400 focus:outline-none flex items-center justify-center p-2 transition-colors">
+                    <span class="material-symbols-outlined text-2xl md:text-3xl" id="themeIcon">dark_mode</span>
+                </button>
+
+                <a href="CV_SHAIFOL.pdf" download class="hidden sm:flex font-sans text-sm font-bold uppercase tracking-widest bg-slate-900 dark:bg-brand-600 text-white px-5 py-3 rounded hover:bg-brand-600 dark:hover:bg-brand-500 transition-colors items-center gap-2">
                     <span class="material-symbols-outlined text-[18px]">download</span>
                     Resume
                 </a>
 
-                <button id="mobileMenuBtn" class="xl:hidden text-slate-900 hover:text-brand-600 focus:outline-none flex items-center justify-center p-2">
+                <button id="mobileMenuBtn" class="xl:hidden text-slate-900 dark:text-white hover:text-brand-600 focus:outline-none flex items-center justify-center p-2">
                     <span class="material-symbols-outlined text-3xl">menu</span>
                 </button>
             </div>
         </div>
 
-        <div id="mobileMenu" class="hidden xl:hidden flex-col gap-2 mt-6 pb-4 border-t border-border pt-4">
-            <a class="text-slate-600 font-medium font-sans px-4 py-3 rounded transition-all duration-200 hover:text-brand-400 hover:bg-slate-50" href="index.html">Home</a>
-            <a class="text-slate-600 font-medium font-sans px-4 py-3 rounded transition-all duration-200 hover:text-brand-400 hover:bg-slate-50" href="about.html">About Me</a>
-            <a class="text-slate-600 font-medium font-sans px-4 py-3 rounded transition-all duration-200 hover:text-brand-400 hover:bg-slate-50" href="projects.html">Projects</a>
-            <a class="text-brand-700 font-bold font-sans px-4 py-3 rounded bg-brand-50 border-l-4 border-brand-600 transition-all duration-200" href="blog.html">Blog</a>
-            <a class="text-slate-600 font-medium font-sans px-4 py-3 rounded transition-all duration-200 hover:text-brand-400 hover:bg-slate-50" href="contact.html">Contact</a>
+        <div id="mobileMenu" class="hidden xl:hidden flex-col gap-2 mt-6 pb-4 border-t border-border dark:border-slate-800 pt-4">
+            <a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-3 rounded transition-all duration-200 hover:text-brand-400 dark:hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="index.html">Home</a>
+            <a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-3 rounded transition-all duration-200 hover:text-brand-400 dark:hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="about.html">About Me</a>
+            <a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-3 rounded transition-all duration-200 hover:text-brand-400 dark:hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="projects.html">Projects</a>
+            <a class="text-brand-700 dark:text-brand-400 font-bold font-sans px-4 py-3 rounded bg-brand-50 dark:bg-brand-900/30 border-l-4 border-brand-600 transition-all duration-200" href="blog.html">Blog</a>
+            <a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-3 rounded transition-all duration-200 hover:text-brand-400 dark:hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="contact.html">Contact</a>
             
             <a href="CV_SHAIFOL.pdf" download class="sm:hidden font-sans text-sm font-bold uppercase tracking-widest bg-slate-900 text-white px-5 py-3 mt-4 rounded hover:bg-brand-600 transition-colors flex items-center justify-center gap-2">
                 <span class="material-symbols-outlined text-[18px]">download</span> Resume
@@ -72,14 +72,12 @@
         </div>
     </nav>
 
-    <!-- Blog Section -->
     <section class="pt-32 pb-24 px-6 md:px-16 lg:px-24 max-w-[1440px] mx-auto min-h-screen">
-        <h1 class="font-serif text-5xl md:text-6xl font-bold text-slate-900 mb-6 tracking-tight">Blog & Articles</h1>
-        <p class="font-sans text-xl text-slate-600 mb-16 max-w-2xl leading-relaxed">Thoughts, tutorials, or random stuff that I loved to share.</p>
+        <h1 class="font-serif text-5xl md:text-6xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight">Blog & Articles</h1>
+        <p class="font-sans text-xl text-slate-600 dark:text-slate-400 mb-16 max-w-2xl leading-relaxed">Thoughts, tutorials, or random stuff that I loved to share.</p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            
-            <!-- Post 1 -->
+            // Post 1
             <article class="bg-white dark:bg-slate-800 border border-border dark:border-slate-700 p-8 rounded-sm shadow-sm hover:shadow-md transition-all flex flex-col group cursor-pointer">
                 <span class="font-mono text-xs font-bold text-brand-600 dark:text-brand-400 mb-4 uppercase tracking-widest post-date">13 May 2026</span>
                 <h2 class="font-serif text-2xl font-bold text-slate-900 dark:text-white mb-4 group-hover:text-brand-600 transition-colors post-title">Analyzing Forensic Features in AI Images</h2>
@@ -92,14 +90,14 @@
                 <div class="hidden full-content">
                     <p class="mb-6">
                         When I was trying to figure out a title for my Final Year Project (FYP), I was totally stuck.
-                        But one day, while scrolling through social media, I realized something pretty scary: <strong>AI-generated images and videos are getting way too realistic</strong>. 
+                        But one day, while scrolling through social media, I realized something pretty scary: <strong class="dark:text-white">AI-generated images and videos are getting way too realistic</strong>. 
                         Nowadays, it's so hard to tell what's real and what's fake with just our bare eyes.
                     </p>
                 
                     <p class="mb-6">
                         That got me curious, so I started digging through Google Scholar to see how researchers are actually detecting AI content. 
-                        I found a <a href="https://www.ijtsrd.com/papers/ijtsrd69453.pdf" target="_blank" rel="noopener noreferrer" class="text-brand-600 font-bold border-b border-brand-200 hover:text-brand-800 hover:border-brand-600 transition-colors">really interesting paper</a> that suggested using multiple forensic features at the same time. 
-                        While there are already methods out there using things like Error Level Analysis (ELA) or Photo Response Non-Uniformity (PRNU), a lot of them share the same issue: they struggle with <strong>"cross-generation."</strong> 
+                        I found a <a href="https://www.ijtsrd.com/papers/ijtsrd69453.pdf" target="_blank" rel="noopener noreferrer" class="text-brand-600 dark:text-brand-400 font-bold border-b border-brand-200 dark:border-brand-800 hover:text-brand-800 dark:hover:text-brand-300 hover:border-brand-600 dark:hover:border-brand-400 transition-colors">really interesting paper</a> that suggested using multiple forensic features at the same time. 
+                        While there are already methods out there using things like Error Level Analysis (ELA) or Photo Response Non-Uniformity (PRNU), a lot of them share the same issue: they struggle with <strong class="dark:text-white">"cross-generation."</strong> 
                         Basically, a model might be great at catching Midjourney images but completely fail when tested on Stable Diffusion.
                     </p>
                 
@@ -107,32 +105,32 @@
                         To build a more robust system for my FYP, I decided to focus on this gap. 
                         At first, I wanted to train a system using tons of different generative models. 
                         But to keep the project realistic for my timeframe, I decided to scale it down. 
-                        I chose to replicate an <a href="https://acspub.id/index.php/ailm/article/view/4" target="_blank" rel="noopener noreferrer" class="text-brand-600 font-bold border-b border-brand-200 hover:text-brand-800 hover:border-brand-600 transition-colors">existing baseline study</a> so I could directly compare my results with theirs.
+                        I chose to replicate an <a href="https://acspub.id/index.php/ailm/article/view/4" target="_blank" rel="noopener noreferrer" class="text-brand-600 dark:text-brand-400 font-bold border-b border-brand-200 dark:border-brand-800 hover:text-brand-800 dark:hover:text-brand-300 hover:border-brand-600 dark:hover:border-brand-400 transition-colors">existing baseline study</a> so I could directly compare my results with theirs.
                     </p>
                 
                     <p class="mb-8">
-                        The main difference in my approach is that I built my system using <strong>PyTorch</strong>. 
+                        The main difference in my approach is that I built my system using <strong class="dark:text-white">PyTorch</strong>. 
                         I chose PyTorch simply because it made it way easier for me to modify the very first layer of the CNN model to accept my custom forensic features.
                     </p>
                 
-                    <div class="bg-slate-50 border-l-4 border-brand-600 p-6 rounded-r-sm mb-6">
-                        <h3 class="font-serif text-2xl font-bold text-slate-900 mb-4">The Forensic Features Setup</h3>
+                    <div class="bg-slate-50 dark:bg-slate-900/50 border-l-4 border-brand-600 dark:border-brand-500 p-6 rounded-r-sm mb-6">
+                        <h3 class="font-serif text-2xl font-bold text-slate-900 dark:text-white mb-4">The Forensic Features Setup</h3>
                         <p class="mb-4">Speaking of forensic features, here is a quick breakdown of what I actually used to catch the AI:</p>
                         
                         <ul class="space-y-4">
                             <li class="flex items-start gap-3">
-                                <span class="material-symbols-outlined text-brand-600 mt-1">troubleshoot</span>
+                                <span class="material-symbols-outlined text-brand-600 dark:text-brand-400 mt-1">troubleshoot</span>
                                 <div>
-                                    <strong class="text-slate-900 block mb-1">Fast Fourier Transform (FFT):</strong>
+                                    <strong class="text-slate-900 dark:text-white block mb-1">Fast Fourier Transform (FFT):</strong>
                                     This helps me see the high-frequency artifacts in an image. 
                                     By converting normal spatial data into frequency data, the unnatural pixel patterns left behind by AI generators become super obvious.
                                 </div>
                             </li>
                             
                             <li class="flex items-start gap-3">
-                                <span class="material-symbols-outlined text-brand-600 mt-1">compress</span>
+                                <span class="material-symbols-outlined text-brand-600 dark:text-brand-400 mt-1">compress</span>
                                 <div>
-                                    <strong class="text-slate-900 block mb-1">Error Level Analysis (ELA):</strong>
+                                    <strong class="text-slate-900 dark:text-white block mb-1">Error Level Analysis (ELA):</strong>
                                     This feature highlights compression differences. 
                                     Since an AI generates an image as one single flat layer, applying ELA will show a very uniform compression. 
                                     A real photo that has been edited, on the other hand, will show clear differences where the image was manipulated.
@@ -140,9 +138,9 @@
                             </li>
                 
                             <li class="flex items-start gap-3">
-                                <span class="material-symbols-outlined text-brand-600 mt-1">blur_on</span>
+                                <span class="material-symbols-outlined text-brand-600 dark:text-brand-400 mt-1">blur_on</span>
                                 <div>
-                                    <strong class="text-slate-900 block mb-1">Laplace High-Pass Filtering:</strong>
+                                    <strong class="text-slate-900 dark:text-white block mb-1">Laplace High-Pass Filtering:</strong>
                                     I also added this filter to help the model learn the noise residuals. 
                                     It basically extracts the hidden texture or hidden noise patterns that the AI accidentally leaves behind.
                                 </div>
@@ -159,7 +157,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="w-full px-8 py-16 flex flex-col justify-center items-center gap-6 mt-12 bg-slate-900 border-t border-slate-800">
         <h2 class="font-serif text-2xl font-bold text-white tracking-widest uppercase">Shaifol Ziqri</h2>
 
@@ -196,17 +193,17 @@
         <div class="font-mono text-xs uppercase tracking-widest text-slate-500">© 2026 SHAIFOL ZIQRI. ALL RIGHTS RESERVED.</div>
     </footer>
 
-    <div id="articleModal" class="fixed inset-0 z-[100] hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 opacity-0 transition-opacity duration-300">
-        <div class="bg-white w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-sm shadow-2xl relative transform scale-95 transition-transform duration-300" id="modalBox">
+    <div id="articleModal" class="fixed inset-0 z-[100] hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 opacity-0 transition-opacity duration-300">
+        <div class="bg-white dark:bg-slate-900 border border-transparent dark:border-slate-800 w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-sm shadow-2xl relative transform scale-95 transition-transform duration-300" id="modalBox">
         
-            <button id="closeModalBtn" class="absolute top-6 right-6 text-slate-400 hover:text-brand-600 focus:outline-none transition-colors">
+            <button id="closeModalBtn" class="absolute top-6 right-6 text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 focus:outline-none transition-colors">
                 <span class="material-symbols-outlined text-3xl">close</span>
             </button>
             
             <div class="p-8 md:p-12">
-                <span id="modalDate" class="font-mono text-xs font-bold text-brand-600 mb-4 block uppercase tracking-widest"></span>
-                <h2 id="modalTitle" class="font-serif text-3xl md:text-4xl font-bold text-slate-900 mb-8 leading-tight"></h2>
-                <div id="modalBody" class="font-sans text-base text-slate-600 leading-relaxed space-y-6">
+                <span id="modalDate" class="font-mono text-xs font-bold text-brand-600 dark:text-brand-400 mb-4 block uppercase tracking-widest"></span>
+                <h2 id="modalTitle" class="font-serif text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-8 leading-tight"></h2>
+                <div id="modalBody" class="font-sans text-base text-slate-600 dark:text-slate-400 leading-relaxed space-y-6">
                 </div>
             </div>
         </div>
