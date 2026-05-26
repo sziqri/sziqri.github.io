@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>SOC Analyst E-Portfolio - Shaifol Ziqri</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Newsreader:opsz,wght@6..72,400;6..72,700;6..72,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { 50: '#eff6ff', 100: '#dbeafe', 600: '#2563eb', 700: '#1d4ed8', 900: '#1e3a8a' },
+                        surface: '#ffffff', 'surface-alt': '#f8fafc', border: '#e2e8f0',
+                    },
+                    fontFamily: { serif: ["Newsreader", "serif"], sans: ["Space Grotesk", "sans-serif"], mono: ["JetBrains Mono", "monospace"] }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css"/>
+    <style>
+        /* Custom animations for interactive feel */
+        .timeline-line { transition: height 1s ease-out; }
+        .hover-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); }
+    </style>
+</head>
+<body class="font-sans overflow-x-hidden bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-300">
+
+    <nav class="fixed top-0 left-0 w-full z-50 px-6 md:px-12 py-5 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-border dark:border-slate-800 shadow-sm transition-colors duration-300">
+        <div class="flex justify-between items-center">
+            <a href="index.html" class="text-xl md:text-2xl font-serif font-black tracking-tight text-slate-900 dark:text-white uppercase">
+                SHAIFOL ZIQRI
+            </a>
+            <ul class="hidden xl:flex gap-4 items-center">
+                <li><a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-2 rounded transition-all duration-200 hover:text-brand-400 dark:hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="index.html">Home</a></li>
+                <li><a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-2 rounded transition-all duration-200 hover:text-brand-400 dark:hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="about.html">About Me</a></li>
+                <li><a class="text-brand-700 dark:text-brand-400 font-bold font-sans px-4 py-2 rounded bg-brand-50 dark:bg-brand-900/30 border-b-2 border-brand-600 transition-all duration-200" href="portfolio.html">Assignment</a></li>
+            </ul>
+            <div class="flex items-center gap-2 md:gap-4">
+                <button id="themeToggleBtn" class="text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400 focus:outline-none flex items-center justify-center p-2 transition-colors">
+                    <span class="material-symbols-outlined text-2xl md:text-3xl" id="themeIcon">dark_mode</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="pt-32 pb-12 px-6 md:px-16 lg:px-24 max-w-[1440px] mx-auto text-center border-b border-border dark:border-slate-800" id="hero">
+        <span class="font-mono text-sm font-bold text-brand-600 dark:text-brand-400 block mb-4 uppercase tracking-widest">CSA30203 Special Topics in Computer Network Security</span>
+        <h1 class="font-serif text-5xl md:text-6xl font-bold text-slate-900 dark:text-white tracking-tight mb-4">Career Development Portfolio</h1>
+        <p class="font-sans text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Target Role: <span class="font-bold text-brand-600 dark:text-brand-400">Security Operations Center (SOC) Analyst</span></p>
+    </section>
+
+    <section class="py-16 px-6 md:px-16 lg:px-24 max-w-[1440px] mx-auto" id="exploration">
+        <h2 class="font-serif text-4xl font-bold text-slate-900 dark:text-white mb-8 tracking-tight border-l-4 border-brand-600 pl-4">Career Exploration</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="hover-card bg-surface-alt dark:bg-slate-800 p-8 border border-border dark:border-slate-700 rounded-sm transition-all duration-300">
+                <span class="material-symbols-outlined text-brand-600 dark:text-brand-400 text-4xl mb-4">policy</span>
+                <h3 class="font-serif text-2xl font-bold mb-2">The Role</h3>
+                <p class="font-sans text-slate-600 dark:text-slate-400">A SOC Analyst acts as the digital detective of an organization. Responsibilities include 24/7 monitoring of security alerts, triaging anomalies using SIEM tools, investigating active breaches, and initiating incident response procedures.</p>
+            </div>
+            <div class="hover-card bg-surface-alt dark:bg-slate-800 p-8 border border-border dark:border-slate-700 rounded-sm transition-all duration-300">
+                <span class="material-symbols-outlined text-brand-600 dark:text-brand-400 text-4xl mb-4">terminal</span>
+                <h3 class="font-serif text-2xl font-bold mb-2">Required Skills</h3>
+                <p class="font-sans text-slate-600 dark:text-slate-400">Requires a deep mastery of networking protocols (TCP/IP), log analysis, scripting (Python/Bash), and threat intelligence frameworks like MITRE ATT&CK to understand adversarial behavior.</p>
+            </div>
+            <div class="hover-card bg-surface-alt dark:bg-slate-800 p-8 border border-border dark:border-slate-700 rounded-sm transition-all duration-300">
+                <span class="material-symbols-outlined text-brand-600 dark:text-brand-400 text-4xl mb-4">memory</span>
+                <h3 class="font-serif text-2xl font-bold mb-2">Modern Relevance</h3>
+                <p class="font-sans text-slate-600 dark:text-slate-400">Why are humans still needed when we have firewalls? Because automated tools create thousands of false alarms and miss clever attackers. The SOC Analyst provides critical human judgment. They are the final layer of defense who investigate complex alerts and actively stop attacks before data is stolen.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 px-6 md:px-16 lg:px-24 max-w-[1440px] mx-auto bg-slate-50 dark:bg-slate-900/50" id="assessment">
+        <h2 class="font-serif text-4xl font-bold text-slate-900 dark:text-white mb-8 tracking-tight border-l-4 border-yellow-500 pl-4">Personal Skills Assessment</h2>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+            <div class="bg-white dark:bg-slate-800 p-8 border border-border dark:border-slate-700 rounded-sm shadow-sm relative overflow-hidden group">
+                <div class="absolute top-0 right-0 p-4 opacity-5"><span class="material-symbols-outlined text-[120px]">person_check</span></div>
+                <h3 class="font-serif text-2xl font-bold mb-6 text-brand-600 dark:text-brand-400 relative z-10">My Current Skills</h3>
+                
+                <div class="space-y-4 relative z-10">
+                    <div>
+                        <h4 class="font-sans font-bold text-slate-900 dark:text-white">Technical Skills</h4>
+                        <ul class="list-disc list-inside font-sans text-slate-600 dark:text-slate-400 text-sm mt-1">
+                            <li>AI/Deep Learning (CNN modeling: EfficientNetV2, MobileNetV3-small, ResNet50).</li>
+                            <li>Digital Forensics feature extraction (FFT, ELA, PRNU).</li>
+                            <li>Network traffic analysis (Wireshark) & Hardware logic troubleshooting.</li>
+                            <li>Forensic tools (Autopsy, FTK Imager & HxD)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-sans font-bold text-slate-900 dark:text-white">Soft Skills</h4>
+                        <ul class="list-disc list-inside font-sans text-slate-600 dark:text-slate-400 text-sm mt-1">
+                            <li>Critical troubleshooting & problem solving under pressure.</li>
+                            <li>Adaptability, Fast learning and managing time.</li>
+                            <li>Technical reporting and academic team collaboration.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-slate-900 p-8 border border-slate-700 rounded-sm shadow-sm text-white relative overflow-hidden group">
+                <div class="absolute top-0 right-0 p-4 opacity-10"><span class="material-symbols-outlined text-[120px]">troubleshoot</span></div>
+                <h3 class="font-serif text-2xl font-bold mb-6 text-yellow-500 relative z-10">The Gap With Industry Needs</h3>
+                
+                <div class="space-y-4 relative z-10">
+                    <p class="font-sans text-slate-300 text-sm leading-relaxed"><span class="font-bold text-white">The Match:</span> My hands-on experience with digital forensics, network analysis via Wireshark, and AI-driven anomaly detection perfectly aligns with the analytical mindset required in modern SOCs to investigate complex alerts and identify advanced cyber threats.</p>
+                    <p class="font-sans text-slate-300 text-sm leading-relaxed"><span class="font-bold text-white">The Gap:</span> While I have a strong foundation in underlying forensic code and basic networking (CCNA), I lack practical, hands-on experience maneuvering enterprise-level SIEM platforms (like Splunk or QRadar) and executing formal Incident Response (IR) protocols in a live environment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 px-6 md:px-16 lg:px-24 max-w-[1440px] mx-auto" id="plan">
+        <h2 class="font-serif text-4xl font-bold text-slate-900 dark:text-white mb-12 tracking-tight border-l-4 border-green-500 pl-4">Career Development Plan</h2>
+        
+        <div class="relative max-w-4xl mx-auto">
+            <div class="absolute left-6 md:left-1/2 top-0 bottom-0 w-1 bg-border dark:bg-slate-700 transform md:-translate-x-1/2"></div>
+            
+            <div class="relative flex flex-col md:flex-row justify-between items-start md:items-center mb-16 group">
+                <div class="absolute left-6 md:left-1/2 w-6 h-6 bg-brand-600 rounded-full border-4 border-white dark:border-slate-900 transform -translate-x-[10px] md:-translate-x-1/2 z-10 shadow-lg"></div>
+                <div class="w-full md:w-[45%] pl-16 md:pl-0 md:pr-12 text-left md:text-right">
+                    <span class="font-mono text-sm font-bold text-brand-600 dark:text-brand-400 block mb-1">Short-Term Goal (Next 2 Years)</span>
+                    <h3 class="font-serif text-2xl font-bold text-slate-900 dark:text-white mb-2">Tier 1 SOC Analyst</h3>
+                    <p class="font-sans text-sm text-slate-600 dark:text-slate-400">Transition into the industry by securing a foundational role monitoring enterprise networks.</p>
+                </div>
+                <div class="w-full md:w-[45%] pl-16 md:pl-12 mt-4 md:mt-0">
+                    <div class="bg-surface-alt dark:bg-slate-800 p-4 border border-border dark:border-slate-700 rounded-sm text-sm">
+                        <span class="font-bold dark:text-white block mb-1">Certifications to Acquire:</span>
+                        <ul class="list-disc list-inside text-slate-600 dark:text-slate-400 mb-2"><li>CompTIA Security+</li><li>Blue Team Level 1 (BTL1)</li></ul>
+                        <span class="font-bold dark:text-white block mb-1">Tools to Master:</span>
+                        <p class="text-slate-600 dark:text-slate-400">Splunk (SIEM), CrowdStrike (EDR), Linux CLI.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative flex flex-col md:flex-row justify-between items-start md:items-center group">
+                <div class="absolute left-6 md:left-1/2 w-6 h-6 bg-slate-300 dark:bg-slate-600 group-hover:bg-brand-600 transition-colors rounded-full border-4 border-white dark:border-slate-900 transform -translate-x-[10px] md:-translate-x-1/2 z-10 shadow-lg"></div>
+                <div class="w-full md:w-[45%] pl-16 md:pl-0 md:pr-12 text-left md:text-right order-1 md:order-2">
+                    <span class="font-mono text-sm font-bold text-slate-500 block mb-1">Long-Term Goal (Next 5 Years)</span>
+                    <h3 class="font-serif text-2xl font-bold text-slate-900 dark:text-white mb-2">AI Threat Hunter / Incident Responder</h3>
+                    <p class="font-sans text-sm text-slate-600 dark:text-slate-400">Lead investigations into advanced persistent threats and develop custom AI-driven detection rules.</p>
+                </div>
+                <div class="w-full md:w-[45%] pl-16 md:pl-12 mt-4 md:mt-0 order-2 md:order-1 text-left md:text-right">
+                    <div class="bg-surface-alt dark:bg-slate-800 p-4 border border-border dark:border-slate-700 rounded-sm text-sm text-left">
+                        <span class="font-bold dark:text-white block mb-1">Certifications to Acquire:</span>
+                        <ul class="list-disc list-inside text-slate-600 dark:text-slate-400 mb-2"><li>CompTIA CySA+</li><li>GIAC Certified Incident Handler (GCIH)</li></ul>
+                        <span class="font-bold dark:text-white block mb-1">Tools to Master:</span>
+                        <p class="text-slate-600 dark:text-slate-400">Advanced Python scripting for SOC automation, Autopsy, Volatility.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 px-6 md:px-16 lg:px-24 max-w-[1440px] mx-auto bg-slate-50 dark:bg-slate-900/50" id="evidence">
+        <h2 class="font-serif text-4xl font-bold text-slate-900 dark:text-white mb-8 tracking-tight border-l-4 border-brand-600 pl-4">Evidence of Learning</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <a href="projects.html" class="block hover-card bg-white dark:bg-slate-800 border border-border dark:border-slate-700 p-6 rounded-sm shadow-sm cursor-pointer">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="material-symbols-outlined text-brand-600 dark:text-brand-400 text-3xl">image_search</span>
+                    <h4 class="font-serif text-xl font-bold text-slate-900 dark:text-white">AI Forensic Detector (FYP)</h4>
+                </div>
+                <p class="font-sans text-sm text-slate-600 dark:text-slate-400 mb-3">Engineered an AI image detector using MobileNetV3-small & ResNet50. Implemented a GUI and extracted forensic features (FFT, ELA) to classify 16k real vs. synthetic images.</p>
+                <span class="inline-block bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-400 text-xs font-bold px-2 py-1 rounded">Python | CNN | PyQt | Forensics</span>
+            </a>
+
+            <a href="projects.html" class="block hover-card bg-white dark:bg-slate-800 border border-border dark:border-slate-700 p-6 rounded-sm shadow-sm cursor-pointer">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="material-symbols-outlined text-brand-600 dark:text-brand-400 text-3xl">emoji_events</span>
+                    <h4 class="font-serif text-xl font-bold text-slate-900 dark:text-white">3rd Place: UniSZA-UMT CTF</h4>
+                </div>
+                <p class="font-sans text-sm text-slate-600 dark:text-slate-400 mb-3">Demonstrated practical offensive and defensive skills by analyzing network traffic via Wireshark and utilizing Autopsy for disk forensics to locate hidden flags.</p>
+                <span class="inline-block bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-400 text-xs font-bold px-2 py-1 rounded">CTF | Wireshark | Security</span>
+            </a>
+        </div>
+    </section>
+
+<section class="py-16 px-6 md:px-16 lg:px-24 max-w-[1440px] mx-auto" id="reflection">
+        <h2 class="font-serif text-4xl font-bold text-slate-900 dark:text-white mb-8 tracking-tight border-l-4 border-red-600 pl-4">Personal Reflection</h2>
+        
+        <div class="bg-slate-950 p-8 md:p-12 border border-slate-800 rounded-sm shadow-lg text-white">
+            <div class="flex items-center gap-4 mb-8 pb-6 border-b border-slate-800">
+                <span class="material-symbols-outlined text-red-600 text-[60px]">shield</span>
+                <div>
+                    <span class="font-mono text-sm font-bold text-slate-400 uppercase tracking-widest">My Dream Company</span>
+                    <h3 class="font-serif text-3xl font-bold">CyberSecurity Malaysia (CSM)</h3>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div>
+                    <h4 class="font-sans font-bold text-brand-400 text-xl mb-3 flex items-center gap-2"><span class="material-symbols-outlined text-lg">help</span> Why CSM?</h4>
+                    <p class="font-sans text-slate-300 text-sm leading-relaxed mb-6">I want my technical skills to directly contribute to defending Malaysia's digital sovereignty. Working with CSM’s National Cyber Coordination and Command Centre (NC4) or MyCERT offers the rare opportunity to monitor and protect Critical National Information Infrastructure (CNII), rather than solely protecting corporate profit margins.</p>
+                    
+                    <h4 class="font-sans font-bold text-brand-400 text-xl mb-3 flex items-center gap-2"><span class="material-symbols-outlined text-lg">add_task</span> Value I Bring</h4>
+                    <p class="font-sans text-slate-300 text-sm leading-relaxed">I bring a unique blend of fundamental network analysis and modern AI understanding. My experience analyzing packet data in Wireshark, combined with my research in AI anomaly detection, means I can effectively triage complex SIEM alerts, filter out false positives, and hunt for sophisticated threat actors attempting to breach national networks.</p>
+                </div>
+                
+                <div class="bg-slate-900 p-6 rounded-sm border border-slate-800">
+                    <h4 class="font-sans font-bold text-white text-lg mb-4 text-center border-b border-slate-800 pb-2">Why should you hire me?</h4>
+                    
+                    <div class="mb-4">
+                        <span class="font-bold text-green-500 text-sm block mb-1">My Strength:</span>
+                        <p class="text-sm text-slate-400">Highly adaptable technical depth. I am comfortable pivoting from writing Python backend logic to troubleshooting hardware circuits on IoT robots. I understand how systems communicate from the physical layer up to the application layer, which is critical for tracing network intrusions.</p>
+                    </div>
+                    
+                    <div>
+                        <span class="font-bold text-yellow-500 text-sm block mb-1">My Weakness:</span>
+                        <p class="text-sm text-slate-400">A lack of experience managing enterprise-scale SIEM platforms under the high-pressure environment of a live cyberattack. I am eager to bridge this gap by learning directly from gazetted CSM analysts and pursuing specialized incident response certifications.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="w-full px-8 py-12 flex flex-col justify-center items-center gap-6 mt-12 bg-slate-900 border-t border-slate-800">
+        <h2 class="font-serif text-xl font-bold text-white tracking-widest uppercase">Shaifol Ziqri</h2>
+        <div class="font-mono text-xs uppercase tracking-widest text-slate-500">© 2026 SHAIFOL ZIQRI. ALL RIGHTS RESERVED.</div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
