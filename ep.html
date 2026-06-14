@@ -1,321 +1,557 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>SOC Analyst E-Portfolio - Shaifol Ziqri</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com" rel="preconnect"/>
-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Newsreader:opsz,wght@6..72,400;6..72,700;6..72,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,700;6..72,800&display=swap" rel="stylesheet"/>
     
     <script id="tailwind-config">
         tailwind.config = {
-            darkMode: 'class',
+            darkMode: 'class', 
             theme: {
                 extend: {
                     colors: {
-                        brand: { 50: '#eff6ff', 100: '#dbeafe', 600: '#2563eb', 700: '#1d4ed8', 900: '#1e3a8a' },
-                        surface: '#ffffff', 'surface-alt': '#f8fafc', border: '#e2e8f0',
+                        brand: { 50: '#eff6ff', 100: '#dbeafe', 400: '#38bdf8', 500: '#0ea5e9', 600: '#0284c7', 900: '#0c4a6e' },
+                        sys: { dark: '#0B1120', panel: '#1E293B', border: '#334155' }
                     },
-                    fontFamily: { serif: ["Newsreader", "serif"], sans: ["Space Grotesk", "sans-serif"], mono: ["JetBrains Mono", "monospace"] }
+                    fontFamily: {
+                        serif: ["Newsreader", "serif"],
+                        sans: ["Plus Jakarta Sans", "sans-serif"],
+                        mono: ["JetBrains Mono", "monospace"],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'spin-slow': 'spin 12s linear infinite',
+                    }
                 }
             }
         }
     </script>
-    <link rel="stylesheet" href="style.css"/>
     <style>
-        /* Custom animations for interactive feel */
-        .timeline-line { transition: height 1s ease-out; }
-        .hover-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); }
+        body { 
+            background-color: #f8fafc; 
+            -webkit-font-smoothing: antialiased;
+        }
+        .dark body { 
+            background-color: #0B1120; 
+        }
+        
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(14, 165, 233, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(14, 165, 233, 0.05) 1px, transparent 1px);
+            mask-image: linear-gradient(to bottom, transparent, black, transparent);
+            -webkit-mask-image: linear-gradient(to bottom, transparent 5%, black 40%, black 60%, transparent 95%);
+        }
+
+        .hide-scroll-bar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .hide-scroll-bar::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .dark .glass-panel {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        /* Scroll Reveal Animation Styles */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
     </style>
 </head>
-<body class="font-sans overflow-x-hidden bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-300">
 
-    <nav class="fixed top-0 left-0 w-full z-50 px-6 md:px-12 py-5 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-border dark:border-slate-800 shadow-sm transition-colors duration-300">
-        <div class="flex justify-between items-center">
+<body class="font-sans overflow-x-hidden text-slate-800 dark:text-slate-200 transition-colors duration-300">
+    
+    <!-- Background Elements -->
+    <div class="fixed inset-0 z-[-1] pointer-events-none bg-grid-pattern"></div>
+    <div class="fixed top-[20%] left-[-10%] w-[600px] h-[600px] bg-brand-500/10 dark:bg-brand-500/20 blur-[120px] rounded-full z-[-1] pointer-events-none"></div>
+    <div class="fixed bottom-[-10%] right-[10%] w-[500px] h-[500px] bg-emerald-500/10 dark:bg-emerald-500/15 blur-[120px] rounded-full z-[-1] pointer-events-none"></div>
+
+    <!-- System Topbar -->
+    <nav class="fixed top-0 left-0 w-full z-50 glass-panel border-b border-slate-200/80 dark:border-sys-border/80 shadow-sm">
+        <div class="flex justify-between items-center px-6 md:px-8 py-3 max-w-[1600px] mx-auto">
+            
             <a href="index.html" class="text-xl md:text-2xl font-serif font-black tracking-tight text-slate-900 dark:text-white uppercase">
                 SHAIFOL ZIQRI
             </a>
 
-            <ul class="hidden xl:flex gap-4 items-center">
-                <li><a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-2 rounded transition-all duration-200 hover:text-brand-400 dark:hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="index.html">Home</a></li>
-                <li><a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-2 rounded transition-all duration-200 hover:text-brand-400 dark:hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="about.html">About Me</a></li>
-                <li><a class="text-brand-700 dark:text-brand-400 font-bold font-sans px-4 py-2 rounded bg-brand-50 dark:bg-brand-900/30 border-b-2 border-brand-600 transition-all duration-200" href="ep.html">Future</a></li>
-                <li><a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-2 rounded transition-all duration-200 hover:text-brand-400 dark:hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="projects.html">Projects</a></li>
-                <li><a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-2 rounded transition-all duration-200 hover:text-brand-400 dark:hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="blog.html">Blog</a></li>
-                <li><a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-2 rounded transition-all duration-200 hover:text-brand-400 dark:hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="contact.html">Contact</a></li>
+            <ul class="hidden xl:flex gap-1 items-center bg-slate-100 dark:bg-sys-panel p-1 rounded-md border border-slate-200 dark:border-sys-border">
+                <li><a class="text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white px-4 py-1.5 rounded transition-all" href="index.html">Home</a></li>
+                <li><a class="text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white px-4 py-1.5 rounded transition-all" href="about.html">About Me</a></li>
+                <!-- Highlighted Active Link -->
+                <li><a class="text-xs font-semibold text-brand-600 dark:text-brand-400 bg-white dark:bg-slate-800 px-4 py-1.5 rounded shadow-sm block transition-all" href="ep.html">Future</a></li>
+                <li><a class="text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white px-4 py-1.5 rounded transition-all" href="projects.html">Projects</a></li>
+                <li><a class="text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white px-4 py-1.5 rounded transition-all" href="blog.html">Blog</a></li>
+                <li><a class="text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white px-4 py-1.5 rounded transition-all" href="contact.html">Contact</a></li>
             </ul>
 
-            <div class="flex items-center gap-2 md:gap-4">
-                
-                <button id="themeToggleBtn" class="text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400 focus:outline-none flex items-center justify-center p-2 transition-colors">
-                    <span class="material-symbols-outlined text-2xl md:text-3xl" id="themeIcon">dark_mode</span>
+            <div class="flex items-center gap-3">
+                <button id="themeToggleBtn" class="text-slate-500 hover:text-brand-500 dark:text-slate-400 dark:hover:text-brand-400 p-1.5 rounded border border-transparent hover:border-slate-200 dark:hover:border-sys-border transition-all flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[20px]" id="themeIcon">dark_mode</span>
                 </button>
-                
-                <a href="CV_SHAIFOL.pdf" download class="hidden sm:flex font-sans text-sm font-bold uppercase tracking-widest bg-slate-900 dark:bg-brand-600 text-white px-5 py-3 rounded hover:bg-brand-600 dark:hover:bg-brand-500 transition-colors items-center gap-2">
-                    <span class="material-symbols-outlined text-[18px]">download</span>
-                    Resume
+
+                <a href="CV_SHAIFOL.pdf" download class="hidden sm:flex items-center gap-2 text-xs font-bold text-white bg-slate-900 dark:bg-brand-600 hover:bg-slate-800 dark:hover:bg-brand-500 px-4 py-2 rounded transition-all shadow-sm">
+                    <span class="material-symbols-outlined text-[16px]">cloud_download</span> Resume
                 </a>
 
-                <button id="mobileMenuBtn" class="xl:hidden text-slate-900 dark:text-white hover:text-brand-600 focus:outline-none flex items-center justify-center p-2">
-                    <span class="material-symbols-outlined text-3xl">menu</span>
+                <button id="mobileMenuBtn" class="xl:hidden text-slate-500 hover:text-brand-500 dark:text-slate-400 p-1.5">
+                    <span class="material-symbols-outlined text-[24px]">menu_open</span>
                 </button>
-
             </div>
         </div>
 
-        <div id="mobileMenu" class="hidden xl:hidden flex-col gap-2 mt-6 pb-4 border-t border-border dark:border-slate-800 pt-4">
-            <a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-3 rounded transition-all duration-200 hover:text-brand-400 dark:hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="index.html">Home</a>
-            <a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-3 rounded transition-all duration-200 hover:text-brand-400 dark:hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="about.html">About Me</a>
-            <a class="text-brand-700 dark:text-brand-400 font-bold font-sans px-4 py-3 rounded bg-brand-50 dark:bg-brand-900/30 border-l-4 border-brand-600 transition-all duration-200"  href="ep.html">Future</a>
-            <a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-3 rounded transition-all duration-200 hover:text-brand-400 dark:hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="projects.html">Projects</a>
-            <a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-3 rounded transition-all duration-200 hover:text-brand-400 dark:hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="blog.html">Blog</a>
-            <a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-3 rounded transition-all duration-200 hover:text-brand-400 dark:hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="contact.html">Contact</a>
-            
-            <a href="CV_SHAIFOL.pdf" download class="sm:hidden font-sans text-sm font-bold uppercase tracking-widest bg-slate-900 text-white px-5 py-3 mt-4 rounded hover:bg-brand-600 transition-colors flex items-center justify-center gap-2">
-                <span class="material-symbols-outlined text-[18px]">download</span> Resume
-            </a>
+        <div id="mobileMenu" class="hidden xl:hidden flex-col gap-1 px-6 pb-4 border-t border-slate-200 dark:border-sys-border pt-2 bg-white/95 dark:bg-sys-dark/95 backdrop-blur-md">
+            <a class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 px-4 py-2.5 rounded transition-all" href="index.html">Home</a>
+            <a class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 px-4 py-2.5 rounded transition-all" href="about.html">About Me</a>
+            <a class="text-sm font-semibold text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-slate-800 px-4 py-2.5 rounded transition-all" href="ep.html">Future</a>
+            <a class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 px-4 py-2.5 rounded transition-all" href="projects.html">Projects</a>
+            <a class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 px-4 py-2.5 rounded transition-all" href="blog.html">Blog</a>
+            <a class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 px-4 py-2.5 rounded transition-all" href="contact.html">Contact</a>
         </div>
     </nav>
 
-    <section class="pt-32 pb-12 px-6 md:px-16 lg:px-24 max-w-[1440px] mx-auto text-center border-b border-border dark:border-slate-800" id="hero">
-        <h1 class="font-serif text-5xl md:text-6xl font-bold text-slate-900 dark:text-white tracking-tight mb-4">Career Development Portfolio</h1>
-        <p class="font-sans text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Target Role: <span class="font-bold text-brand-600 dark:text-brand-400">Security Operations Center (SOC) Analyst</span></p>
-    </section>
-
-    <section class="py-16 px-6 md:px-16 lg:px-24 max-w-[1440px] mx-auto" id="exploration">
-        <h2 class="font-serif text-4xl font-bold text-slate-900 dark:text-white mb-8 tracking-tight border-l-4 border-brand-600 pl-4">Career Exploration</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="hover-card bg-surface-alt dark:bg-slate-800 p-8 border border-border dark:border-slate-700 rounded-sm transition-all duration-300">
-                <span class="material-symbols-outlined text-brand-600 dark:text-brand-400 text-4xl mb-4">policy</span>
-                <h3 class="font-serif text-2xl font-bold mb-2">The Role</h3>
-                <p class="font-sans text-slate-600 dark:text-slate-400">A SOC Analyst acts as the digital detective of an organization. Responsibilities include 24/7 monitoring of security alerts, triaging anomalies using SIEM tools, investigating active breaches, and initiating incident response procedures.</p>
-            </div>
-            <div class="hover-card bg-surface-alt dark:bg-slate-800 p-8 border border-border dark:border-slate-700 rounded-sm transition-all duration-300">
-                <span class="material-symbols-outlined text-brand-600 dark:text-brand-400 text-4xl mb-4">terminal</span>
-                <h3 class="font-serif text-2xl font-bold mb-2">Required Skills</h3>
-                <p class="font-sans text-slate-600 dark:text-slate-400">Requires a deep mastery of networking protocols (TCP/IP), log analysis, scripting (Python/Bash), and threat intelligence frameworks like MITRE ATT&CK to understand adversarial behavior.</p>
-            </div>
-            <div class="hover-card bg-surface-alt dark:bg-slate-800 p-8 border border-border dark:border-slate-700 rounded-sm transition-all duration-300">
-                <span class="material-symbols-outlined text-brand-600 dark:text-brand-400 text-4xl mb-4">memory</span>
-                <h3 class="font-serif text-2xl font-bold mb-2">Modern Relevance</h3>
-                <p class="font-sans text-slate-600 dark:text-slate-400">Why are humans still needed when we have firewalls? Because automated tools create thousands of false alarms and miss clever attackers. The SOC Analyst provides critical human judgment. They are the final layer of defense who investigate complex alerts and actively stop attacks before data is stolen.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-16 px-6 md:px-16 lg:px-24 max-w-[1440px] mx-auto bg-slate-50 dark:bg-slate-900/50" id="assessment">
-        <h2 class="font-serif text-4xl font-bold text-slate-900 dark:text-white mb-8 tracking-tight border-l-4 border-yellow-500 pl-4">Personal Skills Assessment</h2>
-        
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-            <div class="bg-white dark:bg-slate-800 p-8 border border-border dark:border-slate-700 rounded-sm shadow-sm relative overflow-hidden group">
-                <div class="absolute top-0 right-0 p-4 opacity-5"><span class="material-symbols-outlined text-[120px]">person_check</span></div>
-                <h3 class="font-serif text-2xl font-bold mb-6 text-brand-600 dark:text-brand-400 relative z-10">My Current Skills</h3>
-                
-                <div class="space-y-4 relative z-10">
-                    <div>
-                        <h4 class="font-sans font-bold text-slate-900 dark:text-white">Technical Skills</h4>
-                        <ul class="list-disc list-inside font-sans text-slate-600 dark:text-slate-400 text-sm mt-1">
-                            <li>AI/Deep Learning (CNN modeling: EfficientNetV2, MobileNetV3-small, ResNet50).</li>
-                            <li>Digital Forensics feature extraction (FFT, ELA, PRNU).</li>
-                            <li>Network traffic analysis (Wireshark) & Hardware logic troubleshooting.</li>
-                            <li>Forensic tools (Autopsy, FTK Imager & HxD)</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-sans font-bold text-slate-900 dark:text-white">Soft Skills</h4>
-                        <ul class="list-disc list-inside font-sans text-slate-600 dark:text-slate-400 text-sm mt-1">
-                            <li>Critical troubleshooting & problem solving under pressure.</li>
-                            <li>Adaptability, Fast learning and managing time.</li>
-                            <li>Technical reporting and academic team collaboration.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-slate-900 p-8 border border-slate-700 rounded-sm shadow-sm text-white relative overflow-hidden group">
-                <div class="absolute top-0 right-0 p-4 opacity-10"><span class="material-symbols-outlined text-[120px]">troubleshoot</span></div>
-                <h3 class="font-serif text-2xl font-bold mb-6 text-yellow-500 relative z-10">The Gap With Industry Needs</h3>
-                
-                <div class="space-y-4 relative z-10">
-                    <p class="font-sans text-slate-300 text-sm leading-relaxed"><span class="font-bold text-white">The Match:</span> My hands-on experience with digital forensics, network analysis via Wireshark, and AI-driven anomaly detection perfectly aligns with the analytical mindset required in modern SOCs to investigate complex alerts and identify advanced cyber threats.</p>
-                    <p class="font-sans text-slate-300 text-sm leading-relaxed"><span class="font-bold text-white">The Gap:</span> While I have a strong foundation in underlying forensic code and basic networking (CCNA), I lack practical, hands-on experience maneuvering enterprise-level SIEM platforms (like Splunk or QRadar) and executing formal Incident Response (IR) protocols in a live environment.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-16 px-6 md:px-16 lg:px-24 max-w-[1440px] mx-auto" id="plan">
-        <h2 class="font-serif text-4xl font-bold text-slate-900 dark:text-white mb-12 tracking-tight border-l-4 border-green-500 pl-4">Career Development Plan</h2>
-        
-        <div class="relative max-w-4xl mx-auto">
-            <div class="absolute left-6 md:left-1/2 top-0 bottom-0 w-1 bg-border dark:bg-slate-700 transform md:-translate-x-1/2"></div>
+    <!-- Operational Roadmap (Hero) -->
+    <section class="min-h-[70vh] pt-32 pb-16 px-6 md:px-8 lg:px-12 max-w-[1600px] mx-auto flex items-center border-b border-slate-200 dark:border-sys-border" id="hero">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 w-full">
             
-            <div class="relative flex flex-col md:flex-row justify-between items-start md:items-center mb-16 group">
-                <div class="absolute left-6 md:left-1/2 w-6 h-6 bg-brand-600 rounded-full border-4 border-white dark:border-slate-900 transform -translate-x-[10px] md:-translate-x-1/2 z-10 shadow-lg"></div>
-                <div class="w-full md:w-[45%] pl-16 md:pl-0 md:pr-12 text-left md:text-right">
-                    <span class="font-mono text-sm font-bold text-brand-600 dark:text-brand-400 block mb-1">Short-Term Goal (Next 2 Years)</span>
+            <div class="lg:col-span-7 flex flex-col justify-center reveal">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-brand-50 dark:bg-brand-500/10 border border-brand-200 dark:border-brand-500/30 rounded text-brand-700 dark:text-brand-400 font-mono text-[11px] uppercase tracking-widest w-fit mb-6 shadow-sm">
+                    <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                    Clearance: Level 1 Analyst
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4 leading-[1.1] uppercase">
+                    Operational<br/>Roadmap.
+                </h1>
+                
+                <div class="glass-panel p-6 rounded-lg max-w-2xl border-l-4 border-l-emerald-500 mt-6 relative overflow-hidden group">
+                    <h2 class="text-xl md:text-2xl text-slate-900 dark:text-white font-bold mb-2 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-emerald-500">my_location</span>
+                        Target Role: SOC Analyst
+                    </h2>
+                    <p class="font-mono text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Initializing career trajectory towards Security Operations Center deployment. Focusing on active threat hunting, incident response, and forensic analysis.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Glowing Cyber Graphic -->
+            <div class="lg:col-span-5 relative hidden lg:flex items-center justify-center p-8 reveal delay-200">
+                <div class="relative w-full max-w-[350px] aspect-square flex items-center justify-center">
+                    <!-- Spinning rings -->
+                    <div class="absolute inset-0 border-[1px] border-brand-500/30 rounded-full animate-spin-slow" style="animation-direction: reverse;"></div>
+                    <div class="absolute inset-4 border-[1px] border-dashed border-brand-400/50 rounded-full animate-spin-slow"></div>
+                    <div class="absolute inset-12 border-[2px] border-dotted border-emerald-500/40 rounded-full animate-spin-slow" style="animation-duration: 20s;"></div>
+                    <!-- Center Shield -->
+                    <div class="relative z-10 w-32 h-32 bg-slate-900 dark:bg-[#0B1120] rounded-full border-4 border-brand-500 shadow-[0_0_50px_rgba(14,165,233,0.6)] flex items-center justify-center">
+                        <span class="material-symbols-outlined text-[60px] text-brand-400 drop-shadow-[0_0_10px_rgba(56,189,248,0.8)]">admin_panel_settings</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Sector Analysis (Exploration) -->
+    <section class="py-20 px-6 md:px-8 lg:px-12 max-w-[1600px] mx-auto" id="exploration">
+        <div class="mb-10 flex items-center justify-between pb-4 reveal">
+            <h2 class="font-serif text-4xl md:text-5xl font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-3">
+                <span class="material-symbols-outlined text-brand-500 text-[40px]">troubleshoot</span> Sector Analysis
+            </h2>
+            <span class="font-mono text-xs text-slate-500 border border-slate-300 dark:border-slate-700 px-2 py-1 rounded">SCANNING</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Ambient Glow Card -->
+            <div class="relative glass-panel p-8 rounded-xl flex flex-col group hover:border-brand-500/50 hover:shadow-[0_8px_30px_rgba(14,165,233,0.1)] transition-all duration-500 overflow-hidden border border-slate-200/60 dark:border-slate-700/60 bg-gradient-to-b from-white/60 to-white/30 dark:from-slate-800/60 dark:to-slate-900/30 reveal">
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-brand-500/10 dark:bg-brand-500/20 rounded-full blur-3xl group-hover:bg-brand-500/20 group-hover:scale-110 transition-all duration-500 pointer-events-none"></div>
+                <div class="flex items-center gap-3 mb-6 relative z-10">
+                    <div class="p-2 bg-slate-100 dark:bg-slate-800 rounded text-brand-600 dark:text-brand-400"><span class="material-symbols-outlined text-2xl">policy</span></div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white">The Role</h3>
+                </div>
+                <p class="text-sm text-slate-600 dark:text-slate-400 relative z-10 leading-relaxed">
+                    A SOC Analyst acts as the digital detective of an organization. Responsibilities include 24/7 monitoring of security alerts, triaging anomalies using SIEM tools, investigating active breaches, and initiating incident response procedures.
+                </p>
+            </div>
+
+            <div class="relative glass-panel p-8 rounded-xl flex flex-col group hover:border-brand-500/50 hover:shadow-[0_8px_30px_rgba(14,165,233,0.1)] transition-all duration-500 overflow-hidden border border-slate-200/60 dark:border-slate-700/60 bg-gradient-to-b from-white/60 to-white/30 dark:from-slate-800/60 dark:to-slate-900/30 reveal delay-100">
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-brand-500/10 dark:bg-brand-500/20 rounded-full blur-3xl group-hover:bg-brand-500/20 group-hover:scale-110 transition-all duration-500 pointer-events-none"></div>
+                <div class="flex items-center gap-3 mb-6 relative z-10">
+                    <div class="p-2 bg-slate-100 dark:bg-slate-800 rounded text-brand-600 dark:text-brand-400"><span class="material-symbols-outlined text-2xl">terminal</span></div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white">Required Skills</h3>
+                </div>
+                <p class="text-sm text-slate-600 dark:text-slate-400 relative z-10 leading-relaxed">
+                    Requires a deep mastery of networking protocols (TCP/IP), log analysis, scripting (Python/Bash), and threat intelligence frameworks like MITRE ATT&CK to understand adversarial behavior.
+                </p>
+            </div>
+
+            <div class="relative glass-panel p-8 rounded-xl flex flex-col group hover:border-brand-500/50 hover:shadow-[0_8px_30px_rgba(14,165,233,0.1)] transition-all duration-500 overflow-hidden border border-slate-200/60 dark:border-slate-700/60 bg-gradient-to-b from-white/60 to-white/30 dark:from-slate-800/60 dark:to-slate-900/30 reveal delay-200">
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-brand-500/10 dark:bg-brand-500/20 rounded-full blur-3xl group-hover:bg-brand-500/20 group-hover:scale-110 transition-all duration-500 pointer-events-none"></div>
+                <div class="flex items-center gap-3 mb-6 relative z-10">
+                    <div class="p-2 bg-slate-100 dark:bg-slate-800 rounded text-brand-600 dark:text-brand-400"><span class="material-symbols-outlined text-2xl">memory</span></div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white">Modern Relevance</h3>
+                </div>
+                <p class="text-sm text-slate-600 dark:text-slate-400 relative z-10 leading-relaxed">
+                    Why are humans still needed when we have firewalls? Because automated tools create thousands of false alarms and miss clever attackers. The SOC Analyst provides critical human judgment to stop attacks before data is stolen.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diagnostics (Assessment) -->
+    <section class="py-20 px-6 md:px-8 lg:px-12 max-w-[1600px] mx-auto bg-slate-100/50 dark:bg-slate-900/20 border-y border-slate-200 dark:border-sys-border" id="assessment">
+        <div class="mb-10 flex items-center justify-between pb-4 reveal">
+            <h2 class="font-serif text-4xl md:text-5xl font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-3">
+                <span class="material-symbols-outlined text-brand-500 text-[40px]">query_stats</span> Capability Matrix
+            </h2>
+            <span class="font-mono text-xs text-slate-500 border border-slate-300 dark:border-slate-700 px-2 py-1 rounded">DIAGNOSTICS</span>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Left Side: Current Skills -->
+            <div class="relative glass-panel p-8 rounded-xl border border-slate-200/80 dark:border-slate-700/80 reveal">
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2 border-b border-slate-200 dark:border-slate-700/50 pb-3">
+                    <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span> Current Skills
+                </h3>
+                
+                <div class="space-y-6 relative z-10">
+                    <div>
+                        <h4 class="font-mono text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">Technical Skills</h4>
+                        <ul class="space-y-3 font-sans text-sm text-slate-700 dark:text-slate-300">
+                            <li class="flex items-start gap-3"><span class="text-emerald-500 font-bold mt-0.5">›</span> AI/Deep Learning (CNN modeling: EfficientNetV2, MobileNetV3-small, ResNet50).</li>
+                            <li class="flex items-start gap-3"><span class="text-emerald-500 font-bold mt-0.5">›</span> Digital Forensics feature extraction (FFT, ELA, PRNU).</li>
+                            <li class="flex items-start gap-3"><span class="text-emerald-500 font-bold mt-0.5">›</span> Network traffic analysis (Wireshark) & Hardware logic troubleshooting.</li>
+                            <li class="flex items-start gap-3"><span class="text-emerald-500 font-bold mt-0.5">›</span> Forensic tools (Autopsy, FTK Imager & HxD)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-mono text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">Soft Skills</h4>
+                        <ul class="space-y-3 font-sans text-sm text-slate-700 dark:text-slate-300">
+                            <li class="flex items-start gap-3"><span class="text-brand-500 font-bold mt-0.5">›</span> Critical troubleshooting & problem solving under pressure.</li>
+                            <li class="flex items-start gap-3"><span class="text-brand-500 font-bold mt-0.5">›</span> Adaptability, Fast learning and managing time.</li>
+                            <li class="flex items-start gap-3"><span class="text-brand-500 font-bold mt-0.5">›</span> Technical reporting and academic team collaboration.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: The Gap (Styled as a System Alert) -->
+            <div class="relative bg-slate-900 dark:bg-[#0B1120] p-8 rounded-xl border-l-4 border-l-amber-500 border-y border-r border-slate-800 shadow-2xl overflow-hidden reveal delay-100">
+                <!-- Warning Diagonal Stripes -->
+                <div class="absolute top-0 right-0 w-32 h-full opacity-10 pointer-events-none" style="background: repeating-linear-gradient(45deg, transparent, transparent 10px, #f59e0b 10px, #f59e0b 20px);"></div>
+                
+                <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2 border-b border-slate-800 pb-3">
+                    <span class="material-symbols-outlined text-amber-500">warning</span> Analysis: Industry Gap
+                </h3>
+                
+                <div class="space-y-6 relative z-10">
+                    <div class="bg-brand-900/20 border border-brand-500/20 p-4 rounded text-sm">
+                        <span class="font-mono text-xs font-bold text-brand-400 uppercase tracking-widest block mb-1">Match Confirmed</span>
+                        <p class="text-slate-300 leading-relaxed">My hands-on experience with digital forensics, network analysis via Wireshark, and AI-driven anomaly detection perfectly aligns with the analytical mindset required in modern SOCs to investigate complex alerts and identify advanced cyber threats.</p>
+                    </div>
+
+                    <div class="bg-amber-900/20 border border-amber-500/20 p-4 rounded text-sm">
+                        <span class="font-mono text-xs font-bold text-amber-400 uppercase tracking-widest block mb-1">Identified Gap</span>
+                        <p class="text-slate-300 leading-relaxed">While I have a strong foundation in underlying forensic code and basic networking (CCNA), I lack practical, hands-on experience maneuvering enterprise-level SIEM platforms (like Splunk or QRadar) and executing formal Incident Response (IR) protocols in a live environment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategic Trajectory (Plan) -->
+    <section class="py-20 px-6 md:px-8 lg:px-12 max-w-[1600px] mx-auto" id="plan">
+        <div class="mb-16 flex items-center justify-between pb-4 reveal">
+            <h2 class="font-serif text-4xl md:text-5xl font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-3">
+                <span class="material-symbols-outlined text-brand-500 text-[40px]">polyline</span> Strategic Trajectory
+            </h2>
+            <span class="font-mono text-xs text-slate-500 border border-slate-300 dark:border-slate-700 px-2 py-1 rounded">EXEC_PLAN</span>
+        </div>
+        
+        <div class="relative max-w-4xl mx-auto pl-8 md:pl-0">
+            <!-- Timeline Center Line -->
+            <div class="absolute left-8 md:left-1/2 top-4 bottom-4 w-[2px] bg-slate-200 dark:bg-sys-border transform md:-translate-x-1/2"></div>
+            
+            <!-- Goal 1 -->
+            <div class="relative flex flex-col md:flex-row justify-between items-start md:items-center mb-20 group reveal">
+                <!-- Glowing Node -->
+                <div class="absolute left-8 md:left-1/2 w-6 h-6 bg-sys-dark border-4 border-brand-500 rounded-full shadow-[0_0_15px_rgba(14,165,233,0.8)] transform -translate-x-1/2 mt-1 md:mt-0 z-10"></div>
+                
+                <div class="w-full md:w-[45%] pl-8 md:pl-0 md:pr-12 text-left md:text-right mb-4 md:mb-0">
+                    <span class="font-mono text-xs font-bold text-brand-500 block mb-2 uppercase tracking-widest">Phase 1 (Next 2 Years)</span>
                     <h3 class="font-serif text-2xl font-bold text-slate-900 dark:text-white mb-2">Tier 1 SOC Analyst</h3>
                     <p class="font-sans text-sm text-slate-600 dark:text-slate-400">Transition into the industry by securing a foundational role monitoring enterprise networks.</p>
                 </div>
-                <div class="w-full md:w-[45%] pl-16 md:pl-12 mt-4 md:mt-0">
-                    <div class="bg-surface-alt dark:bg-slate-800 p-4 border border-border dark:border-slate-700 rounded-sm text-sm">
-                        <span class="font-bold dark:text-white block mb-1">Certifications to Acquire:</span>
-                        <ul class="list-disc list-inside text-slate-600 dark:text-slate-400 mb-2"><li>CompTIA Security+</li><li>Blue Team Level 1 (BTL1)</li></ul>
-                        <span class="font-bold dark:text-white block mb-1">Tools to Master:</span>
-                        <p class="text-slate-600 dark:text-slate-400">Splunk (SIEM), CrowdStrike (EDR), Linux CLI.</p>
+                
+                <div class="w-full md:w-[45%] pl-8 md:pl-12">
+                    <div class="glass-panel p-5 rounded-lg border-l-2 border-l-brand-500">
+                        <span class="font-mono text-[10px] text-slate-500 uppercase block mb-2">Required Upgrades:</span>
+                        <ul class="text-sm font-bold text-slate-700 dark:text-slate-200 space-y-1 mb-4">
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[14px] text-brand-500">check_circle</span> CompTIA Security+</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[14px] text-brand-500">check_circle</span> Blue Team Level 1 (BTL1)</li>
+                        </ul>
+                        <span class="font-mono text-[10px] text-slate-500 uppercase block mb-1">Target Systems:</span>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 font-mono">Splunk (SIEM), CrowdStrike (EDR), Linux CLI.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="relative flex flex-col md:flex-row justify-between items-start md:items-center group">
-                <div class="absolute left-6 md:left-1/2 w-6 h-6 bg-slate-300 dark:bg-slate-600 group-hover:bg-brand-600 transition-colors rounded-full border-4 border-white dark:border-slate-900 transform -translate-x-[10px] md:-translate-x-1/2 z-10 shadow-lg"></div>
-                <div class="w-full md:w-[45%] pl-16 md:pl-0 md:pr-12 text-left md:text-right order-1 md:order-2">
-                    <span class="font-mono text-sm font-bold text-slate-500 block mb-1">Long-Term Goal (Next 5 Years)</span>
-                    <h3 class="font-serif text-2xl font-bold text-slate-900 dark:text-white mb-2">AI Threat Hunter / Incident Responder</h3>
+            <!-- Goal 2 -->
+            <div class="relative flex flex-col md:flex-row justify-between items-start md:items-center group reveal delay-100">
+                <!-- Inactive Node -->
+                <div class="absolute left-8 md:left-1/2 w-6 h-6 bg-slate-200 dark:bg-sys-dark border-4 border-slate-400 dark:border-slate-600 group-hover:border-emerald-500 transition-colors rounded-full transform -translate-x-1/2 mt-1 md:mt-0 z-10"></div>
+                
+                <div class="w-full md:w-[45%] pl-8 md:pl-0 md:pr-12 text-left md:text-right mb-4 md:mb-0 order-1 md:order-2">
+                    <span class="font-mono text-xs font-bold text-slate-500 dark:text-slate-400 block mb-2 uppercase tracking-widest">Phase 2 (Next 5 Years)</span>
+                    <h3 class="font-serif text-2xl font-bold text-slate-900 dark:text-white mb-2">AI Threat Hunter</h3>
                     <p class="font-sans text-sm text-slate-600 dark:text-slate-400">Lead investigations into advanced persistent threats and develop custom AI-driven detection rules.</p>
                 </div>
-                <div class="w-full md:w-[45%] pl-16 md:pl-12 mt-4 md:mt-0 order-2 md:order-1 text-left md:text-right">
-                    <div class="bg-surface-alt dark:bg-slate-800 p-4 border border-border dark:border-slate-700 rounded-sm text-sm text-left">
-                        <span class="font-bold dark:text-white block mb-1">Certifications to Acquire:</span>
-                        <ul class="list-disc list-inside text-slate-600 dark:text-slate-400 mb-2"><li>CompTIA CySA+</li><li>GIAC Certified Incident Handler (GCIH)</li></ul>
-                        <span class="font-bold dark:text-white block mb-1">Tools to Master:</span>
-                        <p class="text-slate-600 dark:text-slate-400">Advanced Python scripting for SOC automation, Autopsy, Volatility.</p>
+                
+                <div class="w-full md:w-[45%] pl-8 md:pl-12 order-2 md:order-1 text-left md:text-right">
+                    <div class="glass-panel p-5 rounded-lg border-r-2 border-r-emerald-500 text-left md:text-right">
+                        <span class="font-mono text-[10px] text-slate-500 uppercase block mb-2">Required Upgrades:</span>
+                        <ul class="text-sm font-bold text-slate-700 dark:text-slate-200 space-y-1 mb-4 flex flex-col md:items-end">
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[14px] text-emerald-500">check_circle</span> CompTIA CySA+</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-[14px] text-emerald-500">check_circle</span> GCIH Certification</li>
+                        </ul>
+                        <span class="font-mono text-[10px] text-slate-500 uppercase block mb-1">Target Systems:</span>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 font-mono">Python Automation, Autopsy, Volatility.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-16 px-6 md:px-16 lg:px-24 max-w-[1440px] mx-auto bg-slate-50 dark:bg-slate-900/50" id="evidence">
-        <h2 class="font-serif text-4xl font-bold text-slate-900 dark:text-white mb-8 tracking-tight border-l-4 border-brand-600 pl-4">Evidence of Learning</h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <a href="projects.html" class="block hover-card bg-white dark:bg-slate-800 border border-border dark:border-slate-700 p-6 rounded-sm shadow-sm cursor-pointer">
-                <div class="flex items-center gap-3 mb-3">
-                    <span class="material-symbols-outlined text-brand-600 dark:text-brand-400 text-3xl">image_search</span>
-                    <h4 class="font-serif text-xl font-bold text-slate-900 dark:text-white">AI Forensic Detector (FYP)</h4>
-                </div>
-                <p class="font-sans text-sm text-slate-600 dark:text-slate-400 mb-3">Engineered an AI image detector using MobileNetV3-small & ResNet50. Implemented a GUI and extracted forensic features (FFT, ELA) to classify 16k real vs. synthetic images.</p>
-                <span class="inline-block bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-400 text-xs font-bold px-2 py-1 rounded">Python | CNN | PyQt | Forensics</span>
-                <button id="slideLeft" class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-slate-900 dark:bg-slate-800 text-white p-2 md:p-3 rounded-full shadow-lg z-10 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center hover:bg-brand-600 dark:hover:bg-brand-500 cursor-pointer">
-                    <span class="material-symbols-outlined text-xl md:text-2xl">arrow_back_ios_new</span>
-                </button>
-
-                <div id="galleryContainer" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory hide-scroll-bar scroll-smooth">
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[500px] h-[350px] rounded-sm overflow-hidden bg-white dark:bg-slate-800 border border-border dark:border-slate-700 shadow-sm">
-                        <img src="assets/fyp4.png" alt="Event photo 1" class="w-full h-full object-cover" loading="lazy" decoding="async">
-                    </div>
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[500px] h-[350px] rounded-sm overflow-hidden bg-white dark:bg-slate-800 border border-border dark:border-slate-700 shadow-sm">
-                        <img src="assets/fyp.png" alt="Event photo 2" class="w-full h-full object-cover" loading="lazy" decoding="async">
-                    </div>
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[500px] h-[350px] rounded-sm overflow-hidden bg-white dark:bg-slate-800 border border-border dark:border-slate-700 shadow-sm">
-                        <img src="assets/fyp1.png" alt="Event photo 3" class="w-full h-full object-cover" loading="lazy" decoding="async">
-                    </div>
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[500px] h-[350px] rounded-sm overflow-hidden bg-white dark:bg-slate-800 border border-border dark:border-slate-700 shadow-sm">
-                        <img src="assets/fyp2.png" alt="Event photo 4" class="w-full h-full object-cover" loading="lazy" decoding="async">
-                    </div>
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[500px] h-[350px] rounded-sm overflow-hidden bg-white dark:bg-slate-800 border border-border dark:border-slate-700 shadow-sm">
-                        <img src="assets/fyp3.png" alt="Event photo 4" class="w-full h-full object-cover" loading="lazy" decoding="async">
-                    </div>
-                </div>
-
-                <button id="slideRight" class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-slate-900 dark:bg-slate-800 text-white p-2 md:p-3 rounded-full shadow-lg z-10 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center hover:bg-brand-600 dark:hover:bg-brand-500 cursor-pointer">
-                    <span class="material-symbols-outlined text-xl md:text-2xl">arrow_forward_ios</span>
-                </button>
-            </a>
-
-            <a href="projects.html" class="block hover-card bg-white dark:bg-slate-800 border border-border dark:border-slate-700 p-6 rounded-sm shadow-sm cursor-pointer">
-                <div class="flex items-center gap-3 mb-3">
-                    <span class="material-symbols-outlined text-brand-600 dark:text-brand-400 text-3xl">emoji_events</span>
-                    <h4 class="font-serif text-xl font-bold text-slate-900 dark:text-white">3rd Place: UniSZA-UMT CTF</h4>
-                </div>
-                <p class="font-sans text-sm text-slate-600 dark:text-slate-400 mb-3">Demonstrated practical offensive and defensive skills by analyzing network traffic via Wireshark and utilizing Autopsy for disk forensics to locate hidden flags.</p>
-                <span class="inline-block bg-brand-50 text-brand-700 dark:bg-brand-900/30 dark:text-brand-400 text-xs font-bold px-2 py-1 rounded">CTF | Wireshark | Security</span>
-
-                <div id="galleryContainer" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory hide-scroll-bar scroll-smooth">
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[500px] h-[350px] rounded-sm overflow-hidden bg-white dark:bg-slate-800 border border-border dark:border-slate-700 shadow-sm">
-                        <img src="assets/ctf.jpeg" alt="Event photo 1" class="w-full h-full object-cover" loading="lazy" decoding="async">
-                    </div>
-                </div>
-            </a>
+    <!-- Operational Records (Evidence) -->
+    <section class="py-20 px-6 md:px-8 lg:px-12 max-w-[1600px] mx-auto bg-slate-100/50 dark:bg-slate-900/20 border-y border-slate-200 dark:border-sys-border" id="evidence">
+        <div class="mb-10 flex items-center justify-between pb-4 reveal">
+            <h2 class="font-serif text-4xl md:text-5xl font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-3">
+                <span class="material-symbols-outlined text-brand-500 text-[40px]">folder_open</span> Operational Records
+            </h2>
+            <span class="font-mono text-xs text-slate-500 border border-slate-300 dark:border-slate-700 px-2 py-1 rounded">EVIDENCE</span>
         </div>
-    </section>
-
-<section class="py-16 px-6 md:px-16 lg:px-24 max-w-[1440px] mx-auto" id="reflection">
-        <h2 class="font-serif text-4xl font-bold text-slate-900 dark:text-white mb-8 tracking-tight border-l-4 border-red-600 pl-4">Personal Reflection</h2>
         
-        <div class="bg-slate-950 p-8 md:p-12 border border-slate-800 rounded-sm shadow-lg text-white">
-            <div class="flex items-center gap-4 mb-8 pb-6 border-b border-slate-800">
-                <span class="material-symbols-outlined text-red-600 text-[60px]">shield</span>
-                <div>
-                    <span class="font-mono text-sm font-bold text-slate-400 uppercase tracking-widest">My Dream Company</span>
-                    <h3 class="font-serif text-3xl font-bold">CyberSecurity Malaysia (CSM)</h3>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            <!-- Record 1 (HUD Brackets) -->
+            <div class="relative glass-panel p-6 rounded-lg flex flex-col group border border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors reveal">
+                <div class="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-brand-500 rounded-tl-lg opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all origin-top-left"></div>
+                <div class="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-brand-500 rounded-br-lg opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all origin-bottom-right"></div>
+                
+                <div class="flex items-start justify-between mb-4">
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                        <span class="material-symbols-outlined text-slate-400 group-hover:text-brand-500 transition-colors">image_search</span> AI Forensic Detector (FYP)
+                    </h3>
+                </div>
+                <p class="text-sm text-slate-600 dark:text-slate-400 mb-4 flex-grow">
+                    Engineered an AI image detector using MobileNetV3-small & ResNet50. Implemented a GUI and extracted forensic features (FFT, ELA) to classify 16k real vs. synthetic images.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="px-2 py-1 bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-400 border border-brand-200 dark:border-brand-700 text-[10px] font-mono font-bold uppercase rounded">Python</span>
+                    <span class="px-2 py-1 bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-400 border border-brand-200 dark:border-brand-700 text-[10px] font-mono font-bold uppercase rounded">CNN</span>
+                    <span class="px-2 py-1 bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-400 border border-brand-200 dark:border-brand-700 text-[10px] font-mono font-bold uppercase rounded">Forensics</span>
+                </div>
+
+                <!-- Slider -->
+                <div class="gallery-wrapper relative rounded overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50">
+                    <button class="slide-left-btn absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-sys-dark/90 text-slate-800 dark:text-white w-8 h-8 rounded border border-slate-200 dark:border-slate-600 flex items-center justify-center shadow-md z-20 opacity-0 group-hover:opacity-100 transition-all hover:border-brand-500 hover:text-brand-500 cursor-pointer">
+                        <span class="material-symbols-outlined text-sm">arrow_back_ios_new</span>
+                    </button>
+                    <div class="gallery-scroll flex overflow-x-auto gap-3 pb-3 snap-x snap-mandatory hide-scroll-bar scroll-smooth p-3">
+                        <div class="snap-center shrink-0 w-[85vw] md:w-[100%] h-[240px] rounded overflow-hidden border border-slate-200 dark:border-slate-700">
+                            <img src="assets/fyp4.png" alt="Forensic Scan 1" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <div class="snap-center shrink-0 w-[85vw] md:w-[100%] h-[240px] rounded overflow-hidden border border-slate-200 dark:border-slate-700">
+                            <img src="assets/fyp.png" alt="Forensic Scan 2" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <div class="snap-center shrink-0 w-[85vw] md:w-[100%] h-[240px] rounded overflow-hidden border border-slate-200 dark:border-slate-700">
+                            <img src="assets/fyp1.png" alt="Forensic Scan 3" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                    </div>
+                    <button class="slide-right-btn absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-sys-dark/90 text-slate-800 dark:text-white w-8 h-8 rounded border border-slate-200 dark:border-slate-600 flex items-center justify-center shadow-md z-20 opacity-0 group-hover:opacity-100 transition-all hover:border-brand-500 hover:text-brand-500 cursor-pointer">
+                        <span class="material-symbols-outlined text-sm">arrow_forward_ios</span>
+                    </button>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <!-- Record 2 (HUD Brackets) -->
+            <div class="relative glass-panel p-6 rounded-lg flex flex-col group border border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors reveal delay-100">
+                <div class="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-brand-500 rounded-tl-lg opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all origin-top-left"></div>
+                <div class="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-brand-500 rounded-br-lg opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all origin-bottom-right"></div>
+                
+                <div class="flex items-start justify-between mb-4">
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                        <span class="material-symbols-outlined text-slate-400 group-hover:text-brand-500 transition-colors">emoji_events</span> 3rd Place: UniSZA-UMT CTF
+                    </h3>
+                </div>
+                <p class="text-sm text-slate-600 dark:text-slate-400 mb-4 flex-grow">
+                    Demonstrated practical offensive and defensive skills by analyzing network traffic via Wireshark and utilizing Autopsy for disk forensics to locate hidden flags.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="px-2 py-1 bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-400 border border-brand-200 dark:border-brand-700 text-[10px] font-mono font-bold uppercase rounded">CTF</span>
+                    <span class="px-2 py-1 bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-400 border border-brand-200 dark:border-brand-700 text-[10px] font-mono font-bold uppercase rounded">Wireshark</span>
+                    <span class="px-2 py-1 bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-400 border border-brand-200 dark:border-brand-700 text-[10px] font-mono font-bold uppercase rounded">Security</span>
+                </div>
+
+                <div class="relative rounded overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 p-3">
+                    <div class="w-full h-[240px] rounded overflow-hidden border border-slate-200 dark:border-slate-700">
+                        <img src="assets/ctf.jpeg" alt="CTF Event photo" class="w-full h-full object-cover" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Target Acquisition (Reflection) -->
+    <section class="py-20 px-6 md:px-8 lg:px-12 max-w-[1600px] mx-auto" id="reflection">
+        <div class="mb-10 flex items-center justify-between pb-4 reveal">
+            <h2 class="font-serif text-4xl md:text-5xl font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-3">
+                <span class="material-symbols-outlined text-red-500 text-[40px]">gps_fixed</span> Target Acquisition
+            </h2>
+            <span class="font-mono text-xs text-red-500 border border-red-500/50 bg-red-500/10 px-2 py-1 rounded animate-pulse">LOCKED</span>
+        </div>
+        
+        <div class="bg-slate-900 dark:bg-[#060913] p-8 md:p-12 border border-slate-800 rounded-xl shadow-2xl relative overflow-hidden group reveal">
+            <!-- Radar Background -->
+            <div class="absolute right-[-10%] top-[-20%] w-[500px] h-[500px] border border-red-500/10 rounded-full flex items-center justify-center pointer-events-none opacity-20 group-hover:opacity-40 transition-opacity">
+                <div class="w-[350px] h-[350px] border border-red-500/20 rounded-full"></div>
+                <div class="w-[200px] h-[200px] border border-red-500/30 rounded-full absolute"></div>
+            </div>
+
+            <!-- Target Header -->
+            <div class="flex items-center gap-6 mb-10 pb-6 border-b border-slate-800 relative z-10">
+                <div class="w-16 h-16 rounded bg-red-500/10 border border-red-500/30 flex items-center justify-center shrink-0">
+                    <span class="material-symbols-outlined text-red-500 text-[40px]">shield</span>
+                </div>
                 <div>
-                    <h4 class="font-sans font-bold text-brand-400 text-xl mb-3 flex items-center gap-2"><span class="material-symbols-outlined text-lg">help</span> Why CSM?</h4>
-                    <p class="font-sans text-slate-300 text-sm leading-relaxed mb-6">I want my technical skills to directly contribute to defending Malaysia's digital sovereignty. Working with CSM’s National Cyber Coordination and Command Centre (NC4) or MyCERT offers the rare opportunity to monitor and protect Critical National Information Infrastructure (CNII), rather than solely protecting corporate profit margins.</p>
-                    
-                    <h4 class="font-sans font-bold text-brand-400 text-xl mb-3 flex items-center gap-2"><span class="material-symbols-outlined text-lg">add_task</span> Value I Bring</h4>
-                    <p class="font-sans text-slate-300 text-sm leading-relaxed">I bring a unique blend of fundamental network analysis and modern AI understanding. My experience analyzing packet data in Wireshark, combined with my research in AI anomaly detection, means I can effectively triage complex SIEM alerts, filter out false positives, and hunt for sophisticated threat actors attempting to breach national networks.</p>
+                    <span class="font-mono text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">Primary Objective</span>
+                    <h3 class="font-serif text-3xl md:text-4xl font-bold text-white">CyberSecurity Malaysia (CSM)</h3>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 relative z-10">
+                <div class="space-y-8">
+                    <div>
+                        <h4 class="font-sans font-bold text-slate-200 text-lg mb-2 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-brand-500 text-[20px]">help</span> Why CSM?
+                        </h4>
+                        <p class="font-sans text-slate-400 text-sm leading-relaxed">I want my technical skills to directly contribute to defending Malaysia's digital sovereignty. Working with CSM’s National Cyber Coordination and Command Centre (NC4) or MyCERT offers the rare opportunity to monitor and protect Critical National Information Infrastructure (CNII), rather than solely protecting corporate profit margins.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-sans font-bold text-slate-200 text-lg mb-2 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-brand-500 text-[20px]">add_task</span> Value I Bring
+                        </h4>
+                        <p class="font-sans text-slate-400 text-sm leading-relaxed">I bring a unique blend of fundamental network analysis and modern AI understanding. My experience analyzing packet data in Wireshark, combined with my research in AI anomaly detection, means I can effectively triage complex SIEM alerts, filter out false positives, and hunt for sophisticated threat actors attempting to breach national networks.</p>
+                    </div>
                 </div>
                 
-                <div class="bg-slate-900 p-6 rounded-sm border border-slate-800">
-                    <h4 class="font-sans font-bold text-white text-lg mb-4 text-center border-b border-slate-800 pb-2">Why should you hire me?</h4>
+                <div class="bg-sys-dark p-6 md:p-8 rounded-lg border border-slate-800 relative">
+                    <h4 class="font-mono text-xs font-bold text-slate-500 uppercase tracking-widest mb-6 border-b border-slate-800 pb-3">Tactical Analysis: Why Hire Me?</h4>
                     
-                    <div class="mb-4">
-                        <span class="font-bold text-green-500 text-sm block mb-1">My Strength:</span>
-                        <p class="text-sm text-slate-400">Highly adaptable technical depth. I am comfortable pivoting from writing Python backend logic to troubleshooting hardware circuits on IoT robots. I understand how systems communicate from the physical layer up to the application layer, which is critical for tracing network intrusions.</p>
+                    <div class="mb-6">
+                        <span class="font-bold text-emerald-500 text-sm flex items-center gap-2 mb-2">
+                            <span class="material-symbols-outlined text-[16px]">verified</span> Core Strength
+                        </span>
+                        <p class="text-sm text-slate-400 leading-relaxed">Highly adaptable technical depth. I am comfortable pivoting from writing Python backend logic to troubleshooting hardware circuits on IoT robots. I understand how systems communicate from the physical layer up to the application layer, which is critical for tracing network intrusions.</p>
                     </div>
                     
                     <div>
-                        <span class="font-bold text-yellow-500 text-sm block mb-1">My Weakness:</span>
-                        <p class="text-sm text-slate-400">A lack of experience managing enterprise-scale SIEM platforms under the high-pressure environment of a live cyberattack. I am eager to bridge this gap by learning directly from gazetted CSM analysts and pursuing specialized incident response certifications.</p>
+                        <span class="font-bold text-amber-500 text-sm flex items-center gap-2 mb-2">
+                            <span class="material-symbols-outlined text-[16px]">warning</span> Identified Weakness
+                        </span>
+                        <p class="text-sm text-slate-400 leading-relaxed">A lack of experience managing enterprise-scale SIEM platforms under the high-pressure environment of a live cyberattack. I am eager to bridge this gap by learning directly from gazetted CSM analysts and pursuing specialized incident response certifications.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Original Footer Restored -->
     <footer class="w-full px-8 py-16 flex flex-col justify-center items-center gap-6 mt-12 bg-slate-900 border-t border-slate-800">
         <h2 class="font-serif text-2xl font-bold text-white tracking-widest uppercase">Shaifol Ziqri</h2>
-
+        
         <div class="flex flex-wrap justify-center gap-4 mb-4">
             <a href="https://wa.me/60176334491" target="_blank" class="flex items-center gap-2 font-mono text-sm text-slate-300 border px-4 py-2 border-slate-700 rounded shadow-sm hover:bg-green-600 hover:text-white hover:border-green-600 transition-colors cursor-pointer group">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51h-.573c-.199 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                </svg>
-                WhatsApp
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51h-.573c-.199 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg> WhatsApp
             </a>
-
             <a href="mailto:sziqri10@gmail.com" class="flex items-center gap-2 font-mono text-sm text-slate-300 border px-4 py-2 border-slate-700 rounded shadow-sm hover:bg-brand-600 hover:text-white hover:border-brand-600 transition-colors cursor-pointer group">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                </svg>
-                sziqri10@gmail.com
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> sziqri10@gmail.com
             </a>
-            
             <a href="https://www.linkedin.com/in/shaifol-ziqri-b571b6233/" target="_blank" class="flex items-center gap-2 font-mono text-sm text-slate-300 border px-4 py-2 border-slate-700 rounded shadow-sm hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-colors cursor-pointer group">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
-                LinkedIn
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> LinkedIn
             </a>
-            
-            <span class="flex items-center gap-2 font-mono text-sm text-slate-400 border px-4 py-2 border-slate-800 rounded shadow-sm cursor-default">
-                <span class="material-symbols-outlined text-[18px]">location_on</span>
-                Banting, Selangor
-            </span>
         </div>
-
-        <div class="font-mono text-xs uppercase tracking-widest text-slate-500">© 2026 SHAIFOL ZIQRI. ALL RIGHTS RESERVED.</div>
+        <div class="font-mono text-xs uppercase tracking-widest text-slate-500">© 2026 SHAIFOL ZIQRI. ALL RIGHTS RESERVED. </div>
     </footer>
 
+    <!-- EXTERNAL SCRIPT -->
     <script src="script.js"></script>
+
+    <!-- INLINE SCRIPTS (Scroll Reveal & Sliders) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // SCROLL REVEAL
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -50px 0px',
+                threshold: 0.15
+            };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+            // PROJECT SLIDER
+            const galleryWrappers = document.querySelectorAll('.gallery-wrapper');
+            galleryWrappers.forEach(wrapper => {
+                const scrollContainer = wrapper.querySelector('.gallery-scroll');
+                const leftBtn = wrapper.querySelector('.slide-left-btn');
+                const rightBtn = wrapper.querySelector('.slide-right-btn');
+                
+                const scrollAmount = 350; 
+
+                if(leftBtn && rightBtn && scrollContainer) {
+                    leftBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        scrollContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                    });
+
+                    rightBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        scrollContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>

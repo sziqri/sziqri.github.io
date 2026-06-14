@@ -1,367 +1,561 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Shaifol Ziqri - Portfolio</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com" rel="preconnect"/>
-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Newsreader:opsz,wght@6..72,400;6..72,700;6..72,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,700;6..72,800&display=swap" rel="stylesheet"/>
     
     <script id="tailwind-config">
         tailwind.config = {
-            darkMode: 'class', // REQUIRED FOR DARK MODE
+            darkMode: 'class', 
             theme: {
                 extend: {
                     colors: {
-                        brand: { 50: '#eff6ff', 100: '#dbeafe', 600: '#2563eb', 700: '#1d4ed8', 900: '#1e3a8a' },
-                        surface: '#ffffff', 'surface-alt': '#f8fafc', border: '#e2e8f0',
+                        brand: { 50: '#eff6ff', 100: '#dbeafe', 400: '#38bdf8', 500: '#0ea5e9', 600: '#0284c7', 900: '#0c4a6e' },
+                        sys: { dark: '#0B1120', panel: '#1E293B', border: '#334155' }
                     },
                     fontFamily: {
                         serif: ["Newsreader", "serif"],
-                        sans: ["Space Grotesk", "sans-serif"],
+                        sans: ["Plus Jakarta Sans", "sans-serif"],
                         mono: ["JetBrains Mono", "monospace"],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     }
                 }
             }
         }
     </script>
-    <link rel="stylesheet" href="style.css"/>
+    <style>
+        body { 
+            background-color: #f8fafc; 
+            -webkit-font-smoothing: antialiased;
+        }
+        .dark body { 
+            background-color: #0B1120; 
+        }
+        
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(14, 165, 233, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(14, 165, 233, 0.05) 1px, transparent 1px);
+            mask-image: linear-gradient(to bottom, transparent, black, transparent);
+            -webkit-mask-image: linear-gradient(to bottom, transparent 5%, black 40%, black 60%, transparent 95%);
+        }
+
+        .hide-scroll-bar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .hide-scroll-bar::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .dark .glass-panel {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        /* Continuous Auto-Scroll Marquee Styles */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .marquee-content {
+            display: flex;
+            width: max-content;
+            animation: marquee 40s linear infinite;
+        }
+
+        /* NEW: Scroll Reveal Animation Styles */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        .delay-400 { transition-delay: 400ms; }
+    </style>
 </head>
 
-<body class="font-sans overflow-x-hidden bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-300">
+<body class="font-sans overflow-x-hidden text-slate-800 dark:text-slate-200 transition-colors duration-300">
     
-    <nav class="fixed top-0 left-0 w-full z-50 px-6 md:px-12 py-5 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-border dark:border-slate-800 shadow-sm transition-colors duration-300">
-        <div class="flex justify-between items-center">
+    <div class="fixed inset-0 z-[-1] pointer-events-none bg-grid-pattern"></div>
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand-500/10 dark:bg-brand-500/20 blur-[100px] rounded-full z-[-1] pointer-events-none"></div>
+
+    <nav class="fixed top-0 left-0 w-full z-50 glass-panel border-b border-slate-200/80 dark:border-sys-border/80 shadow-sm">
+        <div class="flex justify-between items-center px-6 md:px-8 py-3 max-w-[1600px] mx-auto">
+            
             <a href="index.html" class="text-xl md:text-2xl font-serif font-black tracking-tight text-slate-900 dark:text-white uppercase">
                 SHAIFOL ZIQRI
             </a>
 
-            <ul class="hidden xl:flex gap-4 items-center">
-                <li><a class="text-brand-700 dark:text-brand-400 font-bold font-sans px-4 py-2 rounded bg-brand-50 dark:bg-brand-900/30 border-b-2 border-brand-600 transition-all duration-200" href="index.html">Home</a></li>
-                <li><a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-3 rounded transition-all duration-200 hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="about.html">About Me</a></li>
-                <li><a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-2 rounded transition-all duration-200 hover:text-brand-400 dark:hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="ep.html">Future</a></li>
-                <li><a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-3 rounded transition-all duration-200 hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="projects.html">Projects</a></li>
-                <li><a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-3 rounded transition-all duration-200 hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="blog.html">Blog</a></li>
-                <li><a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-3 rounded transition-all duration-200 hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="contact.html">Contact</a></li>
+            <ul class="hidden xl:flex gap-1 items-center bg-slate-100 dark:bg-sys-panel p-1 rounded-md border border-slate-200 dark:border-sys-border">
+                <li><a class="text-xs font-semibold text-brand-600 dark:text-brand-400 bg-white dark:bg-slate-800 px-4 py-1.5 rounded shadow-sm block transition-all" href="index.html">Home</a></li>
+                <li><a class="text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white px-4 py-1.5 rounded transition-all" href="about.html">About Me</a></li>
+                <li><a class="text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white px-4 py-1.5 rounded transition-all" href="ep.html">Future</a></li>
+                <li><a class="text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white px-4 py-1.5 rounded transition-all" href="projects.html">Projects</a></li>
+                <li><a class="text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white px-4 py-1.5 rounded transition-all" href="blog.html">Blog</a></li>
+                <li><a class="text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white px-4 py-1.5 rounded transition-all" href="contact.html">Contact</a></li>
             </ul>
 
-            <div class="flex items-center gap-2 md:gap-4">
-                <button id="themeToggleBtn" class="text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400 focus:outline-none flex items-center justify-center p-2 transition-colors">
-                    <span class="material-symbols-outlined text-2xl md:text-3xl" id="themeIcon">dark_mode</span>
+            <div class="flex items-center gap-3">
+                <button id="themeToggleBtn" class="text-slate-500 hover:text-brand-500 dark:text-slate-400 dark:hover:text-brand-400 p-1.5 rounded border border-transparent hover:border-slate-200 dark:hover:border-sys-border transition-all flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[20px]" id="themeIcon">dark_mode</span>
                 </button>
 
-                <a href="CV_SHAIFOL.pdf" download class="hidden sm:flex font-sans text-sm font-bold uppercase tracking-widest bg-slate-900 dark:bg-brand-600 text-white px-5 py-3 rounded hover:bg-brand-600 dark:hover:bg-brand-500 transition-colors items-center gap-2">
-                    <span class="material-symbols-outlined text-[18px]">download</span> Resume
+                <a href="CV_SHAIFOL.pdf" download class="hidden sm:flex items-center gap-2 text-xs font-bold text-white bg-slate-900 dark:bg-brand-600 hover:bg-slate-800 dark:hover:bg-brand-500 px-4 py-2 rounded transition-all shadow-sm">
+                    <span class="material-symbols-outlined text-[16px]">cloud_download</span> Resume
                 </a>
 
-                <button id="mobileMenuBtn" class="xl:hidden text-slate-900 dark:text-white hover:text-brand-600 focus:outline-none flex items-center justify-center p-2">
-                    <span class="material-symbols-outlined text-3xl">menu</span>
+                <button id="mobileMenuBtn" class="xl:hidden text-slate-500 hover:text-brand-500 dark:text-slate-400 p-1.5">
+                    <span class="material-symbols-outlined text-[24px]">menu_open</span>
                 </button>
             </div>
         </div>
 
-        <div id="mobileMenu" class="hidden xl:hidden flex-col gap-4 mt-6 pb-4 border-t border-border dark:border-slate-800 pt-4">
-            <a class="text-brand-700 dark:text-brand-400 font-bold font-sans px-4 py-3 rounded bg-brand-50 dark:bg-brand-900/30 border-l-4 border-brand-600 transition-all duration-200" href="index.html">Home</a>
-            <a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-3 rounded transition-all duration-200 hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="about.html">About Me</a>
-            <a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-3 rounded transition-all duration-200 hover:text-brand-400 dark:hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="ep.html">Future</a>
-            <a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-3 rounded transition-all duration-200 hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="projects.html">Projects</a>
-            <a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-3 rounded transition-all duration-200 hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="blog.html">Blog</a>
-            <a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-3 rounded transition-all duration-200 hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="contact.html">Contact</a>
-            
-            <a href="CV_SHAIFOL.pdf" download class="sm:hidden font-sans text-sm font-bold uppercase tracking-widest bg-slate-900 text-white px-5 py-3 mt-2 rounded hover:bg-brand-600 transition-colors flex items-center justify-center gap-2">
-                <span class="material-symbols-outlined text-[18px]">download</span> Resume
-            </a>
+        <div id="mobileMenu" class="hidden xl:hidden flex-col gap-1 px-6 pb-4 border-t border-slate-200 dark:border-sys-border pt-2 bg-white/95 dark:bg-sys-dark/95 backdrop-blur-md">
+            <a class="text-sm font-semibold text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-slate-800 px-4 py-2.5 rounded transition-all" href="index.html">Home</a>
+            <a class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 px-4 py-2.5 rounded transition-all" href="about.html">About Me</a>
+            <a class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 px-4 py-2.5 rounded transition-all" href="ep.html">Future</a>
+            <a class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 px-4 py-2.5 rounded transition-all" href="projects.html">Projects</a>
+            <a class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 px-4 py-2.5 rounded transition-all" href="blog.html">Blog</a>
+            <a class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 px-4 py-2.5 rounded transition-all" href="contact.html">Contact</a>
         </div>
     </nav>
 
-    <section class="min-h-[90vh] pt-28 grid grid-cols-1 lg:grid-cols-12 border-b border-border dark:border-slate-800 transition-colors duration-300" id="home">
-        <div class="lg:col-span-7 flex flex-col justify-center px-8 md:px-16 lg:px-24 py-16 border-b lg:border-b-0 lg:border-r border-border dark:border-slate-800 bg-white dark:bg-slate-900 transition-colors duration-300">
-            <h1 class="font-serif text-6xl md:text-8xl lg:text-[100px] leading-[0.95] tracking-tight font-extrabold text-slate-900 dark:text-white mb-8 uppercase">Shaifol<br/>Ziqri.</h1>
-            <p class="font-sans text-xl md:text-2xl text-slate-700 dark:text-slate-300 font-medium mb-4 max-w-2xl leading-relaxed">
-                Computer Network Security Undergraduate.
-            </p>
-            <p class="font-sans text-lg text-slate-600 dark:text-slate-400 mb-12 max-w-xl leading-relaxed">
-                Passionate about Computer Security, Penetration Testing, Digital Forensics, and the Internet of Things (IoT). Strong foundation in network fundamentals and embedded systems.
-            </p>
-            <p class="font-sans text-lg text-slate-600 dark:text-slate-400 mb-12 max-w-xl leading-relaxed">
-                Currently seeking a 6-month internship (21 September 2026 - 19 March 2027) in cybersecurity, network defense, digital forensics or related roles.
-            </p>
-            <div class="flex flex-wrap gap-4 mt-auto">
-                <a class="font-sans text-sm font-bold uppercase tracking-widest bg-brand-600 text-white px-8 py-4 text-center hover:bg-brand-700 transition-colors shadow-md rounded" href="#projects">View Projects</a>
-                <a class="font-sans text-sm font-bold uppercase tracking-widest bg-white dark:bg-slate-800 border-2 border-slate-900 dark:border-slate-600 text-slate-900 dark:text-white px-8 py-4 text-center hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors rounded" href="about.html">Know More About Me!</a>
+    <section class="min-h-[85vh] pt-32 pb-16 px-6 md:px-8 lg:px-12 max-w-[1600px] mx-auto flex items-center" id="home">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full">
+            
+            <div class="lg:col-span-8 flex flex-col justify-center reveal">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-brand-50 dark:bg-brand-500/10 border border-brand-200 dark:border-brand-500/30 rounded text-brand-700 dark:text-brand-400 font-mono text-[11px] uppercase tracking-widest w-fit mb-8 shadow-sm">
+                    <span class="material-symbols-outlined text-[16px] text-emerald-500 drop-shadow-[0_0_8px_rgba(16,185,129,0.9)] animate-pulse">radar</span>
+                    Target: Internship Role (Sep 2026 - Mar 2027)
+                </div>
+                
+                <h1 class="font-serif text-6xl md:text-8xl lg:text-[100px] leading-[0.95] tracking-tight font-extrabold text-slate-900 dark:text-white mb-8 uppercase">
+                    Shaifol<br/>Ziqri.
+                </h1>
+                
+                <h2 class="text-xl md:text-2xl text-slate-600 dark:text-brand-400 font-medium mb-6 flex items-center gap-3">
+                    <span class="w-8 h-[1px] bg-slate-400 dark:bg-brand-500/50 hidden md:block"></span>
+                     Computer Network Security Undergraduate.
+                </h2>
+
+                <div class="lg:hidden relative w-full max-w-[300px] aspect-[4/5] glass-panel rounded-xl p-3 shadow-2xl mb-8 mx-auto border border-slate-200/50 dark:border-slate-700/50 reveal delay-100">
+                    <div class="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-brand-500 -translate-x-1 -translate-y-1 rounded-tl"></div>
+                    <div class="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-brand-500 translate-x-1 translate-y-1 rounded-br"></div>
+                    <img alt="Portrait of Shaifol Ziqri" class="w-full h-full object-cover rounded-lg filter sepia-[0.2] dark:sepia-0 dark:brightness-90 transition-all duration-500" src="assets/profile.jpg" onerror="this.src='https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop'" loading="lazy"/>
+                </div>
+                
+                <div class="relative glass-panel p-6 rounded-lg max-w-2xl group border border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors reveal delay-200">
+                    <div class="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-brand-500 rounded-tl-lg opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all origin-top-left"></div>
+                    <div class="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-brand-500 rounded-br-lg opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all origin-bottom-right"></div>
+                    
+                    <div class="absolute top-0 right-0 p-4 opacity-[0.03] group-hover:opacity-[0.08] transition-opacity"><span class="material-symbols-outlined text-[100px]">fingerprint</span></div>
+                    <p class="font-sans text-base text-slate-700 dark:text-slate-300 leading-relaxed relative z-10">
+                        Passionate about Computer Security, Penetration Testing, Digital Forensics, and the Internet of Things (IoT). Strong foundation in network fundamentals and embedded systems.
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap gap-4 mt-8 reveal delay-300">
+                    <a class="flex items-center gap-2 text-sm font-semibold bg-slate-900 dark:bg-brand-600 text-white px-6 py-3 rounded hover:bg-slate-800 dark:hover:bg-brand-500 transition-colors shadow-md" href="#projects">
+                        View Projects
+                    </a>
+                    <a class="flex items-center gap-2 text-sm font-semibold glass-panel border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-white/50 dark:hover:bg-slate-800/50 px-6 py-3 rounded transition-colors" href="about.html">
+                        About Me
+                    </a>
+                </div>
             </div>
-        </div>
-        <div class="lg:col-span-5 relative h-[500px] lg:h-auto bg-surface-alt dark:bg-slate-800 flex items-center justify-center p-8 transition-colors duration-300">
-            <img alt="Portrait of Shaifol Ziqri" class="w-full h-full object-cover shadow-2xl rounded-sm filter contrast-125" src="assets/profile.jpg" onerror="this.src='https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop'" loading="lazy" decoding="async"/>
+            
+            <div class="hidden lg:flex lg:col-span-4 relative items-center justify-center p-4 reveal delay-200">
+                <div class="relative w-full max-w-[350px] aspect-[4/5] glass-panel rounded-xl p-3 shadow-2xl border border-slate-200/50 dark:border-slate-700/50 hover:shadow-brand-500/10 hover:-translate-y-2 transition-all duration-500">
+                    <div class="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-brand-500 -translate-x-1 -translate-y-1 rounded-tl"></div>
+                    <div class="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-brand-500 translate-x-1 -translate-y-1 rounded-tr"></div>
+                    <div class="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-brand-500 -translate-x-1 translate-y-1 rounded-bl"></div>
+                    <div class="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-brand-500 translate-x-1 translate-y-1 rounded-br"></div>
+                    
+                    <div class="absolute top-2 right-4 z-20 flex gap-1">
+                        <span class="w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                        <span class="w-1.5 h-1.5 bg-yellow-500 rounded-full"></span>
+                        <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+                    </div>
+
+                    <img alt="Portrait of Shaifol Ziqri" class="w-full h-full object-cover rounded-lg filter sepia-[0.2] dark:sepia-0 dark:brightness-90 hover:brightness-110 transition-all duration-500" src="assets/profile.jpg" onerror="this.src='https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop'" loading="lazy"/>
+                    
+                    <div class="absolute bottom-4 left-4 right-4 glass-panel p-2 rounded flex justify-between items-center z-10 border border-white/20 dark:border-white/10">
+                        <span class="font-mono text-[10px] text-slate-800 dark:text-white uppercase">ID: SZ-241N41</span>
+                        <span class="font-mono text-[10px] text-brand-600 dark:text-brand-400">AUTH: GRANTED</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="py-24 px-6 md:px-16 lg:px-24 max-w-[1440px] mx-auto border-b border-border dark:border-slate-800 bg-white dark:bg-slate-900 transition-colors duration-300" id="skills">
-            <h2 class="font-serif text-5xl md:text-6xl font-bold text-slate-900 dark:text-white mb-16 tracking-tight">Capabilities</h2>
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-                <div class="md:col-span-12 lg:col-span-8 bg-surface-alt dark:bg-slate-800 border border-border dark:border-slate-700 p-10 hover:shadow-lg transition-shadow rounded-sm">
-                    <div class="flex justify-between items-start mb-8">
-                        <h3 class="font-serif text-3xl font-bold text-slate-900 dark:text-white">Cybersecurity & Networking</h3>
-                        <span class="font-mono text-xs font-bold px-3 py-1 bg-brand-100 dark:bg-brand-900/40 text-brand-700 dark:text-brand-300 rounded uppercase tracking-wider">Primary</span>
-                    </div>
-                    <p class="font-sans text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-2xl">Focusing on network analysis, finding vulnerabilities, and understanding digital forensic features.</p>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="font-mono text-sm px-4 py-2 bg-white dark:bg-slate-700 border border-border dark:border-slate-600 text-slate-800 dark:text-slate-200 rounded shadow-sm">Network Analysis</span>
-                        <span class="font-mono text-sm px-4 py-2 bg-white dark:bg-slate-700 border border-border dark:border-slate-600 text-slate-800 dark:text-slate-200 rounded shadow-sm">Wireshark (Intermediate)</span>
-                        <span class="font-mono text-sm px-4 py-2 bg-white dark:bg-slate-700 border border-border dark:border-slate-600 text-slate-800 dark:text-slate-200 rounded shadow-sm">Penetration Testing (Novice)</span>
-                        <span class="font-mono text-sm px-4 py-2 bg-white dark:bg-slate-700 border border-border dark:border-slate-600 text-slate-800 dark:text-slate-200 rounded shadow-sm">Digital Forensics</span>
+    <section class="w-full overflow-hidden py-10 bg-slate-50/50 dark:bg-sys-panel/20 border-y border-slate-200 dark:border-sys-border mb-16 reveal">
+        <div class="px-6 md:px-8 lg:px-12 max-w-[1600px] mx-auto mb-6">
+            <h3 class="text-sm font-mono text-slate-500 uppercase tracking-widest flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-brand-500 rounded-full animate-pulse"></span> Event Gallery
+            </h3>
+        </div>
+        
+        <div class="marquee-content flex gap-6 px-6">
+            <div class="flex gap-6">
+                <div class="shrink-0 w-[280px] md:w-[350px] h-[220px] rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 shadow-sm relative group">
+                    <img src="assets/gallery1.jpg" alt="Record 1" class="w-full h-full object-cover filter brightness-90 group-hover:brightness-110 transition-all" loading="lazy">
+                </div>
+                <div class="shrink-0 w-[280px] md:w-[350px] h-[220px] rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 shadow-sm relative group">
+                    <img src="assets/gallery2.jpg" alt="Record 2" class="w-full h-full object-cover filter brightness-90 group-hover:brightness-110 transition-all" loading="lazy">
+                </div>
+                <div class="shrink-0 w-[280px] md:w-[350px] h-[220px] rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 shadow-sm relative group">
+                    <img src="assets/gallery3.jpg" alt="Record 3" class="w-full h-full object-cover filter brightness-90 group-hover:brightness-110 transition-all" loading="lazy">
+                </div>
+                <div class="shrink-0 w-[280px] md:w-[350px] h-[220px] rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 shadow-sm relative group">
+                    <img src="assets/gallery4.jpg" alt="Record 4" class="w-full h-full object-cover filter brightness-90 group-hover:brightness-110 transition-all" loading="lazy">
+                </div>
+                <div class="shrink-0 w-[280px] md:w-[350px] h-[220px] rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 shadow-sm relative group">
+                    <img src="assets/gallery5.jpg" alt="Record 5" class="w-full h-full object-cover filter brightness-90 group-hover:brightness-110 transition-all" loading="lazy">
+                </div>
+                <div class="shrink-0 w-[280px] md:w-[350px] h-[220px] rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 shadow-sm relative group">
+                    <img src="assets/gallery6.jpg" alt="Record 6" class="w-full h-full object-cover filter brightness-90 group-hover:brightness-110 transition-all" loading="lazy">
+                </div>
+                <div class="shrink-0 w-[280px] md:w-[350px] h-[220px] rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 shadow-sm relative group">
+                    <img src="assets/gallery7.jpg" alt="Record 7" class="w-full h-full object-cover filter brightness-90 group-hover:brightness-110 transition-all" loading="lazy">
+                </div>
+                <div class="shrink-0 w-[280px] md:w-[350px] h-[220px] rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 shadow-sm relative group">
+                    <img src="assets/gallery8.jpg" alt="Record 8" class="w-full h-full object-cover filter brightness-90 group-hover:brightness-110 transition-all" loading="lazy">
+                </div>
+            </div>
+            <div class="flex gap-6">
+                <div class="shrink-0 w-[280px] md:w-[350px] h-[220px] rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 shadow-sm relative group">
+                    <img src="assets/gallery1.jpg" alt="Record 1" class="w-full h-full object-cover filter brightness-90 group-hover:brightness-110 transition-all" loading="lazy">
+                </div>
+                <div class="shrink-0 w-[280px] md:w-[350px] h-[220px] rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 shadow-sm relative group">
+                    <img src="assets/gallery2.jpg" alt="Record 2" class="w-full h-full object-cover filter brightness-90 group-hover:brightness-110 transition-all" loading="lazy">
+                </div>
+                <div class="shrink-0 w-[280px] md:w-[350px] h-[220px] rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 shadow-sm relative group">
+                    <img src="assets/gallery3.jpg" alt="Record 3" class="w-full h-full object-cover filter brightness-90 group-hover:brightness-110 transition-all" loading="lazy">
+                </div>
+                <div class="shrink-0 w-[280px] md:w-[350px] h-[220px] rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 shadow-sm relative group">
+                    <img src="assets/gallery4.jpg" alt="Record 4" class="w-full h-full object-cover filter brightness-90 group-hover:brightness-110 transition-all" loading="lazy">
+                </div>
+                <div class="shrink-0 w-[280px] md:w-[350px] h-[220px] rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 shadow-sm relative group">
+                    <img src="assets/gallery5.jpg" alt="Record 5" class="w-full h-full object-cover filter brightness-90 group-hover:brightness-110 transition-all" loading="lazy">
+                </div>
+                <div class="shrink-0 w-[280px] md:w-[350px] h-[220px] rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 shadow-sm relative group">
+                    <img src="assets/gallery6.jpg" alt="Record 6" class="w-full h-full object-cover filter brightness-90 group-hover:brightness-110 transition-all" loading="lazy">
+                </div>
+                <div class="shrink-0 w-[280px] md:w-[350px] h-[220px] rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 shadow-sm relative group">
+                    <img src="assets/gallery7.jpg" alt="Record 7" class="w-full h-full object-cover filter brightness-90 group-hover:brightness-110 transition-all" loading="lazy">
+                </div>
+                <div class="shrink-0 w-[280px] md:w-[350px] h-[220px] rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 shadow-sm relative group">
+                    <img src="assets/gallery8.jpg" alt="Record 8" class="w-full h-full object-cover filter brightness-90 group-hover:brightness-110 transition-all" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pb-20 px-6 md:px-8 lg:px-12 max-w-[1600px] mx-auto" id="skills">
+        <div class="mb-10 flex items-center justify-between border-b border-slate-200 dark:border-sys-border pb-4 reveal">
+            <h2 class="font-serif text-5xl md:text-6xl font-bold text-slate-900 dark:text-white tracking-tight">Capabilities</h2>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="md:col-span-2 relative glass-panel p-6 rounded-xl flex flex-col group hover:border-brand-500/50 hover:shadow-[0_8px_30px_rgba(14,165,233,0.1)] transition-all duration-500 overflow-hidden border border-slate-200/60 dark:border-slate-700/60 bg-gradient-to-b from-white/60 to-white/30 dark:from-slate-800/60 dark:to-slate-900/30 reveal delay-100">
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-brand-500/10 dark:bg-brand-500/20 rounded-full blur-3xl group-hover:bg-brand-500/20 group-hover:scale-110 transition-all duration-500 pointer-events-none"></div>
+                
+                <div class="relative z-10 flex justify-between items-start mb-6">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2 bg-slate-100 dark:bg-slate-800 rounded text-brand-600 dark:text-brand-400"><span class="material-symbols-outlined text-2xl">shield_person</span></div>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Cybersecurity & Networking</h3>
                     </div>
                 </div>
-    
-                <div class="md:col-span-6 lg:col-span-4 bg-surface-alt dark:bg-slate-800 border border-border dark:border-slate-700 p-10 hover:shadow-lg transition-shadow rounded-sm flex flex-col">
-                    <div class="mb-6">
-                        <h3 class="font-serif text-2xl font-bold text-slate-900 dark:text-white">Software & OS</h3>
-                    </div>
-                    <div class="flex flex-wrap gap-3 mt-auto">
-                        <span class="font-mono text-sm px-4 py-2 bg-white dark:bg-slate-700 border border-border dark:border-slate-600 text-slate-800 dark:text-slate-200 rounded shadow-sm">Python</span>
-                        <span class="font-mono text-sm px-4 py-2 bg-white dark:bg-slate-700 border border-border dark:border-slate-600 text-slate-800 dark:text-slate-200 rounded shadow-sm">Java</span>
-                        <span class="font-mono text-sm px-4 py-2 bg-white dark:bg-slate-700 border border-border dark:border-slate-600 text-slate-800 dark:text-slate-200 rounded shadow-sm">C++</span>
-                        <span class="font-mono text-sm px-4 py-2 bg-white dark:bg-slate-700 border border-border dark:border-slate-600 text-slate-800 dark:text-slate-200 rounded shadow-sm">Linux</span>
-                    </div>
+                <p class="relative z-10 text-sm text-slate-600 dark:text-slate-400 mb-6 flex-grow">Focusing on network analysis, finding vulnerabilities, and understanding digital forensic features.</p>
+                <div class="relative z-10 flex flex-wrap gap-2">
+                    <span class="font-mono text-[11px] px-3 py-1.5 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded">Network Analysis</span>
+                    <span class="font-mono text-[11px] px-3 py-1.5 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded">Wireshark (Intermediate)</span>
+                    <span class="font-mono text-[11px] px-3 py-1.5 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded">Penetration Testing (Novice)</span>
+                    <span class="font-mono text-[11px] px-3 py-1.5 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded">Digital Forensics</span>
                 </div>
-    
-                <div class="md:col-span-6 lg:col-span-12 bg-slate-900 dark:bg-slate-950 border border-slate-800 p-10 hover:shadow-lg transition-shadow rounded-sm">
-                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
-                        <div>
-                            <h3 class="font-serif text-3xl font-bold text-white mb-2">Embedded Systems & IoT</h3>
-                            <p class="font-sans text-slate-400 max-w-3xl">Extensive experience in hardware troubleshooting, microcontroller programming, and building autonomous sensor-driven systems.</p>
-                        </div>
-                        <span class="material-symbols-outlined text-brand-400 text-5xl mt-4 md:mt-0">memory</span>
+            </div>
+
+            <div class="relative glass-panel p-6 rounded-xl flex flex-col group hover:border-brand-500/50 hover:shadow-[0_8px_30px_rgba(14,165,233,0.1)] transition-all duration-500 overflow-hidden border border-slate-200/60 dark:border-slate-700/60 bg-gradient-to-b from-white/60 to-white/30 dark:from-slate-800/60 dark:to-slate-900/30 reveal delay-200">
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-brand-500/10 dark:bg-brand-500/20 rounded-full blur-3xl group-hover:bg-brand-500/20 group-hover:scale-110 transition-all duration-500 pointer-events-none"></div>
+                
+                <div class="relative z-10 flex items-center gap-3 mb-6">
+                    <div class="p-2 bg-slate-100 dark:bg-slate-800 rounded text-slate-600 dark:text-slate-400"><span class="material-symbols-outlined text-2xl">code_blocks</span></div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white">Software & OS</h3>
+                </div>
+                <div class="relative z-10 flex flex-col gap-3 mt-auto">
+                    <div class="flex justify-between items-center border-b border-slate-200 dark:border-slate-700/50 pb-2">
+                        <span class="font-mono text-[11px] font-bold text-slate-600 dark:text-slate-300">LINUX</span>
+                        <div class="w-1/2 h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden"><div class="w-[95%] h-full bg-brand-500 shadow-[0_0_10px_rgba(14,165,233,0.8)]"></div></div>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-slate-200 dark:border-slate-700/50 pb-2">
+                        <span class="font-mono text-[11px] font-bold text-slate-600 dark:text-slate-300">C++</span>
+                        <div class="w-1/2 h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden"><div class="w-[90%] h-full bg-brand-500 shadow-[0_0_10px_rgba(14,165,233,0.6)]"></div></div>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-slate-200 dark:border-slate-700/50 pb-2">
+                        <span class="font-mono text-[11px] font-bold text-slate-600 dark:text-slate-300">JAVA</span>
+                        <div class="w-1/2 h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden"><div class="w-[85%] h-full bg-brand-400"></div></div>
+                    </div>
+                    <div class="flex justify-between items-center pb-1">
+                        <span class="font-mono text-[11px] font-bold text-slate-600 dark:text-slate-300">PYTHON</span>
+                        <div class="w-1/2 h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden"><div class="w-[75%] h-full bg-emerald-400"></div></div>
                     </div>
                 </div>
             </div>
+
+            <div class="md:col-span-3 relative glass-panel p-6 md:p-8 rounded-xl shadow-inner overflow-hidden group hover:border-brand-500/50 hover:shadow-[0_8px_30px_rgba(14,165,233,0.1)] transition-all duration-500 border border-slate-200/60 dark:border-slate-700/60 bg-gradient-to-b from-slate-900 to-[#0f172a] dark:from-[#0f172a] dark:to-slate-900 reveal delay-300">
+                <div class="absolute -top-10 -right-10 w-64 h-64 bg-brand-500/10 dark:bg-brand-500/20 rounded-full blur-3xl group-hover:bg-brand-500/20 group-hover:scale-110 transition-all duration-500 pointer-events-none"></div>
+                <div class="absolute right-0 top-0 h-full w-1/3 opacity-[0.05] pointer-events-none" style="background-image: radial-gradient(#38bdf8 1px, transparent 1px); background-size: 16px 16px;"></div>
+                
+                <div class="flex flex-col md:flex-row items-start md:items-center gap-6 relative z-10">
+                    <div class="p-4 bg-brand-900/50 border border-brand-500/30 rounded-full text-brand-400 shadow-[0_0_20px_rgba(14,165,233,0.2)] shrink-0">
+                        <span class="material-symbols-outlined text-4xl block">developer_board</span>
+                    </div>
+                    <div>
+                        <h3 class="font-serif text-3xl font-bold text-white mb-2">Embedded Systems & IoT</h3>
+                        <p class="text-sm text-slate-400 max-w-4xl">Extensive experience in hardware troubleshooting, microcontroller programming, and building autonomous sensor-driven systems.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section class="py-24 px-6 md:px-16 lg:px-24 max-w-[1440px] mx-auto border-b border-border dark:border-slate-800 bg-surface-alt dark:bg-slate-900 transition-colors duration-300" id="projects">
-        <div class="flex justify-between items-end mb-16">
+    <section class="py-20 px-6 md:px-8 lg:px-12 max-w-[1600px] mx-auto bg-slate-100/50 dark:bg-slate-900/20 border-y border-slate-200 dark:border-sys-border" id="projects">
+        <div class="mb-10 flex items-center justify-between border-b border-slate-200 dark:border-slate-700/50 pb-4 reveal">
             <h2 class="font-serif text-5xl md:text-6xl font-bold text-slate-900 dark:text-white tracking-tight">Featured Projects</h2>
-            <a href="projects.html" class="hidden md:flex items-center gap-2 font-sans font-bold text-brand-600 dark:text-brand-400 hover:text-brand-800 transition-colors uppercase tracking-widest text-sm">
-                View Projects Archive <span class="material-symbols-outlined">arrow_forward</span>
-            </a>
+            <div class="flex items-center gap-4">
+                <a href="projects.html" class="text-[11px] font-mono font-bold text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 flex items-center gap-1 transition-colors uppercase">
+                    View Archive <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+                </a>
+            </div>
         </div>
             
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-            <div class="bg-white dark:bg-slate-800 border border-border dark:border-slate-700 p-8 rounded-sm shadow-sm hover:shadow-md transition-shadow">
-                <div class="flex items-center gap-3 mb-4">
-                    <span class="material-symbols-outlined text-3xl text-brand-600">search</span>
-                    <h3 class="font-serif text-2xl font-bold text-slate-900 dark:text-white">AI Image Detector</h3>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="relative glass-panel p-6 rounded-lg flex flex-col group border border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors reveal delay-100">
+                <div class="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-brand-500 rounded-tl-lg opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all origin-top-left"></div>
+                <div class="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-brand-500 rounded-br-lg opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all origin-bottom-right"></div>
+                
+                <div class="flex items-start justify-between mb-4">
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                        <span class="material-symbols-outlined text-slate-400 group-hover:text-brand-500 transition-colors">search</span> AI Image Detector
+                    </h3>
+                    <div class="flex gap-2">
+                        <span class="font-mono text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-1 rounded border border-slate-200 dark:border-slate-700 uppercase">Final Year Project</span>
+                    </div>
                 </div>
-                <span class="inline-block px-2 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold uppercase tracking-wider mb-4 rounded border border-border dark:border-slate-600">Final Year Project</span>
-                <p class="font-sans text-slate-600 dark:text-slate-400 leading-relaxed">
+                <p class="text-sm text-slate-600 dark:text-slate-400 mb-6 flex-grow">
                     Developing a CNN-based system capable of detecting AI-generated images by analyzing deep forensic features. Focuses on identifying real vs. fake datasets using natural and generative models.
                 </p>
 
-                <button id="slideLeft" class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-slate-900 dark:bg-slate-800 text-white p-2 md:p-3 rounded-full shadow-lg z-10 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center hover:bg-brand-600 dark:hover:bg-brand-500 cursor-pointer">
-                    <span class="material-symbols-outlined text-xl md:text-2xl">arrow_back_ios_new</span>
-                </button>
-
-                <div id="galleryContainer" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory hide-scroll-bar scroll-smooth">
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[500px] h-[350px] rounded-sm overflow-hidden bg-white dark:bg-slate-800 border border-border dark:border-slate-700 shadow-sm">
-                        <img src="assets/fyp4.png" alt="Event photo 1" class="w-full h-full object-cover" loading="lazy" decoding="async">
+                <div class="gallery-wrapper relative rounded overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50">
+                    <button class="slide-left-btn absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-sys-dark/90 text-slate-800 dark:text-white w-8 h-8 rounded border border-slate-200 dark:border-slate-600 flex items-center justify-center shadow-md z-20 opacity-0 group-hover:opacity-100 transition-all hover:border-brand-500 hover:text-brand-500 cursor-pointer">
+                        <span class="material-symbols-outlined text-sm">arrow_back_ios_new</span>
+                    </button>
+                    <div class="gallery-scroll flex overflow-x-auto gap-3 pb-3 snap-x snap-mandatory hide-scroll-bar scroll-smooth p-3">
+                        <div class="snap-center shrink-0 w-[85vw] md:w-[100%] h-[240px] rounded overflow-hidden border border-slate-200 dark:border-slate-700">
+                            <img src="assets/fyp4.png" alt="Forensic Scan 1" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <div class="snap-center shrink-0 w-[85vw] md:w-[100%] h-[240px] rounded overflow-hidden border border-slate-200 dark:border-slate-700">
+                            <img src="assets/fyp.png" alt="Forensic Scan 2" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <div class="snap-center shrink-0 w-[85vw] md:w-[100%] h-[240px] rounded overflow-hidden border border-slate-200 dark:border-slate-700">
+                            <img src="assets/fyp1.png" alt="Forensic Scan 3" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <div class="snap-center shrink-0 w-[85vw] md:w-[100%] h-[240px] rounded overflow-hidden border border-slate-200 dark:border-slate-700">
+                            <img src="assets/fyp2.png" alt="Forensic Scan 4" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <div class="snap-center shrink-0 w-[85vw] md:w-[100%] h-[240px] rounded overflow-hidden border border-slate-200 dark:border-slate-700">
+                            <img src="assets/fyp3.png" alt="Forensic Scan 5" class="w-full h-full object-cover" loading="lazy">
+                        </div>
                     </div>
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[500px] h-[350px] rounded-sm overflow-hidden bg-white dark:bg-slate-800 border border-border dark:border-slate-700 shadow-sm">
-                        <img src="assets/fyp.png" alt="Event photo 2" class="w-full h-full object-cover" loading="lazy" decoding="async">
-                    </div>
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[500px] h-[350px] rounded-sm overflow-hidden bg-white dark:bg-slate-800 border border-border dark:border-slate-700 shadow-sm">
-                        <img src="assets/fyp1.png" alt="Event photo 3" class="w-full h-full object-cover" loading="lazy" decoding="async">
-                    </div>
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[500px] h-[350px] rounded-sm overflow-hidden bg-white dark:bg-slate-800 border border-border dark:border-slate-700 shadow-sm">
-                        <img src="assets/fyp2.png" alt="Event photo 4" class="w-full h-full object-cover" loading="lazy" decoding="async">
-                    </div>
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[500px] h-[350px] rounded-sm overflow-hidden bg-white dark:bg-slate-800 border border-border dark:border-slate-700 shadow-sm">
-                        <img src="assets/fyp3.png" alt="Event photo 4" class="w-full h-full object-cover" loading="lazy" decoding="async">
-                    </div>
+                    <button class="slide-right-btn absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-sys-dark/90 text-slate-800 dark:text-white w-8 h-8 rounded border border-slate-200 dark:border-slate-600 flex items-center justify-center shadow-md z-20 opacity-0 group-hover:opacity-100 transition-all hover:border-brand-500 hover:text-brand-500 cursor-pointer">
+                        <span class="material-symbols-outlined text-sm">arrow_forward_ios</span>
+                    </button>
                 </div>
-
-                <button id="slideRight" class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-slate-900 dark:bg-slate-800 text-white p-2 md:p-3 rounded-full shadow-lg z-10 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center hover:bg-brand-600 dark:hover:bg-brand-500 cursor-pointer">
-                    <span class="material-symbols-outlined text-xl md:text-2xl">arrow_forward_ios</span>
-                </button>
-
             </div>
 
-            <div class="bg-white dark:bg-slate-800 border border-border dark:border-slate-700 p-8 rounded-sm shadow-sm hover:shadow-md transition-shadow">
-                <div class="flex items-center gap-3 mb-4">
-                    <span class="material-symbols-outlined text-3xl text-brand-600">recycling</span>
-                    <h3 class="font-serif text-2xl font-bold text-slate-900 dark:text-white">SortBuddy</h3>
+            <div class="relative glass-panel p-6 rounded-lg flex flex-col group border border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors reveal delay-200">
+                <div class="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-brand-500 rounded-tl-lg opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all origin-top-left"></div>
+                <div class="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-brand-500 rounded-br-lg opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all origin-bottom-right"></div>
+                
+                <div class="flex items-start justify-between mb-4">
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                        <span class="material-symbols-outlined text-slate-400 group-hover:text-brand-500 transition-colors">recycling</span> SortBuddy
+                    </h3>
+                    <div class="flex gap-2">
+                        <span class="font-mono text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-1 rounded border border-slate-200 dark:border-slate-700 uppercase">AI & Automation</span>
+                    </div>
                 </div>
-                <span class="inline-block px-2 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold uppercase tracking-wider mb-4 rounded border border-border dark:border-slate-600">AI & Automation</span>
-                <p class="font-sans text-slate-600 dark:text-slate-400 leading-relaxed">
+                <p class="text-sm text-slate-600 dark:text-slate-400 mb-6 flex-grow">
                     An autonomous, AI-driven recycle bin designed to automatically sort and classify trash based on its material type using visual recognition.
                 </p>
 
-                <button id="slideLeft" class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-slate-900 dark:bg-slate-800 text-white p-2 md:p-3 rounded-full shadow-lg z-10 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center hover:bg-brand-600 dark:hover:bg-brand-500 cursor-pointer">
-                    <span class="material-symbols-outlined text-xl md:text-2xl">arrow_back_ios_new</span>
-                </button>
-
-                <div id="galleryContainer" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory hide-scroll-bar scroll-smooth">
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[500px] h-[350px] rounded-sm overflow-hidden bg-white dark:bg-slate-800 border border-border dark:border-slate-700 shadow-sm">
-                        <img src="assets/sb.jpg" alt="Event photo 1" class="w-full h-full object-cover" loading="lazy" decoding="async">
+                <div class="gallery-wrapper relative rounded overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50">
+                    <button class="slide-left-btn absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-sys-dark/90 text-slate-800 dark:text-white w-8 h-8 rounded border border-slate-200 dark:border-slate-600 flex items-center justify-center shadow-md z-20 opacity-0 group-hover:opacity-100 transition-all hover:border-brand-500 hover:text-brand-500 cursor-pointer">
+                        <span class="material-symbols-outlined text-sm">arrow_back_ios_new</span>
+                    </button>
+                    <div class="gallery-scroll flex overflow-x-auto gap-3 pb-3 snap-x snap-mandatory hide-scroll-bar scroll-smooth p-3">
+                        <div class="snap-center shrink-0 w-[85vw] md:w-[100%] h-[240px] rounded overflow-hidden border border-slate-200 dark:border-slate-700">
+                            <img src="assets/sb.jpg" alt="SortBuddy Scan 1" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <div class="snap-center shrink-0 w-[85vw] md:w-[100%] h-[240px] rounded overflow-hidden border border-slate-200 dark:border-slate-700">
+                            <img src="assets/sb1.jpg" alt="SortBuddy Scan 2" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <div class="snap-center shrink-0 w-[85vw] md:w-[100%] h-[240px] rounded overflow-hidden border border-slate-200 dark:border-slate-700">
+                            <img src="assets/sb.png" alt="SortBuddy Scan 3" class="w-full h-full object-cover" loading="lazy">
+                        </div>
                     </div>
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[500px] h-[350px] rounded-sm overflow-hidden bg-white dark:bg-slate-800 border border-border dark:border-slate-700 shadow-sm">
-                        <img src="assets/sb1.jpg" alt="Event photo 2" class="w-full h-full object-cover" loading="lazy" decoding="async">
-                    </div>
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[500px] h-[350px] rounded-sm overflow-hidden bg-white dark:bg-slate-800 border border-border dark:border-slate-700 shadow-sm">
-                        <img src="assets/sb.png" alt="Event photo 3" class="w-full h-full object-cover" loading="lazy" decoding="async">
-                    </div>
+                    <button class="slide-right-btn absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-sys-dark/90 text-slate-800 dark:text-white w-8 h-8 rounded border border-slate-200 dark:border-slate-600 flex items-center justify-center shadow-md z-20 opacity-0 group-hover:opacity-100 transition-all hover:border-brand-500 hover:text-brand-500 cursor-pointer">
+                        <span class="material-symbols-outlined text-sm">arrow_forward_ios</span>
+                    </button>
                 </div>
-
-                <button id="slideRight" class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-slate-900 dark:bg-slate-800 text-white p-2 md:p-3 rounded-full shadow-lg z-10 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center hover:bg-brand-600 dark:hover:bg-brand-500 cursor-pointer">
-                    <span class="material-symbols-outlined text-xl md:text-2xl">arrow_forward_ios</span>
-                </button>
-
             </div>
 
-            <div class="bg-white dark:bg-slate-800 border border-border dark:border-slate-700 p-8 rounded-sm shadow-sm hover:shadow-md transition-shadow">
-                <div class="flex items-center gap-3 mb-4">
-                    <span class="material-symbols-outlined text-3xl text-brand-600">child_care</span>
-                    <h3 class="font-serif text-2xl font-bold text-slate-900 dark:text-white">SafetyInfant</h3>
+            <div class="relative glass-panel p-6 rounded-lg flex flex-col group border border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors reveal delay-100">
+                <div class="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-brand-500 rounded-tl-lg opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all origin-top-left"></div>
+                <div class="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-brand-500 rounded-br-lg opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all origin-bottom-right"></div>
+                
+                <div class="flex items-start justify-between mb-4">
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                        <span class="material-symbols-outlined text-slate-400 group-hover:text-brand-500 transition-colors">child_care</span> SafetyInfant
+                    </h3>
+                    <div class="flex gap-2">
+                        <span class="font-mono text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-1 rounded border border-slate-200 dark:border-slate-700 uppercase">IoT System</span>
+                    </div>
                 </div>
-                <span class="inline-block px-2 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold uppercase tracking-wider mb-4 rounded border border-border dark:border-slate-600">IoT System</span>
-                <p class="font-sans text-slate-600 dark:text-slate-400 leading-relaxed">
+                <p class="text-sm text-slate-600 dark:text-slate-400 mb-0 flex-grow">
                     An IoT-based child safety system integrated into infant car seats. Uses TTGO and sensors to detect a baby's presence and automates emergency SMS/voice calls.
                 </p>
             </div>
 
-            <div class="bg-white dark:bg-slate-800 border border-border dark:border-slate-700 p-8 rounded-sm shadow-sm hover:shadow-md transition-shadow">
-                <div class="flex items-center gap-3 mb-4">
-                    <span class="material-symbols-outlined text-3xl text-brand-600">grass</span>
-                    <h3 class="font-serif text-2xl font-bold text-slate-900 dark:text-white">Long Grass Detector</h3>
+            <div class="relative glass-panel p-6 rounded-lg flex flex-col group border border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors reveal delay-200">
+                <div class="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-brand-500 rounded-tl-lg opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all origin-top-left"></div>
+                <div class="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-brand-500 rounded-br-lg opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all origin-bottom-right"></div>
+                
+                <div class="flex items-start justify-between mb-4">
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                        <span class="material-symbols-outlined text-slate-400 group-hover:text-brand-500 transition-colors">grass</span> Long Grass Detector
+                    </h3>
+                    <div class="flex gap-2">
+                        <span class="font-mono text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-1 rounded border border-slate-200 dark:border-slate-700 uppercase">IoT & Dashboard</span>
+                    </div>
                 </div>
-                <span class="inline-block px-2 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold uppercase tracking-wider mb-4 rounded border border-border dark:border-slate-600">IoT & Dashboard</span>
-                <p class="font-sans text-slate-600 dark:text-slate-400 leading-relaxed">
+                <p class="text-sm text-slate-600 dark:text-slate-400 mb-6 flex-grow">
                     An IoT project covering the integration of field sensors with a remote application dashboard (Blynk) to monitor grass height and automate groundskeeping alerts.
                 </p>
-
-                <button id="slideLeft" class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-slate-900 dark:bg-slate-800 text-white p-2 md:p-3 rounded-full shadow-lg z-10 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center hover:bg-brand-600 dark:hover:bg-brand-500 cursor-pointer">
-                    <span class="material-symbols-outlined text-xl md:text-2xl">arrow_back_ios_new</span>
-                </button>
-
-                <div id="galleryContainer" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory hide-scroll-bar scroll-smooth">
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[500px] h-[350px] rounded-sm overflow-hidden bg-white dark:bg-slate-800 border border-border dark:border-slate-700 shadow-sm">
-                        <img src="assets/lgd.png" alt="Event photo 1" class="w-full h-full object-cover" loading="lazy" decoding="async">
+                
+                <div class="gallery-wrapper relative rounded overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50">
+                    <button class="slide-left-btn absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-sys-dark/90 text-slate-800 dark:text-white w-8 h-8 rounded border border-slate-200 dark:border-slate-600 flex items-center justify-center shadow-md z-20 opacity-0 group-hover:opacity-100 transition-all hover:border-brand-500 hover:text-brand-500 cursor-pointer">
+                        <span class="material-symbols-outlined text-sm">arrow_back_ios_new</span>
+                    </button>
+                    <div class="gallery-scroll flex overflow-x-auto gap-3 pb-3 snap-x snap-mandatory hide-scroll-bar scroll-smooth p-3">
+                        <div class="snap-center shrink-0 w-[85vw] md:w-[100%] h-[180px] rounded overflow-hidden border border-slate-200 dark:border-slate-700">
+                            <img src="assets/lgd.png" alt="Hardware Scan 1" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <div class="snap-center shrink-0 w-[85vw] md:w-[100%] h-[180px] rounded overflow-hidden border border-slate-200 dark:border-slate-700">
+                            <img src="assets/ilgd1.png" alt="Hardware Scan 2" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <div class="snap-center shrink-0 w-[85vw] md:w-[100%] h-[180px] rounded overflow-hidden border border-slate-200 dark:border-slate-700">
+                            <img src="assets/ilgd.png" alt="Hardware Scan 3" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <div class="snap-center shrink-0 w-[85vw] md:w-[100%] h-[180px] rounded overflow-hidden border border-slate-200 dark:border-slate-700">
+                            <img src="assets/tlgd.png" alt="Hardware Scan 4" class="w-full h-full object-cover" loading="lazy">
+                        </div>
                     </div>
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[500px] h-[350px] rounded-sm overflow-hidden bg-white dark:bg-slate-800 border border-border dark:border-slate-700 shadow-sm">
-                        <img src="assets/ilgd1.png" alt="Event photo 2" class="w-full h-full object-cover" loading="lazy" decoding="async">
-                    </div>
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[500px] h-[350px] rounded-sm overflow-hidden bg-white dark:bg-slate-800 border border-border dark:border-slate-700 shadow-sm">
-                        <img src="assets/ilgd.png" alt="Event photo 2" class="w-full h-full object-cover" loading="lazy" decoding="async">
-                    </div>
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[500px] h-[350px] rounded-sm overflow-hidden bg-white dark:bg-slate-800 border border-border dark:border-slate-700 shadow-sm">
-                        <img src="assets/tlgd.png" alt="Event photo 2" class="w-full h-full object-cover" loading="lazy" decoding="async">
-                    </div>
+                    <button class="slide-right-btn absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-sys-dark/90 text-slate-800 dark:text-white w-8 h-8 rounded border border-slate-200 dark:border-slate-600 flex items-center justify-center shadow-md z-20 opacity-0 group-hover:opacity-100 transition-all hover:border-brand-500 hover:text-brand-500 cursor-pointer">
+                        <span class="material-symbols-outlined text-sm">arrow_forward_ios</span>
+                    </button>
                 </div>
-
-                <button id="slideRight" class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-slate-900 dark:bg-slate-800 text-white p-2 md:p-3 rounded-full shadow-lg z-10 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center hover:bg-brand-600 dark:hover:bg-brand-500 cursor-pointer">
-                    <span class="material-symbols-outlined text-xl md:text-2xl">arrow_forward_ios</span>
-                </button>
-
             </div>
-        </div>
-
-        <div class="mt-12 text-center md:hidden">
-            <a href="projects.html" class="inline-flex items-center gap-2 font-sans font-bold text-brand-600 dark:text-brand-400 hover:text-brand-800 transition-colors uppercase tracking-widest text-sm">
-                View All Projects <span class="material-symbols-outlined">arrow_forward</span>
-            </a>
         </div>
     </section>
 
-    <section class="py-24 px-6 md:px-16 lg:px-24 max-w-[1440px] mx-auto bg-white dark:bg-slate-900 transition-colors duration-300" id="certs">
-        <h2 class="font-serif text-5xl md:text-6xl font-bold text-slate-900 dark:text-white mb-16 tracking-tight">Awards & Certifications</h2>
+    <section class="py-20 px-6 md:px-8 lg:px-12 max-w-[1600px] mx-auto" id="certs">
+        <div class="mb-10 flex items-center justify-between border-b border-slate-200 dark:border-sys-border pb-4 reveal">
+            <h2 class="font-serif text-5xl md:text-6xl font-bold text-slate-900 dark:text-white tracking-tight">Awards & Certifications</h2>
+        </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            <div class="bg-slate-900 border border-slate-800 p-8 rounded-sm shadow-md flex items-center gap-4">
-                <span class="material-symbols-outlined text-5xl text-brand-400">verified</span>
-                <div>
-                    <h4 class="font-serif text-xl font-bold text-white">CCNA Certified</h4>
-                    <p class="font-sans text-slate-400 text-sm">Switching, Routing, and Wireless Essentials</p>
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-12">
+            <div class="md:col-span-12 lg:col-span-4 bg-slate-900 border border-slate-800 p-6 rounded-lg flex flex-col justify-center relative overflow-hidden group hover:border-brand-500/50 hover:shadow-[0_8px_30px_rgba(14,165,233,0.15)] transition-all duration-500 reveal delay-100">
+                <div class="absolute right-0 top-0 w-40 h-40 bg-brand-500/20 rounded-full blur-[40px] group-hover:bg-brand-500/40 group-hover:scale-110 transition-all duration-500 pointer-events-none"></div>
+                
+                <div class="flex items-center gap-4 relative z-10 mb-2">
+                    <span class="material-symbols-outlined text-4xl text-brand-400">workspace_premium</span>
+                    <div>
+                        <h4 class="font-serif text-xl font-bold text-white">CCNA Certified</h4>
+                        <p class="font-mono text-[11px] font-bold text-slate-200 uppercase tracking-widest mt-1">Networking / Routing / SEC</p>
+                    </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="flex items-start gap-4 p-6 border border-border dark:border-slate-700 rounded-sm bg-surface-alt dark:bg-slate-800 transition-colors">
-                <span class="material-symbols-outlined text-4xl text-yellow-500">military_tech</span>
-                <div>
-                    <h4 class="font-serif text-xl font-bold text-slate-900 dark:text-white mb-1">Gold Medal</h4>
-                    <p class="font-sans font-bold text-brand-600 dark:text-brand-400 text-sm mb-2">Virtual Innovation Competition (VIC) 2025</p>
-                    <p class="font-sans text-slate-600 dark:text-slate-400 text-sm">Video presentation for the SortBuddy project.</p>
+                <div class="relative z-10 w-full bg-slate-800 h-1 mt-4 rounded overflow-hidden">
+                    <div class="bg-brand-500 h-full w-full"></div>
                 </div>
             </div>
 
-            <div class="flex items-start gap-4 p-6 border border-border dark:border-slate-700 rounded-sm bg-surface-alt dark:bg-slate-800 transition-colors">
-                <span class="material-symbols-outlined text-4xl text-amber-700">military_tech</span>
-                <div>
-                    <h4 class="font-serif text-xl font-bold text-slate-900 dark:text-white mb-1">Bronze Medal</h4>
-                    <p class="font-sans font-bold text-brand-600 dark:text-brand-400 text-sm mb-2">Minggu Penyelidikan dan Inovasi (MPI) 2024 & 2025</p>
-                    <p class="font-sans text-slate-600 dark:text-slate-400 text-sm">Showcased SafetyInfant (2024) and SortBuddy (2025) to industry experts.</p>
-                </div>
-            </div>
-
-            <div class="flex items-start gap-4 p-6 border border-border dark:border-slate-700 rounded-sm bg-surface-alt dark:bg-slate-800 transition-colors">
-                <span class="material-symbols-outlined text-4xl text-slate-400">emoji_events</span>
-                <div>
-                    <h4 class="font-serif text-xl font-bold text-slate-900 dark:text-white mb-1">3rd Place</h4>
-                    <p class="font-sans font-bold text-brand-600 dark:text-brand-400 text-sm mb-2">Capture The Flag (CTF) UniSZA - UMT 2024</p>
-                    <p class="font-sans text-slate-600 dark:text-slate-400 text-sm">Performed analysis using Wireshark and Autopsy to find flags.</p>
-                </div>
-            </div>
-
-            <div class="flex items-start gap-4 p-6 border border-border dark:border-slate-700 rounded-sm bg-surface-alt dark:bg-slate-800 transition-colors">
-                <span class="material-symbols-outlined text-4xl text-slate-400">emoji_events</span>
-                <div>
-                    <h4 class="font-serif text-xl font-bold text-slate-900 dark:text-white mb-1">Semi Finalist</h4>
-                    <p class="font-sans font-bold text-brand-600 dark:text-brand-400 text-sm mb-2">MRANTI Robothon 2025</p>
-                    <p class="font-sans text-slate-600 dark:text-slate-400 text-sm">Innovated and showcased the SortBuddy AI trash classification project.</p>
-                </div>
-            </div>
-        </div>
-
-    <div class="mt-20 border-t border-border dark:border-slate-800 pt-16">
-            <h3 class="font-serif text-3xl font-bold text-slate-900 dark:text-white mb-8">Event Gallery</h3>
-            
-            <div class="relative group">
-                <button id="slideLeft" class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-slate-900 dark:bg-slate-800 text-white p-2 md:p-3 rounded-full shadow-lg z-10 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center hover:bg-brand-600 dark:hover:bg-brand-500 cursor-pointer">
-                    <span class="material-symbols-outlined text-xl md:text-2xl">arrow_back_ios_new</span>
-                </button>
-
-                <div id="galleryContainer" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory hide-scroll-bar scroll-smooth">
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[500px] h-[350px] rounded-sm overflow-hidden bg-white dark:bg-slate-800 border border-border dark:border-slate-700 shadow-sm">
-                        <img src="assets/gallery1.jpg" alt="Event photo 1" class="w-full h-full object-cover" loading="lazy" decoding="async">
+            <div class="md:col-span-12 lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                
+                <div class="relative glass-panel p-4 rounded-xl flex items-center gap-4 group hover:border-amber-500/50 hover:shadow-[0_8px_30px_rgba(245,158,11,0.1)] transition-all duration-500 overflow-hidden border border-slate-200/60 dark:border-slate-700/60 bg-gradient-to-b from-white/60 to-white/30 dark:from-slate-800/60 dark:to-slate-900/30 reveal delay-100">
+                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-amber-500/10 dark:bg-amber-500/20 rounded-full blur-3xl group-hover:bg-amber-500/20 group-hover:scale-110 transition-all duration-500 pointer-events-none"></div>
+                    <div class="relative z-10 w-10 h-10 rounded bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/30 flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined text-amber-500">military_tech</span>
                     </div>
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[500px] h-[350px] rounded-sm overflow-hidden bg-white dark:bg-slate-800 border border-border dark:border-slate-700 shadow-sm">
-                        <img src="assets/gallery2.jpg" alt="Event photo 2" class="w-full h-full object-cover" loading="lazy" decoding="async">
-                    </div>
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[500px] h-[350px] rounded-sm overflow-hidden bg-white dark:bg-slate-800 border border-border dark:border-slate-700 shadow-sm">
-                        <img src="assets/gallery3.jpg" alt="Event photo 3" class="w-full h-full object-cover" loading="lazy" decoding="async">
-                    </div>
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[500px] h-[350px] rounded-sm overflow-hidden bg-white dark:bg-slate-800 border border-border dark:border-slate-700 shadow-sm">
-                        <img src="assets/gallery4.jpg" alt="Event photo 4" class="w-full h-full object-cover" loading="lazy" decoding="async">
-                    </div>
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[500px] h-[350px] rounded-sm overflow-hidden bg-white dark:bg-slate-800 border border-border dark:border-slate-700 shadow-sm">
-                        <img src="assets/gallery5.jpg" alt="Event photo 5" class="w-full h-full object-cover" loading="lazy" decoding="async">
-                    </div>
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[500px] h-[350px] rounded-sm overflow-hidden bg-white dark:bg-slate-800 border border-border dark:border-slate-700 shadow-sm">
-                        <img src="assets/gallery6.jpg" alt="Event photo 6" class="w-full h-full object-cover" loading="lazy" decoding="async">
-                    </div>
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[500px] h-[350px] rounded-sm overflow-hidden bg-white dark:bg-slate-800 border border-border dark:border-slate-700 shadow-sm">
-                        <img src="assets/gallery7.jpg" alt="Event photo 7" class="w-full h-full object-cover" loading="lazy" decoding="async">
-                    </div>
-                    <div class="snap-center shrink-0 w-[85vw] md:w-[500px] h-[350px] rounded-sm overflow-hidden bg-white dark:bg-slate-800 border border-border dark:border-slate-700 shadow-sm">
-                        <img src="assets/gallery8.jpg" alt="Event photo 8" class="w-full h-full object-cover" loading="lazy" decoding="async">
+                    <div class="relative z-10">
+                        <h4 class="text-sm font-bold text-slate-900 dark:text-white mb-0.5">Gold Medal - VIC 2025</h4>
+                        <p class="text-xs text-slate-600 dark:text-slate-400">Video presentation for the SortBuddy project.</p>
                     </div>
                 </div>
 
-                <button id="slideRight" class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-slate-900 dark:bg-slate-800 text-white p-2 md:p-3 rounded-full shadow-lg z-10 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center hover:bg-brand-600 dark:hover:bg-brand-500 cursor-pointer">
-                    <span class="material-symbols-outlined text-xl md:text-2xl">arrow_forward_ios</span>
-                </button>
+                <div class="relative glass-panel p-4 rounded-xl flex items-center gap-4 group hover:border-orange-500/50 hover:shadow-[0_8px_30px_rgba(249,115,22,0.1)] transition-all duration-500 overflow-hidden border border-slate-200/60 dark:border-slate-700/60 bg-gradient-to-b from-white/60 to-white/30 dark:from-slate-800/60 dark:to-slate-900/30 reveal delay-200">
+                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-orange-500/10 dark:bg-orange-500/20 rounded-full blur-3xl group-hover:bg-orange-500/20 group-hover:scale-110 transition-all duration-500 pointer-events-none"></div>
+                    <div class="relative z-10 w-10 h-10 rounded bg-orange-50 dark:bg-orange-500/10 border border-orange-200 dark:border-orange-500/30 flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined text-orange-500">military_tech</span>
+                    </div>
+                    <div class="relative z-10">
+                        <h4 class="text-sm font-bold text-slate-900 dark:text-white mb-0.5">Bronze Medal - MPI 2024 & 2025</h4>
+                        <p class="text-xs text-slate-600 dark:text-slate-400">Showcased SafetyInfant and SortBuddy to industry experts.</p>
+                    </div>
+                </div>
+
+                <div class="relative glass-panel p-4 rounded-xl flex items-center gap-4 group hover:border-slate-400/50 hover:shadow-[0_8px_30px_rgba(148,163,184,0.1)] transition-all duration-500 overflow-hidden border border-slate-200/60 dark:border-slate-700/60 bg-gradient-to-b from-white/60 to-white/30 dark:from-slate-800/60 dark:to-slate-900/30 reveal delay-300">
+                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-slate-400/10 dark:bg-slate-400/20 rounded-full blur-3xl group-hover:bg-slate-400/20 group-hover:scale-110 transition-all duration-500 pointer-events-none"></div>
+                    <div class="relative z-10 w-10 h-10 rounded bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined text-slate-500 dark:text-slate-300">emoji_events</span>
+                    </div>
+                    <div class="relative z-10">
+                        <h4 class="text-sm font-bold text-slate-900 dark:text-white mb-0.5">3rd Place - CTF UniSZA - UMT 2024</h4>
+                        <p class="text-xs text-slate-600 dark:text-slate-400">Performed analysis using Wireshark and Autopsy to find flags.</p>
+                    </div>
+                </div>
+
+                <div class="relative glass-panel p-4 rounded-xl flex items-center gap-4 group hover:border-slate-400/50 hover:shadow-[0_8px_30px_rgba(148,163,184,0.1)] transition-all duration-500 overflow-hidden border border-slate-200/60 dark:border-slate-700/60 bg-gradient-to-b from-white/60 to-white/30 dark:from-slate-800/60 dark:to-slate-900/30 reveal delay-400">
+                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-slate-400/10 dark:bg-slate-400/20 rounded-full blur-3xl group-hover:bg-slate-400/20 group-hover:scale-110 transition-all duration-500 pointer-events-none"></div>
+                    <div class="relative z-10 w-10 h-10 rounded bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined text-slate-500 dark:text-slate-300">emoji_events</span>
+                    </div>
+                    <div class="relative z-10">
+                        <h4 class="text-sm font-bold text-slate-900 dark:text-white mb-0.5">Semi Finalist - MRANTI Robothon 2025</h4>
+                        <p class="text-xs text-slate-600 dark:text-slate-400">Innovated and showcased the SortBuddy AI trash classification project.</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -384,5 +578,49 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. SCROLL REVEAL ANIMATION OBSERVER
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -50px 0px',
+                threshold: 0.15
+            };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); // Only animate once
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+            // 2. PROJECT GALLERY SLIDERS
+            const galleryWrappers = document.querySelectorAll('.gallery-wrapper');
+            galleryWrappers.forEach(wrapper => {
+                const scrollContainer = wrapper.querySelector('.gallery-scroll');
+                const leftBtn = wrapper.querySelector('.slide-left-btn');
+                const rightBtn = wrapper.querySelector('.slide-right-btn');
+                
+                const scrollAmount = 350; 
+
+                if(leftBtn && rightBtn && scrollContainer) {
+                    leftBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        scrollContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                    });
+
+                    rightBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        scrollContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>

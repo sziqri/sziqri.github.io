@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Blog - Shaifol Ziqri</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com" rel="preconnect"/>
-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Newsreader:opsz,wght@6..72,400;6..72,700;6..72,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,700;6..72,800&display=swap" rel="stylesheet"/>
     
     <script id="tailwind-config">
         tailwind.config = {
@@ -16,79 +16,155 @@
             theme: {
                 extend: {
                     colors: {
-                        brand: { 50: '#eff6ff', 100: '#dbeafe', 600: '#2563eb', 700: '#1d4ed8', 900: '#1e3a8a' },
-                        surface: '#ffffff', 'surface-alt': '#f8fafc', border: '#e2e8f0',
+                        brand: { 50: '#eff6ff', 100: '#dbeafe', 400: '#38bdf8', 500: '#0ea5e9', 600: '#0284c7', 900: '#0c4a6e' },
+                        sys: { dark: '#0B1120', panel: '#1E293B', border: '#334155' }
                     },
-                    fontFamily: { serif: ["Newsreader", "serif"], sans: ["Space Grotesk", "sans-serif"], mono: ["JetBrains Mono", "monospace"] }
+                    fontFamily: {
+                        serif: ["Newsreader", "serif"],
+                        sans: ["Plus Jakarta Sans", "sans-serif"],
+                        mono: ["JetBrains Mono", "monospace"],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
                 }
             }
         }
     </script>
-    <link rel="stylesheet" href="style.css"/>
-</head>
-<body class="font-sans overflow-x-hidden bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-300">
+    <style>
+        body { 
+            background-color: #f8fafc; 
+            -webkit-font-smoothing: antialiased;
+        }
+        .dark body { 
+            background-color: #0B1120; 
+        }
+        
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(14, 165, 233, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(14, 165, 233, 0.05) 1px, transparent 1px);
+            mask-image: linear-gradient(to bottom, transparent, black, transparent);
+            -webkit-mask-image: linear-gradient(to bottom, transparent 5%, black 40%, black 60%, transparent 95%);
+        }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .dark .glass-panel {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
 
-    <nav class="fixed top-0 left-0 w-full z-50 px-6 md:px-12 py-5 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-border dark:border-slate-800 shadow-sm transition-colors duration-300">
-        <div class="flex justify-between items-center">
+        /* Scroll Reveal Animation Styles */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+    </style>
+</head>
+
+<body class="font-sans overflow-x-hidden text-slate-800 dark:text-slate-200 transition-colors duration-300">
+    
+    <div class="fixed inset-0 z-[-1] pointer-events-none bg-grid-pattern"></div>
+    <div class="fixed top-[10%] left-[-10%] w-[600px] h-[600px] bg-brand-500/10 dark:bg-brand-500/20 blur-[100px] rounded-full z-[-1] pointer-events-none"></div>
+
+    <!-- System Topbar -->
+    <nav class="fixed top-0 left-0 w-full z-50 glass-panel border-b border-slate-200/80 dark:border-sys-border/80 shadow-sm">
+        <div class="flex justify-between items-center px-6 md:px-8 py-3 max-w-[1600px] mx-auto">
             
             <a href="index.html" class="text-xl md:text-2xl font-serif font-black tracking-tight text-slate-900 dark:text-white uppercase">
                 SHAIFOL ZIQRI
             </a>
 
-            <ul class="hidden xl:flex gap-4 items-center">
-                <li><a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-3 rounded transition-all duration-200 hover:text-brand-400 dark:hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="index.html">Home</a></li>
-                <li><a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-2 rounded transition-all duration-200 hover:text-brand-400 dark:hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="about.html">About Me</a></li>
-                <li><a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-2 rounded transition-all duration-200 hover:text-brand-400 dark:hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="ep.html">Future</a></li>
-                <li><a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-2 rounded transition-all duration-200 hover:text-brand-400 dark:hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="projects.html">Projects</a></li>
-                <li><a class="text-brand-700 dark:text-brand-400 font-bold font-sans px-4 py-2 rounded bg-brand-50 dark:bg-brand-900/30 border-b-2 border-brand-600 transition-all duration-200" href="blog.html">Blog</a></li>
-                <li><a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-2 rounded transition-all duration-200 hover:text-brand-400 dark:hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="contact.html">Contact</a></li>
+            <ul class="hidden xl:flex gap-1 items-center bg-slate-100 dark:bg-sys-panel p-1 rounded-md border border-slate-200 dark:border-sys-border">
+                <li><a class="text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white px-4 py-1.5 rounded transition-all" href="index.html">Home</a></li>
+                <li><a class="text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white px-4 py-1.5 rounded transition-all" href="about.html">About Me</a></li>
+                <li><a class="text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white px-4 py-1.5 rounded transition-all" href="ep.html">Future</a></li>
+                <li><a class="text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white px-4 py-1.5 rounded transition-all" href="projects.html">Projects</a></li>
+                <!-- Highlighted Active Link -->
+                <li><a class="text-xs font-semibold text-brand-600 dark:text-brand-400 bg-white dark:bg-slate-800 px-4 py-1.5 rounded shadow-sm block transition-all" href="blog.html">Blog</a></li>
+                <li><a class="text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white px-4 py-1.5 rounded transition-all" href="contact.html">Contact</a></li>
             </ul>
 
-            <div class="flex items-center gap-2 md:gap-4">
-                <button id="themeToggleBtn" class="text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400 focus:outline-none flex items-center justify-center p-2 transition-colors">
-                    <span class="material-symbols-outlined text-2xl md:text-3xl" id="themeIcon">dark_mode</span>
+            <div class="flex items-center gap-3">
+                <button id="themeToggleBtn" class="text-slate-500 hover:text-brand-500 dark:text-slate-400 dark:hover:text-brand-400 p-1.5 rounded border border-transparent hover:border-slate-200 dark:hover:border-sys-border transition-all flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[20px]" id="themeIcon">dark_mode</span>
                 </button>
 
-                <a href="CV_SHAIFOL.pdf" download class="hidden sm:flex font-sans text-sm font-bold uppercase tracking-widest bg-slate-900 dark:bg-brand-600 text-white px-5 py-3 rounded hover:bg-brand-600 dark:hover:bg-brand-500 transition-colors items-center gap-2">
-                    <span class="material-symbols-outlined text-[18px]">download</span>
-                    Resume
+                <a href="CV_SHAIFOL.pdf" download class="hidden sm:flex items-center gap-2 text-xs font-bold text-white bg-slate-900 dark:bg-brand-600 hover:bg-slate-800 dark:hover:bg-brand-500 px-4 py-2 rounded transition-all shadow-sm">
+                    <span class="material-symbols-outlined text-[16px]">cloud_download</span> Resume
                 </a>
 
-                <button id="mobileMenuBtn" class="xl:hidden text-slate-900 dark:text-white hover:text-brand-600 focus:outline-none flex items-center justify-center p-2">
-                    <span class="material-symbols-outlined text-3xl">menu</span>
+                <button id="mobileMenuBtn" class="xl:hidden text-slate-500 hover:text-brand-500 dark:text-slate-400 p-1.5">
+                    <span class="material-symbols-outlined text-[24px]">menu_open</span>
                 </button>
             </div>
         </div>
 
-        <div id="mobileMenu" class="hidden xl:hidden flex-col gap-2 mt-6 pb-4 border-t border-border dark:border-slate-800 pt-4">
-            <a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-3 rounded transition-all duration-200 hover:text-brand-400 dark:hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="index.html">Home</a>
-            <a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-3 rounded transition-all duration-200 hover:text-brand-400 dark:hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="about.html">About Me</a>
-            <a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-3 rounded transition-all duration-200 hover:text-brand-400 dark:hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="ep.html">Future</a>
-            <a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-3 rounded transition-all duration-200 hover:text-brand-400 dark:hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="projects.html">Projects</a>
-            <a class="text-brand-700 dark:text-brand-400 font-bold font-sans px-4 py-3 rounded bg-brand-50 dark:bg-brand-900/30 border-l-4 border-brand-600 transition-all duration-200" href="blog.html">Blog</a>
-            <a class="text-slate-600 dark:text-slate-300 font-medium font-sans px-4 py-3 rounded transition-all duration-200 hover:text-brand-400 dark:hover:text-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800" href="contact.html">Contact</a>
-            
-            <a href="CV_SHAIFOL.pdf" download class="sm:hidden font-sans text-sm font-bold uppercase tracking-widest bg-slate-900 text-white px-5 py-3 mt-4 rounded hover:bg-brand-600 transition-colors flex items-center justify-center gap-2">
-                <span class="material-symbols-outlined text-[18px]">download</span> Resume
-            </a>
+        <div id="mobileMenu" class="hidden xl:hidden flex-col gap-1 px-6 pb-4 border-t border-slate-200 dark:border-sys-border pt-2 bg-white/95 dark:bg-sys-dark/95 backdrop-blur-md">
+            <a class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 px-4 py-2.5 rounded transition-all" href="index.html">Home</a>
+            <a class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 px-4 py-2.5 rounded transition-all" href="about.html">About Me</a>
+            <a class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 px-4 py-2.5 rounded transition-all" href="ep.html">Future</a>
+            <a class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 px-4 py-2.5 rounded transition-all" href="projects.html">Projects</a>
+            <a class="text-sm font-semibold text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-slate-800 px-4 py-2.5 rounded transition-all" href="blog.html">Blog</a>
+            <a class="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 px-4 py-2.5 rounded transition-all" href="contact.html">Contact</a>
         </div>
     </nav>
 
-    <section class="pt-32 pb-24 px-6 md:px-16 lg:px-24 max-w-[1440px] mx-auto min-h-screen">
-        <h1 class="font-serif text-5xl md:text-6xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight">Blog & Articles</h1>
-        <p class="font-sans text-xl text-slate-600 dark:text-slate-400 mb-16 max-w-2xl leading-relaxed">Thoughts, tutorials, or random stuff that I loved to share.</p>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Post 1 -->
-            <article class="bg-white dark:bg-slate-800 border border-border dark:border-slate-700 p-8 rounded-sm shadow-sm hover:shadow-md transition-all flex flex-col group cursor-pointer">
-                <span class="font-mono text-xs font-bold text-brand-600 dark:text-brand-400 mb-4 uppercase tracking-widest post-date">13 May 2026</span>
-                <h2 class="font-serif text-2xl font-bold text-slate-900 dark:text-white mb-4 group-hover:text-brand-600 transition-colors post-title">Analyzing Forensic Features in AI Images</h2>
-                <p class="font-sans text-slate-600 dark:text-slate-400 mb-6 flex-grow leading-relaxed">A deep dive into how CNN models can utilize Error Level Analysis (ELA) and Fast Fourier Transform (FFT) to distinguish between real and AI-generated media.</p>
+    <!-- Logs Header -->
+    <section class="pt-32 pb-16 px-6 md:px-8 lg:px-12 max-w-[1600px] mx-auto border-b border-slate-200 dark:border-sys-border" id="hero">
+        <div class="reveal">
+            <div class="inline-flex items-center gap-2 px-3 py-1 bg-brand-50 dark:bg-brand-500/10 border border-brand-200 dark:border-brand-500/30 rounded text-brand-700 dark:text-brand-400 font-mono text-[11px] uppercase tracking-widest w-fit mb-6 shadow-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-500 animate-pulse"></span>
+                Intel Feed / Logs
+            </div>
             
-                <button type="button" class="read-post-btn font-sans font-bold text-sm text-slate-900 dark:text-white uppercase tracking-widest flex items-center gap-1 group-hover:gap-2 transition-all mt-auto self-start outline-none">
-                    Read Post <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4 leading-[1.1] uppercase">
+                Blog & Articles.
+            </h1>
+            
+            <p class="font-mono text-base md:text-lg text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed">
+                > Thoughts, tutorials, or random stuff that I loved to share.
+            </p>
+        </div>
+    </section>
+
+    <!-- Blog Grid -->
+    <section class="py-16 px-6 md:px-8 lg:px-12 max-w-[1600px] mx-auto min-h-[60vh]">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Post 1: HUD Bracket Style -->
+            <article class="relative glass-panel p-8 rounded-xl flex flex-col group border border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors reveal cursor-pointer">
+                <!-- HUD Brackets -->
+                <div class="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-brand-500 rounded-tl-xl opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all origin-top-left"></div>
+                <div class="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-brand-500 rounded-br-xl opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all origin-bottom-right"></div>
+                
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="material-symbols-outlined text-[14px] text-brand-500">schedule</span>
+                    <span class="font-mono text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest post-date">13 May 2026</span>
+                </div>
+                
+                <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 group-hover:text-brand-500 transition-colors post-title leading-tight">Analyzing Forensic Features in AI Images</h2>
+                
+                <p class="text-sm text-slate-600 dark:text-slate-400 mb-8 flex-grow leading-relaxed">
+                    A deep dive into how CNN models can utilize Error Level Analysis (ELA) and Fast Fourier Transform (FFT) to distinguish between real and AI-generated media.
+                </p>
+            
+                <button type="button" class="read-post-btn font-mono text-xs font-bold text-brand-600 dark:text-brand-400 uppercase tracking-widest flex items-center gap-1 group-hover:gap-2 transition-all mt-auto self-start outline-none">
+                    Read More <span class="material-symbols-outlined text-[16px]">open_in_new</span>
                 </button>
 
+                <!-- Hidden Content for Modal -->
                 <div class="hidden full-content">
                     <p class="mb-6">
                         When I was trying to figure out a title for my Final Year Project (FYP), I was totally stuck.
@@ -98,7 +174,7 @@
                 
                     <p class="mb-6">
                         That got me curious, so I started digging through Google Scholar to see how researchers are actually detecting AI content. 
-                        I found a <a href="https://www.ijtsrd.com/papers/ijtsrd69453.pdf" target="_blank" rel="noopener noreferrer" class="text-brand-600 dark:text-brand-400 font-bold border-b border-brand-200 dark:border-brand-800 hover:text-brand-800 dark:hover:text-brand-300 hover:border-brand-600 dark:hover:border-brand-400 transition-colors">really interesting paper</a> that suggested using multiple forensic features at the same time. 
+                        I found a <a href="https://www.ijtsrd.com/papers/ijtsrd69453.pdf" target="_blank" rel="noopener noreferrer" class="text-brand-500 font-bold border-b border-brand-500/30 hover:border-brand-500 transition-colors">really interesting paper</a> that suggested using multiple forensic features at the same time. 
                         While there are already methods out there using things like Error Level Analysis (ELA) or Photo Response Non-Uniformity (PRNU), a lot of them share the same issue: they struggle with <strong class="dark:text-white">"cross-generation."</strong> 
                         Basically, a model might be great at catching Midjourney images but completely fail when tested on Stable Diffusion.
                     </p>
@@ -107,7 +183,7 @@
                         To build a more robust system for my FYP, I decided to focus on this gap. 
                         At first, I wanted to train a system using tons of different generative models. 
                         But to keep the project realistic for my timeframe, I decided to scale it down. 
-                        I chose to replicate an <a href="https://acspub.id/index.php/ailm/article/view/4" target="_blank" rel="noopener noreferrer" class="text-brand-600 dark:text-brand-400 font-bold border-b border-brand-200 dark:border-brand-800 hover:text-brand-800 dark:hover:text-brand-300 hover:border-brand-600 dark:hover:border-brand-400 transition-colors">existing baseline study</a> so I could directly compare my results with theirs.
+                        I chose to replicate an <a href="https://acspub.id/index.php/ailm/article/view/4" target="_blank" rel="noopener noreferrer" class="text-brand-500 font-bold border-b border-brand-500/30 hover:border-brand-500 transition-colors">existing baseline study</a> so I could directly compare my results with theirs.
                     </p>
                 
                     <p class="mb-8">
@@ -115,13 +191,13 @@
                         I chose PyTorch simply because it made it way easier for me to modify the very first layer of the CNN model to accept my custom forensic features.
                     </p>
                 
-                    <div class="bg-slate-50 dark:bg-slate-900/50 border-l-4 border-brand-600 dark:border-brand-500 p-6 rounded-r-sm mb-6">
-                        <h3 class="font-serif text-2xl font-bold text-slate-900 dark:text-white mb-4">The Forensic Features Setup</h3>
-                        <p class="mb-4">Speaking of forensic features, here is a quick breakdown of what I actually used to catch the AI:</p>
+                    <div class="bg-slate-100 dark:bg-sys-panel border border-slate-200 dark:border-sys-border border-l-4 border-l-brand-500 p-6 rounded mb-6">
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4">The Forensic Features Setup</h3>
+                        <p class="mb-4 text-sm">Speaking of forensic features, here is a quick breakdown of what I actually used to catch the AI:</p>
                         
-                        <ul class="space-y-4">
+                        <ul class="space-y-4 text-sm">
                             <li class="flex items-start gap-3">
-                                <span class="material-symbols-outlined text-brand-600 dark:text-brand-400 mt-1">troubleshoot</span>
+                                <span class="material-symbols-outlined text-brand-500 mt-1">troubleshoot</span>
                                 <div>
                                     <strong class="text-slate-900 dark:text-white block mb-1">Fast Fourier Transform (FFT):</strong>
                                     This helps me see the high-frequency artifacts in an image. 
@@ -130,7 +206,7 @@
                             </li>
                             
                             <li class="flex items-start gap-3">
-                                <span class="material-symbols-outlined text-brand-600 dark:text-brand-400 mt-1">compress</span>
+                                <span class="material-symbols-outlined text-brand-500 mt-1">compress</span>
                                 <div>
                                     <strong class="text-slate-900 dark:text-white block mb-1">Error Level Analysis (ELA):</strong>
                                     This feature highlights compression differences. 
@@ -140,7 +216,7 @@
                             </li>
                 
                             <li class="flex items-start gap-3">
-                                <span class="material-symbols-outlined text-brand-600 dark:text-brand-400 mt-1">blur_on</span>
+                                <span class="material-symbols-outlined text-brand-500 mt-1">blur_on</span>
                                 <div>
                                     <strong class="text-slate-900 dark:text-white block mb-1">Laplace High-Pass Filtering:</strong>
                                     I also added this filter to help the model learn the noise residuals. 
@@ -149,68 +225,83 @@
                             </li>
                         </ul>
                     </div>
-                    <p class="mb-6">
+                    <p class="mb-6 italic text-sm">
                         You are free to check my project setup in Project section!
                     </p>
                 </div>
             </article>
 
-
         </div>
     </section>
 
+    <!-- Original Footer Restored -->
     <footer class="w-full px-8 py-16 flex flex-col justify-center items-center gap-6 mt-12 bg-slate-900 border-t border-slate-800">
         <h2 class="font-serif text-2xl font-bold text-white tracking-widest uppercase">Shaifol Ziqri</h2>
-
+        
         <div class="flex flex-wrap justify-center gap-4 mb-4">
-
             <a href="https://wa.me/60176334491" target="_blank" class="flex items-center gap-2 font-mono text-sm text-slate-300 border px-4 py-2 border-slate-700 rounded shadow-sm hover:bg-green-600 hover:text-white hover:border-green-600 transition-colors cursor-pointer group">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51h-.573c-.199 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                </svg>
-                WhatsApp
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51h-.573c-.199 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg> WhatsApp
             </a>
-
             <a href="mailto:sziqri10@gmail.com" class="flex items-center gap-2 font-mono text-sm text-slate-300 border px-4 py-2 border-slate-700 rounded shadow-sm hover:bg-brand-600 hover:text-white hover:border-brand-600 transition-colors cursor-pointer group">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                </svg>
-                sziqri10@gmail.com
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> sziqri10@gmail.com
             </a>
-            
             <a href="https://www.linkedin.com/in/shaifol-ziqri-b571b6233/" target="_blank" class="flex items-center gap-2 font-mono text-sm text-slate-300 border px-4 py-2 border-slate-700 rounded shadow-sm hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-colors cursor-pointer group">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
-                LinkedIn
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> LinkedIn
             </a>
-            
-            <span class="flex items-center gap-2 font-mono text-sm text-slate-400 border px-4 py-2 border-slate-800 rounded shadow-sm cursor-default">
-                <span class="material-symbols-outlined text-[18px]">location_on</span>
-                Banting, Selangor
-            </span>
-
         </div>
-
         <div class="font-mono text-xs uppercase tracking-widest text-slate-500">© 2026 SHAIFOL ZIQRI. ALL RIGHTS RESERVED.</div>
     </footer>
 
-    <div id="articleModal" class="fixed inset-0 z-[100] hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 opacity-0 transition-opacity duration-300">
-        <div class="bg-white dark:bg-slate-900 border border-transparent dark:border-slate-800 w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-sm shadow-2xl relative transform scale-95 transition-transform duration-300" id="modalBox">
+    <!-- Modern Reading Overlay Modal -->
+    <div id="articleModal" class="fixed inset-0 z-[100] hidden bg-slate-900/60 dark:bg-[#0B1120]/80 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 opacity-0 transition-opacity duration-300">
         
-            <button id="closeModalBtn" class="absolute top-6 right-6 text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 focus:outline-none transition-colors">
-                <span class="material-symbols-outlined text-3xl">close</span>
-            </button>
+        <div class="bg-white dark:bg-sys-dark border border-slate-200 dark:border-sys-border w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-xl shadow-2xl relative transform scale-95 transition-transform duration-300 flex flex-col" id="modalBox">
             
-            <div class="p-8 md:p-12">
-                <span id="modalDate" class="font-mono text-xs font-bold text-brand-600 dark:text-brand-400 mb-4 block uppercase tracking-widest"></span>
-                <h2 id="modalTitle" class="font-serif text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-8 leading-tight"></h2>
-                <div id="modalBody" class="font-sans text-base text-slate-600 dark:text-slate-400 leading-relaxed space-y-6">
+            <!-- Terminal/Modal Header -->
+            <div class="sticky top-0 bg-white/95 dark:bg-sys-dark/95 backdrop-blur-md border-b border-slate-200 dark:border-sys-border px-6 md:px-10 py-4 flex justify-between items-center z-10">
+                <div class="flex items-center gap-3">
+                    <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                    <span class="font-mono text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">System Log Reading</span>
+                </div>
+                <button id="closeModalBtn" class="text-slate-400 hover:text-brand-500 transition-colors flex items-center justify-center p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">
+                    <span class="material-symbols-outlined text-2xl">close</span>
+                </button>
+            </div>
+            
+            <!-- Modal Content -->
+            <div class="p-6 md:p-10 flex-grow">
+                <span id="modalDate" class="font-mono text-[10px] bg-slate-100 dark:bg-sys-panel text-slate-600 dark:text-slate-400 px-2 py-1 rounded border border-slate-200 dark:border-sys-border uppercase tracking-widest mb-6 inline-block"></span>
+                <h2 id="modalTitle" class="font-bold text-3xl md:text-5xl text-slate-900 dark:text-white mb-8 leading-tight tracking-tight"></h2>
+                
+                <div id="modalBody" class="font-sans text-base text-slate-700 dark:text-slate-300 leading-relaxed space-y-6">
+                    <!-- Javascript injects HTML here -->
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- EXTERNAL SCRIPT -->
     <script src="script.js"></script>
+
+    <!-- INLINE SCRIPTS (Scroll Reveal) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -50px 0px',
+                threshold: 0.15
+            };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        });
+    </script>
 </body>
 </html>
