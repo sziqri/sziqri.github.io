@@ -1,0 +1,17 @@
+{
+  "posts": [
+    {
+      "slug": "analysing-forensic-features",
+      "title": "Analysing Forensic Features in AI Images",
+      "date": "2026-05-13",
+      "summary": "How a CNN model can use Error Level Analysis (ELA) and Fast Fourier Transform (FFT) to tell real photos apart from AI-generated ones.",
+      "tags": [
+        "FYP",
+        "Forensics",
+        "AI"
+      ],
+      "file": "2026-05-13-analysing-forensic-features.md",
+      "reading_time": 2
+    }
+  ]
+}
