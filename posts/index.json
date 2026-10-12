@@ -15,18 +15,18 @@
       "cover": "assets/blog/nadi-ctf-2026/s1-data-after-iend.webp"
     },
     {
-      "slug": "nadi-ctf-best-of-luck",
-      "title": "NADI CTF 2026: Best of Luck (Steganography)",
+      "slug": "nadi-ctf-muse-in-disguise",
+      "title": "NADI CTF 2026: Muse in Disguise (Steganography)",
       "date": "2026-10-12",
-      "summary": "A PNG with 80 extra bytes hidden after the end of the image. Reverse them, decode Ascii85, then Base32, and the flag comes out.",
+      "summary": "A .jar file that was really a WAV audio file, with Base64 text drawn into its spectrogram. Decode it three times to get the flag.",
       "tags": [
         "CTF",
         "Writeup",
         "Stego"
       ],
-      "file": "2026-10-12-nadi-ctf-best-of-luck.md",
-      "reading_time": 3,
-      "cover": "assets/blog/nadi-ctf-2026/s1-data-after-iend.webp"
+      "file": "2026-10-12-nadi-ctf-muse-in-disguise.md",
+      "reading_time": 2,
+      "cover": "assets/blog/nadi-ctf-2026/s2-spectrogram.webp"
     },
     {
       "slug": "nadi-ctf-suspicious-download",
@@ -52,9 +52,9 @@
         "Writeup",
         "Cryptography"
       ],
-      "file": "2026-10-12-nadi-ctf-suspicious-download.md",
+      "file": "2026-10-12-nadi-ctf-meridian-vault-systems-1.md",
       "reading_time": 3,
-      "cover": "assets/blog/nadi-ctf-2026/f1-exiftool.webp"
+      "cover": "assets/blog/nadi-ctf-2026/c1-message-dat.webp"
     },
     {
       "slug": "analysing-forensic-features",
