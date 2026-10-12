@@ -43,6 +43,20 @@
       "cover": "assets/blog/nadi-ctf-2026/f1-exiftool.webp"
     },
     {
+      "slug": "nadi-ctf-meridian-vault-system-1",
+      "title": "NADI CTF 2026: Meridian Vault Systems {1} (Cryptography)",
+      "date": "2026-10-12",
+      "summary": "A file fragment wrapped in hex, single-byte XOR, a reversal and Base64. None of it is real encryption, and the decoded output also gives you what you need for part 2.",
+      "tags": [
+        "CTF",
+        "Writeup",
+        "Cryptography"
+      ],
+      "file": "2026-10-12-nadi-ctf-suspicious-download.md",
+      "reading_time": 3,
+      "cover": "assets/blog/nadi-ctf-2026/f1-exiftool.webp"
+    },
+    {
       "slug": "analysing-forensic-features",
       "title": "Analysing Forensic Features in AI Images",
       "date": "2026-05-13",
