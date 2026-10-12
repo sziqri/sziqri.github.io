@@ -29,6 +29,20 @@
       "cover": "assets/blog/nadi-ctf-2026/s1-data-after-iend.webp"
     },
     {
+      "slug": "nadi-ctf-suspicious-download",
+      "title": "NADI CTF 2026: The Suspicious Download (Digital Forensics)",
+      "date": "2026-10-12",
+      "summary": "An invoice.pdf that was really a blank PNG. The real flag was hiding in its metadata as Base64, next to a fake flag meant to trick you.",
+      "tags": [
+        "CTF",
+        "Writeup",
+        "Forensics"
+      ],
+      "file": "2026-10-12-nadi-ctf-suspicious-download.md",
+      "reading_time": 3,
+      "cover": "assets/blog/nadi-ctf-2026/f1-exiftool.webp"
+    },
+    {
       "slug": "analysing-forensic-features",
       "title": "Analysing Forensic Features in AI Images",
       "date": "2026-05-13",
