@@ -77,11 +77,11 @@ b64 = set((string.ascii_letters + string.digits + '+/=').encode())
 for k in range(256):
     x = bytes(c ^ k for c in data)
     if set(x) <= b64:
-        print(k, hex(k))
+        print("key =", k, "->", x)
 ```
 
 ```
-108 0x6c
+108 [or 0x6 in HEX]
 ```
 
 ![XOR brute force finding key 0x6c](assets/blog/nadi-ctf-2026/c1-xor-bruteforce.webp)
