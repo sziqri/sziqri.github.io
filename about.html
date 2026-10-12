@@ -9,10 +9,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,700;6..72,800&display=swap" rel="stylesheet"/>
-    
+
     <script id="tailwind-config">
         tailwind.config = {
-            darkMode: 'class', 
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -32,14 +32,14 @@
         }
     </script>
     <style>
-        body { 
-            background-color: #f8fafc; 
+        body {
+            background-color: #f8fafc;
             -webkit-font-smoothing: antialiased;
         }
-        .dark body { 
-            background-color: #0B1120; 
+        .dark body {
+            background-color: #0B1120;
         }
-        
+
         .bg-grid-pattern {
             background-size: 40px 40px;
             background-image: linear-gradient(to right, rgba(14, 165, 233, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(14, 165, 233, 0.05) 1px, transparent 1px);
@@ -76,14 +76,14 @@
 </head>
 
 <body class="font-sans overflow-x-hidden text-slate-800 dark:text-slate-200 transition-colors duration-300">
-    
+
     <div class="fixed inset-0 z-[-1] pointer-events-none bg-grid-pattern"></div>
     <div class="fixed top-0 right-[-10%] w-[600px] h-[600px] bg-brand-500/10 dark:bg-brand-500/20 blur-[100px] rounded-full z-[-1] pointer-events-none"></div>
 
     <!-- System Topbar -->
     <nav class="fixed top-0 left-0 w-full z-50 glass-panel border-b border-slate-200/80 dark:border-sys-border/80 shadow-sm">
         <div class="flex justify-between items-center px-6 md:px-8 py-3 max-w-[1600px] mx-auto">
-            
+
             <a href="index.html" class="text-xl md:text-2xl font-serif font-black tracking-tight text-slate-900 dark:text-white uppercase">
                 SHAIFOL ZIQRI
             </a>
@@ -130,18 +130,18 @@
                 <span class="material-symbols-outlined text-brand-500 text-[50px] md:text-[60px]">route</span> My Journey.
             </h1>
         </div>
-        
+
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            
+
             <!-- HUD Bracket Card 1 -->
             <div class="md:col-span-2 relative glass-panel p-8 rounded-lg flex flex-col group border border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors reveal delay-100">
                 <div class="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-brand-500 rounded-tl-lg opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all origin-top-left"></div>
                 <div class="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-brand-500 rounded-br-lg opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all origin-bottom-right"></div>
-                
+
                 <span class="material-symbols-outlined text-brand-600 dark:text-brand-400 text-4xl mb-4 group-hover:text-brand-500 transition-colors">sports_esports</span>
                 <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">The Spark</h3>
                 <p class="font-sans text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
-                    Started with playing games on a computer since I was 6 years old, which grew into a deeper interest in how computers really work. I dreamed of being a hacker since I was 9, but didn't really have a proper setup while growing up.
+                    I started playing computer games when I was 6, and slowly got curious about how computers actually work. I've wanted to be a hacker since I was 9, but I didn't have a proper setup growing up.
                 </p>
             </div>
 
@@ -149,7 +149,7 @@
             <div class="bg-brand-600 text-white p-8 rounded-lg shadow-lg flex flex-col justify-center relative overflow-hidden group reveal delay-200">
                 <div class="absolute right-0 bottom-0 opacity-10 group-hover:opacity-20 transition-opacity"><span class="material-symbols-outlined text-[150px]">settings_ethernet</span></div>
                 <p class="font-sans text-sm md:text-base font-medium leading-relaxed relative z-10">
-                    I redeemed my dream after high school, using my Diploma in Electronic Engineering to grasp the fundamentals of hardware and computing.
+                    After SPM, I took a Diploma in Electronics Engineering to learn the basics of hardware and computing.
                 </p>
             </div>
 
@@ -157,11 +157,11 @@
             <div class="relative glass-panel p-8 rounded-lg flex flex-col group border border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors reveal delay-300">
                 <div class="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-brand-500 rounded-tl-lg opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all origin-top-left"></div>
                 <div class="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-brand-500 rounded-br-lg opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all origin-bottom-right"></div>
-                
+
                 <span class="material-symbols-outlined text-brand-600 dark:text-brand-400 text-4xl mb-4 group-hover:text-brand-500 transition-colors">memory</span>
                 <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">The Builder</h3>
                 <p class="font-sans text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
-                    I like to understand how things really work. I have fun learning and love to build things, which drew me actively into IoT.
+                    I like to understand how things really work. I enjoy learning by building things, and that's how I got into IoT.
                 </p>
             </div>
 
@@ -169,14 +169,14 @@
             <div class="md:col-span-2 relative glass-panel p-8 rounded-lg flex flex-col md:flex-row items-start md:items-center gap-6 group border border-slate-200/80 dark:border-slate-700/80 bg-gradient-to-r from-slate-100 to-white dark:from-slate-900 dark:to-sys-dark hover:border-brand-500/50 transition-colors reveal delay-400">
                 <div class="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-brand-500 rounded-tl-lg opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all origin-top-left"></div>
                 <div class="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-brand-500 rounded-br-lg opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all origin-bottom-right"></div>
-                
+
                 <div class="p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-lg shrink-0">
                     <span class="material-symbols-outlined text-yellow-500 text-5xl">extension</span>
                 </div>
                 <div>
                     <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">The Challenge</h3>
                     <p class="font-sans text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
-                        I like challenges. That is where I can utilize my problem-solving skills and use critical thinking to get the solution in Network Security.
+                        I like a good challenge. Network security gives me problems where I can use my problem-solving and critical thinking to find the answer.
                     </p>
                 </div>
             </div>
@@ -190,20 +190,20 @@
             <h2 class="font-serif text-4xl md:text-5xl font-bold text-slate-900 dark:text-white tracking-tight">Education</h2>
             <span class="font-mono text-xs text-slate-500 border border-slate-300 dark:border-slate-700 px-2 py-1 rounded">DATA_01</span>
         </div>
-        
+
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
             <!-- UniSZA Card -->
             <div class="relative glass-panel p-10 rounded-xl flex flex-col group hover:border-brand-500/50 hover:shadow-[0_8px_30px_rgba(14,165,233,0.1)] transition-all duration-500 overflow-hidden border border-slate-200/60 dark:border-slate-700/60 bg-gradient-to-b from-white/60 to-white/30 dark:from-slate-800/60 dark:to-slate-900/30 reveal delay-100">
                 <div class="absolute -top-10 -right-10 w-40 h-40 bg-brand-500/10 dark:bg-brand-500/20 rounded-full blur-3xl group-hover:bg-brand-500/20 group-hover:scale-110 transition-all duration-500 pointer-events-none"></div>
                 <div class="absolute right-0 bottom-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity"><span class="material-symbols-outlined text-[100px] text-brand-500">school</span></div>
-                
+
                 <span class="font-mono text-xs font-bold text-brand-600 dark:text-brand-400 block mb-4 uppercase tracking-widest bg-brand-50 dark:bg-brand-500/10 w-fit px-3 py-1 rounded">2023 - Present</span>
                 <h3 class="font-serif text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-2 leading-tight relative z-10">Universiti Sultan Zainal Abidin (UniSZA)</h3>
                 <p class="font-sans text-sm md:text-base text-slate-700 dark:text-slate-300 font-medium mb-6 relative z-10">Bachelor of Computer Science (Computer Network Security) With Honours</p>
-                
+
                 <div class="space-y-3 font-sans text-sm text-slate-600 dark:text-slate-400 relative z-10 border-t border-slate-200 dark:border-slate-700/50 pt-4 mt-auto">
-                    <p class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-brand-500">grade</span> <span class="font-bold text-slate-800 dark:text-slate-200">CGPA:</span> 3.79 (Dean's List Sem 1-5)</p>
-                    <p class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-brand-500">schedule</span> <span class="font-bold text-slate-800 dark:text-slate-200">Current Semester:</span> 6</p>
+                    <p class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-brand-500">grade</span> <span class="font-bold text-slate-800 dark:text-slate-200">CGPA:</span> 3.78 (6 Semesters, Dean's List Sem 1-5)</p>
+                    <p class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-brand-500">schedule</span> <span class="font-bold text-slate-800 dark:text-slate-200">Current:</span> Industrial Training at IExploTech Sdn Bhd</p>
                     <p class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-brand-500">router</span> <span class="font-bold text-slate-800 dark:text-slate-200">Major:</span> Networking and Security</p>
                     <p class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-brand-500">code</span> <span class="font-bold text-slate-800 dark:text-slate-200">Minor:</span> Programming and Systems</p>
                 </div>
@@ -213,11 +213,11 @@
             <div class="relative glass-panel p-10 rounded-xl flex flex-col group hover:border-slate-400/50 hover:shadow-[0_8px_30px_rgba(148,163,184,0.1)] transition-all duration-500 overflow-hidden border border-slate-200/60 dark:border-slate-700/60 bg-gradient-to-b from-white/60 to-white/30 dark:from-slate-800/60 dark:to-slate-900/30 reveal delay-200">
                 <div class="absolute -top-10 -right-10 w-40 h-40 bg-slate-400/10 dark:bg-slate-400/20 rounded-full blur-3xl group-hover:bg-slate-400/20 group-hover:scale-110 transition-all duration-500 pointer-events-none"></div>
                 <div class="absolute right-0 bottom-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity"><span class="material-symbols-outlined text-[100px] text-slate-500">science</span></div>
-                
+
                 <span class="font-mono text-xs font-bold text-slate-600 dark:text-slate-400 block mb-4 uppercase tracking-widest bg-slate-100 dark:bg-slate-800 w-fit px-3 py-1 rounded">2019 - 2022</span>
                 <h3 class="font-serif text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-2 leading-tight relative z-10">Politeknik Sultan Mizan Zainal Abidin</h3>
                 <p class="font-sans text-sm md:text-base text-slate-700 dark:text-slate-300 font-medium mb-6 relative z-10">Diploma in Electronics Engineering (Computer)</p>
-                
+
                 <div class="space-y-3 font-sans text-sm text-slate-600 dark:text-slate-400 relative z-10 border-t border-slate-200 dark:border-slate-700/50 pt-4 mt-auto">
                     <p class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-slate-400">grade</span> <span class="font-bold text-slate-800 dark:text-slate-200">CGPA:</span> 3.52</p>
                     <p class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-slate-400">memory</span> <span class="font-bold text-slate-800 dark:text-slate-200">Major:</span> Electronics and Computer Engineering</p>
@@ -237,64 +237,87 @@
         <div class="relative max-w-5xl mx-auto pl-4 md:pl-0">
             <!-- Timeline Center Line -->
             <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-[1px] bg-slate-200 dark:bg-sys-border transform md:-translate-x-1/2"></div>
-            
-            <!-- Log Entry 1 -->
+
+            <!-- Log Entry 1: Internship (Current) -->
             <div class="relative flex flex-col md:flex-row justify-between items-start md:items-center mb-16 group reveal">
                 <!-- Pulsing Node -->
                 <div class="absolute left-4 md:left-1/2 w-4 h-4 bg-brand-500 rounded-full shadow-[0_0_10px_rgba(14,165,233,0.8)] transform -translate-x-[7px] md:-translate-x-1/2 mt-1.5 md:mt-0 z-10 flex items-center justify-center">
                     <div class="w-2 h-2 bg-white rounded-full animate-pulse"></div>
                 </div>
-                
+
                 <div class="w-full md:w-[45%] pl-10 md:pl-0 md:pr-12 text-left md:text-right mb-4 md:mb-0">
-                    <span class="font-mono text-[10px] font-bold text-slate-500 dark:text-slate-400 block mb-2 tracking-widest uppercase">2024 - Present</span>
-                    <h3 class="font-serif text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-1">Vice President</h3>
-                    <p class="font-sans text-brand-600 dark:text-brand-400 font-bold text-sm">Robotic Club (RoboPro), UniSZA</p>
+                    <span class="font-mono text-[10px] font-bold text-slate-500 dark:text-slate-400 block mb-2 tracking-widest uppercase">2026 - Present</span>
+                    <h3 class="font-serif text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-1">Intern</h3>
+                    <p class="font-sans text-brand-600 dark:text-brand-400 font-bold text-sm">IExploTech Sdn Bhd</p>
                 </div>
                 <div class="w-full md:w-[45%] pl-10 md:pl-12">
                     <div class="glass-panel p-5 rounded-lg border border-slate-200/80 dark:border-slate-700/80 hover:border-brand-500/50 transition-colors">
                         <ul class="font-sans text-sm text-slate-600 dark:text-slate-400 space-y-2 list-none">
-                            <li class="flex items-start gap-2"><span class="text-brand-500 font-bold">›</span> Managed and planned club strategy and technical workshops.</li>
-                            <li class="flex items-start gap-2"><span class="text-brand-500 font-bold">›</span> Mentored junior members in microcontroller programming.</li>
-                            <li class="flex items-start gap-2"><span class="text-brand-500 font-bold">›</span> Conducted IoT and Embedded System workshops for primary and secondary schools.</li>
+                            <li class="flex items-start gap-2"><span class="text-brand-500 font-bold">›</span> Developed APIs and middleware to connect internal systems.</li>
+                            <li class="flex items-start gap-2"><span class="text-brand-500 font-bold">›</span> Implemented post-quantum cryptographic digital signing using ML-DSA-65 (NIST FIPS 204).</li>
+                            <li class="flex items-start gap-2"><span class="text-brand-500 font-bold">›</span> Integrated a Laravel-based system with a Hyperledger Fabric blockchain network.</li>
+                            <li class="flex items-start gap-2"><span class="text-brand-500 font-bold">›</span> Took part in User Acceptance Testing (UAT) for system releases.</li>
                         </ul>
                     </div>
                 </div>
             </div>
-            
-            <!-- Log Entry 2 -->
+
+            <!-- Log Entry 2: Vice President -->
             <div class="relative flex flex-col md:flex-row justify-between items-start md:items-center mb-16 group reveal delay-100">
                 <!-- Standard Node -->
                 <div class="absolute left-4 md:left-1/2 w-3 h-3 bg-slate-300 dark:bg-slate-600 group-hover:bg-brand-400 rounded-full border border-slate-400 dark:border-slate-500 transform -translate-x-[5px] md:-translate-x-1/2 mt-2 md:mt-0 transition-colors z-10"></div>
-                
-                <div class="w-full md:w-[45%] pl-10 md:pl-0 md:pr-12 text-left md:text-right mb-4 md:mb-0 order-1 md:order-2">
-                    <span class="font-mono text-[10px] font-bold text-slate-500 dark:text-slate-400 block mb-2 tracking-widest uppercase md:hidden">2023</span>
-                    <h3 class="font-serif text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-1">Exco Module Development</h3>
+
+                <div class="w-full md:w-[45%] pl-10 md:pl-12 text-left mb-4 md:mb-0 order-1 md:order-2">
+                    <span class="font-mono text-[10px] font-bold text-slate-500 dark:text-slate-400 block mb-2 tracking-widest uppercase md:hidden">2024 - 2026</span>
+                    <h3 class="font-serif text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-1">Vice President</h3>
                     <p class="font-sans text-slate-700 dark:text-slate-300 font-bold text-sm">Robotic Club (RoboPro), UniSZA</p>
                 </div>
-                <div class="w-full md:w-[45%] pl-10 md:pl-12 order-2 md:order-1 text-left md:text-right">
-                    <span class="font-mono text-[10px] font-bold text-slate-500 dark:text-slate-400 hidden md:block mb-2 tracking-widest uppercase">2023</span>
-                    <div class="glass-panel p-5 rounded-lg border border-slate-200/80 dark:border-slate-700/80 hover:border-slate-400 transition-colors text-left md:text-right">
-                        <p class="font-sans text-sm text-slate-600 dark:text-slate-400">Designed hands-on learning modules with teams covering sensor integration with basic automation.</p>
+                <div class="w-full md:w-[45%] pl-10 md:pl-0 md:pr-12 order-2 md:order-1 text-left md:text-right">
+                    <span class="font-mono text-[10px] font-bold text-slate-500 dark:text-slate-400 hidden md:block mb-2 tracking-widest uppercase">2024 - 2026</span>
+                    <div class="glass-panel p-5 rounded-lg border border-slate-200/80 dark:border-slate-700/80 hover:border-slate-400 transition-colors text-left">
+                        <ul class="font-sans text-sm text-slate-600 dark:text-slate-400 space-y-2 list-none">
+                            <li class="flex items-start gap-2"><span class="text-slate-400 font-bold">›</span> Planned the club's direction and technical workshops.</li>
+                            <li class="flex items-start gap-2"><span class="text-slate-400 font-bold">›</span> Mentored junior members in microcontroller programming.</li>
+                            <li class="flex items-start gap-2"><span class="text-slate-400 font-bold">›</span> Ran IoT and embedded system workshops for primary and secondary school students.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
 
-            <!-- Log Entry 3 -->
-            <div class="relative flex flex-col md:flex-row justify-between items-start md:items-center group reveal delay-200">
+            <!-- Log Entry 3: Exco -->
+            <div class="relative flex flex-col md:flex-row justify-between items-start md:items-center mb-16 group reveal delay-200">
                 <!-- Standard Node -->
                 <div class="absolute left-4 md:left-1/2 w-3 h-3 bg-slate-300 dark:bg-slate-600 group-hover:bg-brand-400 rounded-full border border-slate-400 dark:border-slate-500 transform -translate-x-[5px] md:-translate-x-1/2 mt-2 md:mt-0 transition-colors z-10"></div>
-                
+
                 <div class="w-full md:w-[45%] pl-10 md:pl-0 md:pr-12 text-left md:text-right mb-4 md:mb-0">
+                    <span class="font-mono text-[10px] font-bold text-slate-500 dark:text-slate-400 block mb-2 tracking-widest uppercase md:hidden">2023</span>
+                    <h3 class="font-serif text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-1">Exco Module Development</h3>
+                    <p class="font-sans text-slate-700 dark:text-slate-300 font-bold text-sm">Robotic Club (RoboPro), UniSZA</p>
+                </div>
+                <div class="w-full md:w-[45%] pl-10 md:pl-12">
+                    <span class="font-mono text-[10px] font-bold text-slate-500 dark:text-slate-400 hidden md:block mb-2 tracking-widest uppercase">2023</span>
+                    <div class="glass-panel p-5 rounded-lg border border-slate-200/80 dark:border-slate-700/80 hover:border-slate-400 transition-colors">
+                        <p class="font-sans text-sm text-slate-600 dark:text-slate-400">Worked with the team to design hands-on modules on sensor integration and basic automation.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Log Entry 4: Technician -->
+            <div class="relative flex flex-col md:flex-row justify-between items-start md:items-center group reveal delay-300">
+                <!-- Standard Node -->
+                <div class="absolute left-4 md:left-1/2 w-3 h-3 bg-slate-300 dark:bg-slate-600 group-hover:bg-brand-400 rounded-full border border-slate-400 dark:border-slate-500 transform -translate-x-[5px] md:-translate-x-1/2 mt-2 md:mt-0 transition-colors z-10"></div>
+
+                <div class="w-full md:w-[45%] pl-10 md:pl-12 text-left mb-4 md:mb-0 order-1 md:order-2">
                     <span class="font-mono text-[10px] font-bold text-slate-500 dark:text-slate-400 block mb-2 tracking-widest uppercase md:hidden">Aug - Oct 2022</span>
                     <h3 class="font-serif text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-1">Technician</h3>
                     <p class="font-sans text-slate-700 dark:text-slate-300 font-bold text-sm">Night Electronics (M) SDN BHD</p>
                 </div>
-                <div class="w-full md:w-[45%] pl-10 md:pl-12">
+                <div class="w-full md:w-[45%] pl-10 md:pl-0 md:pr-12 order-2 md:order-1 text-left md:text-right">
                     <span class="font-mono text-[10px] font-bold text-slate-500 dark:text-slate-400 hidden md:block mb-2 tracking-widest uppercase">Aug - Oct 2022</span>
-                    <div class="glass-panel p-5 rounded-lg border border-slate-200/80 dark:border-slate-700/80 hover:border-slate-400 transition-colors">
+                    <div class="glass-panel p-5 rounded-lg border border-slate-200/80 dark:border-slate-700/80 hover:border-slate-400 transition-colors text-left">
                         <ul class="font-sans text-sm text-slate-600 dark:text-slate-400 space-y-2 list-none">
-                            <li class="flex items-start gap-2"><span class="text-slate-400 font-bold">›</span> Performed internal repairs and troubleshooting for IT hardware (laptops, PCs, printers).</li>
-                            <li class="flex items-start gap-2"><span class="text-slate-400 font-bold">›</span> Conducted preventive maintenance.</li>
+                            <li class="flex items-start gap-2"><span class="text-slate-400 font-bold">›</span> Repaired and troubleshot IT hardware such as laptops, PCs and printers.</li>
+                            <li class="flex items-start gap-2"><span class="text-slate-400 font-bold">›</span> Did routine preventive maintenance.</li>
                         </ul>
                     </div>
                 </div>
@@ -308,12 +331,12 @@
             <h2 class="font-serif text-4xl md:text-5xl font-bold text-slate-900 dark:text-white tracking-tight">Awards & Certifications</h2>
             <span class="font-mono text-xs text-slate-500 border border-slate-300 dark:border-slate-700 px-2 py-1 rounded">DATA_02</span>
         </div>
-        
+
         <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-12">
             <!-- CCNA Cert -->
             <div class="md:col-span-12 lg:col-span-4 bg-slate-900 border border-slate-800 p-6 rounded-lg flex flex-col justify-center relative overflow-hidden group hover:border-brand-500/50 hover:shadow-[0_8px_30px_rgba(14,165,233,0.15)] transition-all duration-500 reveal delay-100">
                 <div class="absolute right-0 top-0 w-40 h-40 bg-brand-500/20 rounded-full blur-[40px] group-hover:bg-brand-500/40 group-hover:scale-110 transition-all duration-500 pointer-events-none"></div>
-                
+
                 <div class="flex items-center gap-4 relative z-10 mb-2">
                     <span class="material-symbols-outlined text-4xl text-brand-400">workspace_premium</span>
                     <div>
@@ -328,7 +351,31 @@
 
             <!-- Awards Logs (Ambient Glow applied) -->
             <div class="md:col-span-12 lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                
+
+                <!-- Gold Award FYP -->
+                <div class="relative glass-panel p-4 rounded-xl flex items-center gap-4 group hover:border-amber-500/50 hover:shadow-[0_8px_30px_rgba(245,158,11,0.1)] transition-all duration-500 overflow-hidden border border-slate-200/60 dark:border-slate-700/60 bg-gradient-to-b from-white/60 to-white/30 dark:from-slate-800/60 dark:to-slate-900/30 reveal delay-100">
+                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-amber-500/10 dark:bg-amber-500/20 rounded-full blur-3xl group-hover:bg-amber-500/20 group-hover:scale-110 transition-all duration-500 pointer-events-none"></div>
+                    <div class="relative z-10 w-10 h-10 rounded bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/30 flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined text-amber-500">military_tech</span>
+                    </div>
+                    <div class="relative z-10">
+                        <h4 class="text-sm font-bold text-slate-900 dark:text-white mb-0.5">Gold Award - Final Year Project</h4>
+                        <p class="text-xs text-slate-600 dark:text-slate-400">AI image detector with forensic feature analysis.</p>
+                    </div>
+                </div>
+
+                <!-- Junior Data Scientist FYP -->
+                <div class="relative glass-panel p-4 rounded-xl flex items-center gap-4 group hover:border-emerald-500/50 hover:shadow-[0_8px_30px_rgba(16,185,129,0.1)] transition-all duration-500 overflow-hidden border border-slate-200/60 dark:border-slate-700/60 bg-gradient-to-b from-white/60 to-white/30 dark:from-slate-800/60 dark:to-slate-900/30 reveal delay-200">
+                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-emerald-500/10 dark:bg-emerald-500/20 rounded-full blur-3xl group-hover:bg-emerald-500/20 group-hover:scale-110 transition-all duration-500 pointer-events-none"></div>
+                    <div class="relative z-10 w-10 h-10 rounded bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/30 flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined text-emerald-500">insights</span>
+                    </div>
+                    <div class="relative z-10">
+                        <h4 class="text-sm font-bold text-slate-900 dark:text-white mb-0.5">Junior Data Scientist Award - FYP</h4>
+                        <p class="text-xs text-slate-600 dark:text-slate-400">Awarded for my AI image detector Final Year Project.</p>
+                    </div>
+                </div>
+
                 <!-- Gold Medal -->
                 <div class="relative glass-panel p-4 rounded-xl flex items-center gap-4 group hover:border-amber-500/50 hover:shadow-[0_8px_30px_rgba(245,158,11,0.1)] transition-all duration-500 overflow-hidden border border-slate-200/60 dark:border-slate-700/60 bg-gradient-to-b from-white/60 to-white/30 dark:from-slate-800/60 dark:to-slate-900/30 reveal delay-100">
                     <div class="absolute -top-10 -right-10 w-32 h-32 bg-amber-500/10 dark:bg-amber-500/20 rounded-full blur-3xl group-hover:bg-amber-500/20 group-hover:scale-110 transition-all duration-500 pointer-events-none"></div>
@@ -349,7 +396,7 @@
                     </div>
                     <div class="relative z-10">
                         <h4 class="text-sm font-bold text-slate-900 dark:text-white mb-0.5">Bronze Medal - MPI 2024 & 2025</h4>
-                        <p class="text-xs text-slate-600 dark:text-slate-400">Showcased SafetyInfant and SortBuddy to industry experts.</p>
+                        <p class="text-xs text-slate-600 dark:text-slate-400">Presented SafetyInfant and SortBuddy to industry experts.</p>
                     </div>
                 </div>
 
@@ -361,7 +408,7 @@
                     </div>
                     <div class="relative z-10">
                         <h4 class="text-sm font-bold text-slate-900 dark:text-white mb-0.5">3rd Place - CTF UniSZA - UMT 2024</h4>
-                        <p class="text-xs text-slate-600 dark:text-slate-400">Performed analysis using Wireshark and Autopsy to find flags.</p>
+                        <p class="text-xs text-slate-600 dark:text-slate-400">Used Wireshark and Autopsy to analyse evidence and find flags.</p>
                     </div>
                 </div>
 
@@ -373,7 +420,7 @@
                     </div>
                     <div class="relative z-10">
                         <h4 class="text-sm font-bold text-slate-900 dark:text-white mb-0.5">Semi Finalist - MRANTI Robothon 2025</h4>
-                        <p class="text-xs text-slate-600 dark:text-slate-400">Innovated and showcased the SortBuddy AI trash classification project.</p>
+                        <p class="text-xs text-slate-600 dark:text-slate-400">Built and presented the SortBuddy AI trash sorting project.</p>
                     </div>
                 </div>
 
@@ -384,7 +431,7 @@
     <!-- Original Footer Restored -->
     <footer class="w-full px-8 py-16 flex flex-col justify-center items-center gap-6 mt-12 bg-slate-900 border-t border-slate-800 relative z-10">
         <h2 class="font-serif text-2xl font-bold text-white tracking-widest uppercase">Shaifol Ziqri</h2>
-        
+
         <div class="flex flex-wrap justify-center gap-4 mb-4">
             <a href="https://wa.me/60176334491" target="_blank" class="flex items-center gap-2 font-mono text-sm text-slate-300 border px-4 py-2 border-slate-700 rounded shadow-sm hover:bg-green-600 hover:text-white hover:border-green-600 transition-colors cursor-pointer group">
                 <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51h-.573c-.199 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg> WhatsApp
@@ -394,6 +441,9 @@
             </a>
             <a href="https://www.linkedin.com/in/shaifol-ziqri-b571b6233/" target="_blank" class="flex items-center gap-2 font-mono text-sm text-slate-300 border px-4 py-2 border-slate-700 rounded shadow-sm hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-colors cursor-pointer group">
                 <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> LinkedIn
+            </a>
+            <a href="https://github.com/sziqri" target="_blank" class="flex items-center gap-2 font-mono text-sm text-slate-300 border px-4 py-2 border-slate-700 rounded shadow-sm hover:bg-slate-700 hover:text-white hover:border-slate-500 transition-colors cursor-pointer group">
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> GitHub
             </a>
         </div>
         <div class="font-mono text-xs uppercase tracking-widest text-slate-500">© 2026 SHAIFOL ZIQRI. ALL RIGHTS RESERVED. </div>
