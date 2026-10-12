@@ -15,6 +15,20 @@
       "cover": "assets/blog/nadi-ctf-2026/s1-data-after-iend.webp"
     },
     {
+      "slug": "nadi-ctf-best-of-luck",
+      "title": "NADI CTF 2026: Best of Luck (Steganography)",
+      "date": "2026-10-12",
+      "summary": "A PNG with 80 extra bytes hidden after the end of the image. Reverse them, decode Ascii85, then Base32, and the flag comes out.",
+      "tags": [
+        "CTF",
+        "Writeup",
+        "Stego"
+      ],
+      "file": "2026-10-12-nadi-ctf-best-of-luck.md",
+      "reading_time": 3,
+      "cover": "assets/blog/nadi-ctf-2026/s1-data-after-iend.webp"
+    },
+    {
       "slug": "analysing-forensic-features",
       "title": "Analysing Forensic Features in AI Images",
       "date": "2026-05-13",
