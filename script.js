@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // --- 1. DARK MODE TOGGLE LOGIC ---
     const themeToggleBtn = document.getElementById('themeToggleBtn');
     const themeIcon = document.getElementById('themeIcon');
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Listen for button click
         themeToggleBtn.addEventListener('click', () => {
             htmlElement.classList.toggle('dark');
-            
+
             if (htmlElement.classList.contains('dark')) {
                 localStorage.setItem('theme', 'dark');
                 themeIcon.textContent = 'light_mode';
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
             mobileMenu.classList.toggle('flex');
-            
+
             if (menuIcon) {
                 if (mobileMenu.classList.contains('hidden')) {
                     menuIcon.textContent = 'menu';
@@ -65,54 +65,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 4. BLOG MODAL (POPUP) LOGIC ---
-    const articleModal = document.getElementById('articleModal');
-    const closeModalBtn = document.getElementById('closeModalBtn');
-    const modalBox = document.getElementById('modalBox');
-    
-    const modalDate = document.getElementById('modalDate');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalBody = document.getElementById('modalBody');
-
-    const readButtons = document.querySelectorAll('.read-post-btn');
-
-    if (articleModal && readButtons.length > 0) {
-        readButtons.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const article = e.target.closest('article');
-                const title = article.querySelector('.post-title').innerText;
-                const date = article.querySelector('.post-date').innerText;
-                const fullTextHTML = article.querySelector('.full-content').innerHTML;
-
-                modalTitle.innerText = title;
-                modalDate.innerText = date;
-                modalBody.innerHTML = fullTextHTML;
-
-                articleModal.classList.remove('hidden');
-                setTimeout(() => {
-                    articleModal.classList.remove('opacity-0');
-                    modalBox.classList.remove('scale-95');
-                }, 10);
-                
-                document.body.style.overflow = 'hidden';
-            });
-        });
-
-        const closeModal = () => {
-            articleModal.classList.add('opacity-0');
-            modalBox.classList.add('scale-95');
-            setTimeout(() => {
-                articleModal.classList.add('hidden');
-                document.body.style.overflow = 'auto'; 
-            }, 300);
-        };
-
-        closeModalBtn.addEventListener('click', closeModal);
-        articleModal.addEventListener('click', (e) => {
-            if (e.target === articleModal) closeModal();
-        });
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !articleModal.classList.contains('hidden')) closeModal();
-        });
-    }
+    // The blog page has its own script now (blog.js), which loads posts from the posts/ folder.
 });
