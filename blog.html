@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Blog - Shaifol Ziqri</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries,typography"></script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -139,99 +139,11 @@
         </div>
     </section>
 
-    <!-- Blog Grid -->
+    <!-- Blog Grid: the cards are created by blog.js from posts/index.json -->
     <section class="py-16 px-6 md:px-8 lg:px-12 max-w-[1600px] mx-auto min-h-[60vh]">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-            <!-- Post 1: HUD Bracket Style -->
-            <article class="relative glass-panel p-8 rounded-xl flex flex-col group border border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors reveal cursor-pointer">
-                <!-- HUD Brackets -->
-                <div class="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-brand-500 rounded-tl-xl opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all origin-top-left"></div>
-                <div class="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-brand-500 rounded-br-xl opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all origin-bottom-right"></div>
-
-                <div class="flex items-center gap-2 mb-4">
-                    <span class="material-symbols-outlined text-[14px] text-brand-500">schedule</span>
-                    <span class="font-mono text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest post-date">13 May 2026</span>
-                </div>
-
-                <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 group-hover:text-brand-500 transition-colors post-title leading-tight">Analysing Forensic Features in AI Images</h2>
-
-                <p class="text-sm text-slate-600 dark:text-slate-400 mb-8 flex-grow leading-relaxed">
-                    How a CNN model can use Error Level Analysis (ELA) and Fast Fourier Transform (FFT) to tell real photos apart from AI-generated ones.
-                </p>
-
-                <button type="button" class="read-post-btn font-mono text-xs font-bold text-brand-600 dark:text-brand-400 uppercase tracking-widest flex items-center gap-1 group-hover:gap-2 transition-all mt-auto self-start outline-none">
-                    Read More <span class="material-symbols-outlined text-[16px]">open_in_new</span>
-                </button>
-
-                <!-- Hidden Content for Modal -->
-                <div class="hidden full-content">
-                    <p class="mb-6">
-                        When I was trying to figure out a title for my Final Year Project (FYP), I was totally stuck.
-                        But one day, while scrolling through social media, I realised something pretty scary: <strong class="dark:text-white">AI-generated images and videos are getting way too realistic</strong>.
-                        Nowadays, it's very hard to tell what's real and what's fake with our bare eyes.
-                    </p>
-
-                    <p class="mb-6">
-                        That got me curious, so I started digging through Google Scholar to see how researchers actually detect AI content.
-                        I found a <a href="https://www.ijtsrd.com/papers/ijtsrd69453.pdf" target="_blank" rel="noopener noreferrer" class="text-brand-500 font-bold border-b border-brand-500/30 hover:border-brand-500 transition-colors">really interesting paper</a> that suggested using multiple forensic features at the same time.
-                        There are already methods that use things like Error Level Analysis (ELA) or Photo Response Non-Uniformity (PRNU), but a lot of them share the same issue: they struggle with <strong class="dark:text-white">"cross-generation"</strong>.
-                        Basically, a model might be great at catching Midjourney images but completely fail when tested on Stable Diffusion.
-                    </p>
-
-                    <p class="mb-6">
-                        To build a more reliable system for my FYP, I decided to focus on this gap.
-                        At first, I wanted to train a system using lots of different generative models.
-                        But to keep the project realistic for my timeframe, I scaled it down.
-                        I chose to replicate an <a href="https://acspub.id/index.php/ailm/article/view/4" target="_blank" rel="noopener noreferrer" class="text-brand-500 font-bold border-b border-brand-500/30 hover:border-brand-500 transition-colors">existing baseline study</a> so I could directly compare my results with theirs.
-                    </p>
-
-                    <p class="mb-8">
-                        The main difference in my approach is that I built my system using <strong class="dark:text-white">PyTorch</strong>.
-                        I chose PyTorch simply because it made it much easier for me to modify the very first layer of the CNN model to accept my custom forensic features.
-                    </p>
-
-                    <div class="bg-slate-100 dark:bg-sys-panel border border-slate-200 dark:border-sys-border border-l-4 border-l-brand-500 p-6 rounded mb-6">
-                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4">The Forensic Features Setup</h3>
-                        <p class="mb-4 text-sm">Here is a quick breakdown of the forensic features I used to catch the AI:</p>
-
-                        <ul class="space-y-4 text-sm">
-                            <li class="flex items-start gap-3">
-                                <span class="material-symbols-outlined text-brand-500 mt-1">troubleshoot</span>
-                                <div>
-                                    <strong class="text-slate-900 dark:text-white block mb-1">Fast Fourier Transform (FFT):</strong>
-                                    This helps me see the high-frequency artefacts in an image.
-                                    By converting normal spatial data into frequency data, the unnatural pixel patterns left behind by AI generators become very obvious.
-                                </div>
-                            </li>
-
-                            <li class="flex items-start gap-3">
-                                <span class="material-symbols-outlined text-brand-500 mt-1">compress</span>
-                                <div>
-                                    <strong class="text-slate-900 dark:text-white block mb-1">Error Level Analysis (ELA):</strong>
-                                    This feature highlights compression differences.
-                                    Since an AI generates an image as one single flat layer, ELA will show a very uniform compression.
-                                    A real photo that has been edited, on the other hand, will show clear differences where the image was changed.
-                                </div>
-                            </li>
-
-                            <li class="flex items-start gap-3">
-                                <span class="material-symbols-outlined text-brand-500 mt-1">blur_on</span>
-                                <div>
-                                    <strong class="text-slate-900 dark:text-white block mb-1">Laplace High-Pass Filtering:</strong>
-                                    I also added this filter to help the model learn the noise residuals.
-                                    It basically pulls out the hidden texture or noise patterns that the AI accidentally leaves behind.
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <p class="mb-6 italic text-sm">
-                        Feel free to check out my project setup in the Projects section!
-                    </p>
-                </div>
-            </article>
-
-        </div>
+        <p id="postStatus" class="font-mono text-sm text-slate-500 dark:text-slate-400">Loading posts...</p>
+        <div id="postGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+        <noscript><p class="font-mono text-sm text-slate-500">Please turn on JavaScript to read the blog.</p></noscript>
     </section>
 
     <!-- Original Footer Restored -->
@@ -256,7 +168,7 @@
     </footer>
 
     <!-- Modern Reading Overlay Modal -->
-    <div id="articleModal" class="fixed inset-0 z-[100] hidden bg-slate-900/60 dark:bg-[#0B1120]/80 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 opacity-0 transition-opacity duration-300">
+    <div id="articleModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" class="fixed inset-0 z-[100] hidden bg-slate-900/60 dark:bg-[#0B1120]/80 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 opacity-0 transition-opacity duration-300">
 
         <div class="bg-white dark:bg-sys-dark border border-slate-200 dark:border-sys-border w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-xl shadow-2xl relative transform scale-95 transition-transform duration-300 flex flex-col" id="modalBox">
 
@@ -266,7 +178,7 @@
                     <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
                     <span class="font-mono text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">System Log Reading</span>
                 </div>
-                <button id="closeModalBtn" class="text-slate-400 hover:text-brand-500 transition-colors flex items-center justify-center p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">
+                <button id="closeModalBtn" aria-label="Close article" class="text-slate-400 hover:text-brand-500 transition-colors flex items-center justify-center p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">
                     <span class="material-symbols-outlined text-2xl">close</span>
                 </button>
             </div>
@@ -276,15 +188,18 @@
                 <span id="modalDate" class="font-mono text-[10px] bg-slate-100 dark:bg-sys-panel text-slate-600 dark:text-slate-400 px-2 py-1 rounded border border-slate-200 dark:border-sys-border uppercase tracking-widest mb-6 inline-block"></span>
                 <h2 id="modalTitle" class="font-bold text-3xl md:text-5xl text-slate-900 dark:text-white mb-8 leading-tight tracking-tight"></h2>
 
-                <div id="modalBody" class="font-sans text-base text-slate-700 dark:text-slate-300 leading-relaxed space-y-6">
-                    <!-- Javascript injects HTML here -->
+                <div id="modalBody" class="prose prose-slate dark:prose-invert max-w-none font-sans prose-headings:font-bold prose-a:text-brand-600 dark:prose-a:text-brand-400 prose-img:rounded-lg prose-pre:bg-slate-900">
+                    <!-- blog.js puts the post here -->
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- EXTERNAL SCRIPT -->
+    <!-- EXTERNAL SCRIPTS -->
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.4.16/dist/purify.min.js"></script>
+    <script src="blog.js"></script>
 
     <!-- INLINE SCRIPTS (Scroll Reveal) -->
     <script>
