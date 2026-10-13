@@ -60,7 +60,6 @@ Since nonce reuse is the fatal mistake, the first thing I did was check the nonc
 
 ```
 3e36c8d1691b1f9d
-...
 ```
 
 
