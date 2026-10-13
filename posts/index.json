@@ -1,6 +1,20 @@
 {
   "posts": [
     {
+      "slug": "nadi-ctf-meridian-vault-system-2",
+      "title": "NADI CTF 2026: Meridian Vault Systems {2} (Cryptography)",
+      "date": "2026-10-13",
+      "summary": "AES in a stream mode that reused a nonce. With the known heartbeat text from part 1, that reuse lets us decrypt a message without ever having the key, and it also leaks the seed for part 3.",
+      "tags": [
+        "CTF",
+        "Writeup",
+        "Cryptography"
+      ],
+      "file": "2026-10-13-nadi-ctf-meridian-vault-systems-2.md",
+      "reading_time": 3,
+      "cover": "assets/blog/nadi-ctf-2026/c2-nonce-repeat.webp"
+    },
+    {
       "slug": "nadi-ctf-best-of-luck",
       "title": "NADI CTF 2026: Best of Luck (Steganography)",
       "date": "2026-10-12",
